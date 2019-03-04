@@ -19,9 +19,9 @@ public class SubmissionRepo implements Repository<Submission>
                 stm.setInt(2, item.get_author().get_id());
                 stm.setDate(3, new Date(item.get_date().getTime()));
                 stm.setInt(4, item.get_year().get_id());
-                stm.setBoolean(5, item.is_has_Sent_Notice());
+                stm.setBoolean(5, item.get_has_Sent_Notice());
                 stm.setString(6, item.get_comment());
-                stm.setBoolean(7, item.is_is_Selected());
+                stm.setBoolean(7, item.get_is_Selected());
             });
         } catch (SQLException e)
         {
@@ -39,6 +39,24 @@ public class SubmissionRepo implements Repository<Submission>
     @Override
     public int update(Submission item)
     {
+        //language=MariaDB
+        String sql = "UPDATE Submission SET Path = ?, Date = ?, Year_Id = ?, Has_Sent_Notice = ?, Comment = ?, Is_Selected = ? WHERE Id = ?";
+        try
+        {
+            return DatabaseHelper.executeUpdate(sql, stm -> {
+                stm.setString(1, item.get_path());
+                stm.setDate(1, new Date(item.get_date().getTime()));
+                stm.setInt(1, item.get_year().get_id());
+                stm.setBoolean(1, item.get_has_Sent_Notice());
+                stm.setString(1, item.get_comment());
+                stm.setBoolean(1, item.get_is_Selected());
+
+                stm.setInt(5, item.get_id());
+            });
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
         return 0;
     }
 
