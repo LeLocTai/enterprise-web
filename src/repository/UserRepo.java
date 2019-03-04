@@ -30,7 +30,7 @@ public class UserRepo implements Repository<User>
                 user.set_faculty(new FacultyRepo().get(resultSet.getInt("Faculty_Id")));
                 user.set_has_Accepted_TOC(resultSet.getBoolean("Has_Accepted_TOC"));
                 user.set_email(resultSet.getString("Email"));
-                
+
                 return user;
             }
         } catch (SQLException e)
@@ -43,6 +43,22 @@ public class UserRepo implements Repository<User>
     @Override
     public int update(User item)
     {
+        //language=MariaDB
+        String sql = "UPDATE User SET Role = ?, Faculty_Id = ?, Has_Accepted_TOC = ?, Email = ? WHERE Id = ?";
+        try
+        {
+            return DatabaseHelper.executeUpdate(sql, stm -> {
+                stm.setString(1, item.get_role());
+                stm.setInt(2, item.get_faculty().get_id());
+                stm.setBoolean(3, item.get_has_Accepted_TOC());
+                stm.setString(4, item.get_email());
+                
+                stm.setInt(5, item.get_id());
+            });
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
         return 0;
     }
 
