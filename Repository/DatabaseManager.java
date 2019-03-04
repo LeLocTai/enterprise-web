@@ -12,8 +12,9 @@ public class DatabaseManager {
 
     public DatabaseManager() {
         try {
+            DriverManager.registerDriver(new org.mariadb.jdbc.Driver());
             Connection connection = DriverManager.getConnection(DB_URL_LOCAL, "root", "");
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
