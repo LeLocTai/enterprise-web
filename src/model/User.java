@@ -26,7 +26,7 @@ public class User {
 		this._role = _role;
 	}
 
-	public boolean is_has_Accepted_TOC() {
+	public boolean get_has_Accepted_TOC() {
 		return _has_Accepted_TOC;
 	}
 

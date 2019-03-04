@@ -8,4 +8,6 @@ public interface Repository<T> {
      */
     int add(T item);
     T get(int id);
+    int update(T item);
+    int remove(int id);
 }

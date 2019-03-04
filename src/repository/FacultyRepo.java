@@ -37,4 +37,16 @@ public class FacultyRepo implements Repository<Faculty>
         }
         return null;
     }
+
+    @Override
+    public int update(Faculty item)
+    {
+        return 0;
+    }
+
+    @Override
+    public int remove(int id)
+    {
+        return 0;
+    }
 }

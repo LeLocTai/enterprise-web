@@ -35,4 +35,16 @@ public class SubmissionRepo implements Repository<Submission>
     {
         return null;
     }
+
+    @Override
+    public int update(Submission item)
+    {
+        return 0;
+    }
+
+    @Override
+    public int remove(int id)
+    {
+        return 0;
+    }
 }
