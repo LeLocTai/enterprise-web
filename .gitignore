@@ -81,6 +81,16 @@ fabric.properties
 # Sonarlint plugin
 .idea/sonarlint
 
+### NetBeans ###
+**/nbproject/private/
+**/nbproject/Makefile-*.mk
+**/nbproject/Package-*.bash
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
 ### Java ###
 # Compiled class file
 *.class
