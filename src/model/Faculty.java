@@ -1,9 +1,11 @@
+package model;
+
 import java.util.ArrayList;
 
 public class Faculty {
     private int _id;
     private String _name;
-    public ArrayList<User> _users = new ArrayList<>();
+    private ArrayList<User> _users = new ArrayList<>();
 
     public Faculty() {
     }

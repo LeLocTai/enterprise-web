@@ -1,3 +1,5 @@
+package model;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -6,7 +8,7 @@ public class Year {
     private Date _startDate;
     private Date _endDate;
     private Date _entry_ClosureDate;
-    public ArrayList<Submission> _submissions = new ArrayList<>();
+    private ArrayList<Submission> _submissions = new ArrayList<>();
 
     public Year() {
     }

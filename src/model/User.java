@@ -1,12 +1,14 @@
+package model;
+
 import java.util.ArrayList;
 
-public class User {
+public class User {	
 	private int _id;
 	private String _role;
 	private boolean _has_Accepted_TOC;
 	private String _email;
-	public Faculty _faculty;
-	public ArrayList<Submission> _submissions = new ArrayList<Submission>();
+	private Faculty _faculty;
+	private ArrayList<Submission> _submissions = new ArrayList<Submission>();
 
 	public int get_id() {
 		return _id;
@@ -53,15 +55,6 @@ public class User {
 	}
 
 	public void set_submissions(ArrayList<Submission> _submissions) {
-		this._submissions = _submissions;
-	}
-
-	public User(int _id, String _role, boolean _has_Accepted_TOC, String _email, Faculty _faculty, ArrayList<Submission> _submissions) {
-		this._id = _id;
-		this._role = _role;
-		this._has_Accepted_TOC = _has_Accepted_TOC;
-		this._email = _email;
-		this._faculty = _faculty;
 		this._submissions = _submissions;
 	}
 
