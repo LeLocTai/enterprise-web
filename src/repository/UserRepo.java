@@ -39,4 +39,16 @@ public class UserRepo implements Repository<User>
         }
         return null;
     }
+
+    @Override
+    public int update(User item)
+    {
+        return 0;
+    }
+
+    @Override
+    public int remove(int id)
+    {
+        return 0;
+    }
 }

@@ -39,4 +39,16 @@ public class YearRepo implements Repository<Year>
         }
         return null;
     }
+
+    @Override
+    public int update(Year item)
+    {
+        return 0;
+    }
+
+    @Override
+    public int remove(int id)
+    {
+        return 0;
+    }
 }
