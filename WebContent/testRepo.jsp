@@ -17,13 +17,17 @@
 </head>
 <body>
 <%
-    new SubmissionRepo().add(new Submission("test/path",
-                                            new Date(),
-                                            false,
-                                            null,
-                                            false,
-                                            DatabaseHelper.getTestStudent(),
-                                            DatabaseHelper.getTestYear()));
+    Submission testSubmission = new Submission(
+            "path/to/file/on/disk",
+            new Date(),
+            false,
+            null,
+            false,
+            DatabaseHelper.getTestStudent(),
+            DatabaseHelper.getTestYear()
+    );
+
+    new SubmissionRepo().add(testSubmission);
 %>
 </body>
 </html>
