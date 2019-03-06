@@ -4,14 +4,10 @@ import model.Year;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class YearRepo implements Repository<Year>
 {
-    @Override
-    public int add(Year item)
-    {
-        return 0;
-    }
 
     @Override
     public Year get(int id)
@@ -38,6 +34,18 @@ public class YearRepo implements Repository<Year>
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public ArrayList<Year> getAll()
+    {
+        return null;
+    }
+
+    @Override
+    public int add(Year item)
+    {
+        return 0;
     }
 
     @Override
