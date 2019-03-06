@@ -3,9 +3,67 @@ package repository;
 import model.Submission;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class SubmissionRepo implements Repository<Submission>
 {
+    private Submission extractObjectFrom(ResultSet resultSet) throws SQLException
+    {
+        Submission submission = new Submission();
+        submission.set_id(resultSet.getInt("Id"));
+        submission.set_path(resultSet.getString("Path"));
+        submission.set_author(new UserRepo().get(resultSet.getInt("Author_Id")));
+        submission.set_date(resultSet.getDate("Date"));
+        submission.set_has_Sent_Notice(resultSet.getBoolean("Has_Sent_Notice"));
+        submission.set_comment(resultSet.getString("Comment"));
+        submission.set_is_Selected(resultSet.getBoolean("Is_Selected"));
+
+        return submission;
+    }
+
+    @Override
+    public Submission get(int id)
+    {
+        //language=MariaDB
+        String sql = "SELECT * from Submission WHERE Id = ?";
+        try
+        {
+            ResultSet resultSet = DatabaseHelper.executeQuery(sql, stm -> stm.setInt(1, id));
+
+            if (resultSet.first())
+            {
+                return extractObjectFrom(resultSet);
+            }
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    //    @Override
+    public ArrayList<Submission> getAll()
+    {
+        //language=MariaDB
+        String                sql         = "SELECT * from Submission";
+        ArrayList<Submission> submissions = new ArrayList<>();
+        try
+        {
+            ResultSet resultSet = DatabaseHelper.executeQuery(sql, stm -> {});
+
+            while (resultSet.next())
+            {
+                submissions.add(extractObjectFrom(resultSet));
+            }
+            return submissions;
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 
     @Override
     public int add(Submission item)
@@ -28,12 +86,6 @@ public class SubmissionRepo implements Repository<Submission>
             e.printStackTrace();
         }
         return 0;
-    }
-
-    @Override
-    public Submission get(int id)
-    {
-        return null;
     }
 
     @Override
