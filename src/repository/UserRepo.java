@@ -4,15 +4,10 @@ import model.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class UserRepo implements Repository<User>
 {
-    @Override
-    public int add(User item)
-    {
-        return 0;
-    }
-
     @Override
     public User get(int id)
     {
@@ -38,6 +33,18 @@ public class UserRepo implements Repository<User>
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public ArrayList<User> getAll()
+    {
+        return null;
+    }
+
+    @Override
+    public int add(User item)
+    {
+        return 0;
     }
 
     @Override
