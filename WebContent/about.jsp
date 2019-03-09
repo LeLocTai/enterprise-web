@@ -38,7 +38,7 @@
 							<span class="icon-bar"></span>
 						</button>
 						<h1>
-							<a class="navbar-brand" href="index.html">GreenWich
+							<a class="navbar-brand" href="index.jsp">GreenWich
 								<span>University</span>
 							</a>
 						</h1>
@@ -48,16 +48,16 @@
 						<nav>
 							<ul class="top_nav">
 								<li>
-									<a class="" href="index.html">Home</a>
+									<a class="" href="index.jsp">Home</a>
 								</li>
 								<li>
-									<a class="active" href="about.html">Submit</a>
+									<a class="active" href="submit.jsp">Submit</a>
 								</li>
 								<li>
-									<a href="gallery.html">Gallery</a>
+									<a href="gallery.jsp">Gallery</a>
 								</li>
 								<li>
-									<a href="contact.html">Contact</a>
+									<a href="contact.jsp">Contact</a>
 								</li>
 							</ul>
 						</nav>

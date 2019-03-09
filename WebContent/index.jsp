@@ -1,6 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <title>GreenWich university</title>
@@ -47,16 +44,16 @@
 						<nav>
 							<ul class="top_nav">
 								<li>
-									<a class="active" href="index.html">Home</a>
+									<a class="active" href="index.jsp">Home</a>
 								</li>
 								<li>
-									<a href="about.html">Submit</a>
+									<a href="submit.jsp">Submit</a>
 								</li>
 								<li>
-									<a href="gallery.html">Gallery</a>
+									<a href="gallery.jsp">Gallery</a>
 								</li>
 								<li>
-									<a href="contact.html">Contact</a>
+									<a href="contact.jsp">Contact</a>
 								</li>
 							</ul>
 						</nav>
