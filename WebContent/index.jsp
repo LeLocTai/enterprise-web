@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>GreenWich university</title>
+<title>Greenwich university</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -105,7 +105,7 @@
       			<a href="images/b1.jpg" ">
           <img src="images/b2.jpg" alt="Lights" >
           <div class="caption">
-            <h2>Programming</h2>
+            <h2>Design</h2>
           </div>
         </a>
            </li>
@@ -114,7 +114,7 @@
       			<a href="images/b1.jpg" ">
           <img src="images/b2.jpg" alt="Lights">
           <div class="caption">
-            <h2>Programming</h2>
+            <h2>Business</h2>
           </div>
         </a>
            </li>
@@ -216,7 +216,7 @@
       			<a href="images/b1.jpg" ">
           <img src="images/b2.jpg" alt="Lights" >
           <div class="caption">
-            <h2>Programming</h2>
+            <h2>Design</h2>
           </div>
         </a>
            </li>
@@ -225,7 +225,7 @@
       			<a href="images/b1.jpg" ">
           <img src="images/b2.jpg" alt="Lights">
           <div class="caption">
-            <h2>Programming</h2>
+            <h2>Business</h2>
           </div>
         </a>
            </li>
@@ -276,7 +276,7 @@
 		</div>
 		<div class="copy">
 			<h2 class="footer-logo">
-				<a href="index.html">GreenWich
+				<a href="index.html">Greenwich
 					<span>university</span>
 				</a>
 			</h2>

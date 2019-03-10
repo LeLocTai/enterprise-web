@@ -42,26 +42,26 @@
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a class="active" href="index.html">
+                    <a class="active" href="index.jsp">
                         <i class="fa fa-dashboard"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
                 
                 <li class="sub-menu">
-                    <a href="StudentSubmission.html">
+                    <a href="StudentSubmission.jsp">
                         <i class="glyphicon glyphicon-ok"></i>
                         <span>Student Submission</span>
                     </a>
                 </li>
                 <li>
-                    <a href="events.html">
+                    <a href="events.jsp">
                         <i class="glyphicon glyphicon-grain"></i>
                         <span>Events</span>
                     </a>
                 </li>
                 <li class="sub-menu">
-                    <a href="best.html">
+                    <a href="best.jsp">
                         <i class="glyphicon glyphicon-king"></i>
                         <span>The best magazine</span>
                     </a>
