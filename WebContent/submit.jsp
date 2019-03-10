@@ -84,17 +84,75 @@
 	<!--//short-->
 	<!-- //inner_content -->
     <div class="contentNew">
+         <h2>Submit magazine for event  </h2>
     <div id="wrapper">
-    	<h3>Upload your file: </h3>
-    	<input type="file" id="real-file"/>
-		<button type="button" id="custom-button">CHOOSE A FILE</button>
-		<span id="custom-text">No file chosen, yet.</span><hr>
-		<h3>Upload your file images: </h3>
-    	<input type="file" accept="image/*" onchange="preview_image(event)"><br>
-    	<img id="output_image"/><hr>
-    	<button type="button" >Submit</button><hr>
+    	<div class="agile-last-grids">
+				<div class="col-md-6 agile-last-left">
+					<div class="agile-last-grid">
+						<div >
+							<h3>Submit your file: </h3><hr>
+						</div>
+						<form id="uploadFile" enctype="multipart/form-data" method="post" action="#">
+					   <input id="fileupload" name="myfile" type="file" />
+					</form>
+
+					</div>
+				</div>
+				<div class="col-md-6 agile-last-left ">
+					<div class="agile-last-grid">
+						<div >
+							<h3>Submit your file images:</h3><hr>
+						</div>
+						<div>
+                        <form id="uploadImage" enctype="multipart/form-data" method="post" action="#">
+					   <input id="fileupload" name="myfile" type="file" accept="image/*" onchange="preview_image(event)" /><br>
+					   <img id="output_image"/><hr>
+						</form>
+					</div>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<button class="btn btn-primary btn-sm" style="font-size:180%;">Send</button>
+
     </div>
    </div>
+
+   <hr>
+
+    <div class="content">
+    	<!--/top_spl_poses-->
+	<div class="section_1">
+		 <h2>Some example </h2>
+      	<ul class="clearfix">
+      		<li> 
+      			<a href="images/b1.jpg" ">
+          <img src="images/b2.jpg" alt="Lights" >
+          <div class="caption">
+          </div>
+        </a>
+           </li>
+
+           <li> 
+      			<a href="images/b1.jpg" ">
+          <img src="images/b2.jpg" alt="Lights" >
+          <div class="caption">
+          </div>
+        </a>
+           </li>
+
+           <li> 
+      			<a href="images/b1.jpg" ">
+          <img src="images/b2.jpg" alt="Lights">
+          <div class="caption">
+          </div>
+        </a>
+           </li>
+
+      	</ul>
+      </div>
+	<!--//top_spl_poses-->
+    </div>
 	<!--footer-->
 	<footer class="contact-footer">
 		<div class="bottom-social">
