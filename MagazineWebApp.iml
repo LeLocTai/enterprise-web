@@ -38,5 +38,6 @@
     <orderEntry type="library" name="org.eclipse.jst.j2ee.internal.module.container" level="application" />
     <orderEntry type="library" name="mariadb-java-client-2.4.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="GlassFish 5.0.0" level="application_server_libraries" />
+    <orderEntry type="library" name="javax.mail" level="project" />
   </component>
 </module>
