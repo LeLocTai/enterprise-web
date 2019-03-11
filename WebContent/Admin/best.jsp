@@ -1,4 +1,4 @@
-jsp
+
 <head>
 <title>Events</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,7 +24,7 @@ jsp
 <header class="header fixed-top clearfix">
 <!--logo start-->
 <div class="brand">
-    <a href="index.html" class="logo">
+    <a href="index.jsp" class="logo">
         Greenwich University
     </a>
     <div class="sidebar-toggle-box">
@@ -149,7 +149,7 @@ jsp
  <!-- footer -->
 		  <div class="footer">
 			<div class="wthree-copyright">
-			  <p>Â© 2019 Fettle. All rights reserved | Design by
+			  <p>© 2019 Fettle. All rights reserved | Design by
                 <a href="">Sandra0710</a>
 			</div>
 		  </div>

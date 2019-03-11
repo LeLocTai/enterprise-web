@@ -24,7 +24,7 @@
 <header class="header fixed-top clearfix">
 <!--logo start-->
 <div class="brand">
-    <a href="index.html" class="logo">
+    <a href="index.jsp" class="logo">
         Greenwich University
     </a>
     <div class="sidebar-toggle-box">
@@ -168,7 +168,7 @@
  <!-- footer -->
 		  <div class="footer">
 			<div class="wthree-copyright">
-			  <p>Â© 2019 Fettle. All rights reserved | Design by
+			  <p>© 2019 Fettle. All rights reserved | Design by
                 <a href="">Sandra0710</a>
 			</div>
 		  </div>
