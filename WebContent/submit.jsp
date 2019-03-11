@@ -94,8 +94,7 @@
 						</div>
 						<div>
                         <form id="uploadImage" enctype="multipart/form-data" method="post" action="ServSubmit">
-						   <input id="fileupload" name="myfile" type="file" accept="image/*" onchange="preview_image(event)" /><br>
-						   <img id="output_image"/><hr>
+						   <input id="fileupload" name="myfile" type="file" /><br>
 						   <input type="submit">
 						</form>
 					</div>
