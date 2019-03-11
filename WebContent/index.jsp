@@ -34,7 +34,7 @@
 							<span class="icon-bar"></span>
 						</button>
 						<h1>
-							<a class="navbar-brand" href="index.html">GreenWich
+							<a class="navbar-brand" href="index.jsp">Greenwich
 								<span>University</span>
 							</a>
 						</h1>
@@ -50,7 +50,7 @@
 									<a href="submit.jsp">Submit</a>
 								</li>
 								<li>
-									<a href="gallery.jsp">Gallery</a>
+									<a href="viewSubmission.jsp">View Submission</a>
 								</li>
 								<li>
 									<a href="contact.jsp">Contact</a>
@@ -276,7 +276,7 @@
 		</div>
 		<div class="copy">
 			<h2 class="footer-logo">
-				<a href="index.html">Greenwich
+				<a href="index.jsp">Greenwich
 					<span>university</span>
 				</a>
 			</h2>

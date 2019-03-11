@@ -22,8 +22,13 @@
     <title>Terms and Conditions</title>
 </head>
 <body>
+    <div>
+        <h2>Please read and agree the terms and conditions.</h2>
+    </div>
 <form action="" method="post">
-    <input type="hidden" name="tos-accepted" value="true">
+    <input type="checkbox" name="tos-accepted" value="true">
+    I have read and agree to the Terms and Conditions and Privacy Policy 
+    <br>
     <input type="submit" value="Accept">
 </form>
 <p></p>
