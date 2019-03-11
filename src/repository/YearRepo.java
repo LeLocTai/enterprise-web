@@ -6,22 +6,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class YearRepo implements Repository<Year>
-{
+public class YearRepo implements Repository<Year> {
 
     @Override
-    public Year get(int id)
-    {
+    public Year get(int id) {
         //language=MariaDB
         String sql = "SELECT * FROM Year WHERE Id = ?";
-        try
-        {
+        try {
             ResultSet resultSet = DatabaseHelper.executeQuery(sql, stm -> stm.setInt(1, id));
 
             Year year = new Year();
 
-            if (resultSet.first())
-            {
+            if (resultSet.first()) {
                 year.set_id(id);
                 year.set_startDate(resultSet.getDate("StartDate"));
                 year.set_endDate(resultSet.getDate("EndDate"));
@@ -29,34 +25,29 @@ public class YearRepo implements Repository<Year>
 
                 return year;
             }
-        } catch (SQLException e)
-        {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
 
     @Override
-    public ArrayList<Year> getAll()
-    {
+    public ArrayList<Year> getAll() {
         return null;
     }
 
     @Override
-    public int add(Year item)
-    {
+    public int add(Year item) {
         return 0;
     }
 
     @Override
-    public int update(Year item)
-    {
+    public int update(Year item) {
         return 0;
     }
 
     @Override
-    public int remove(int id)
-    {
+    public int remove(int id) {
         return 0;
     }
 }
