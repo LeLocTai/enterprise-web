@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <head>
-	<title>GreenWich university</title>
+	<title>Greenwich university</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 	<meta name="keywords"  />
@@ -191,7 +191,7 @@
 		</div>
 		<div class="copy">
 			<h2 class="footer-logo">
-				<a href="index.html">GreenWich
+				<a href="index.html">Greenwich
 					<span>university</span>
 				</a>
 			</h2>
