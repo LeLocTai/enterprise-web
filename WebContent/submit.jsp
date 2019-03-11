@@ -86,18 +86,6 @@
     <div class="contentNew">
          <h2>Submit magazine for event  </h2>
     <div id="wrapper">
-<<<<<<< HEAD
-    	<h3>Upload your file: </h3>
-    	<form action="upload" method="post" enctype="multipart/form-data">
-    	<input type="file" name="doc" id="real-file"/>
-		<button type="button" id="custom-button">CHOOSE A FILE</button>
-		<span id="custom-text">No file chosen, yet.</span><hr>
-		<h3>Upload your file images: </h3>
-    	<input type="file" name="photo" accept="image/*" onchange="preview_image(event)"><br>
-    	<img id="output_image"/><hr>
-    	<button type="button" >Submit</button><hr>
-    	</form>
-=======
     	<div class="agile-last-grids">
 				<div class="col-md-6 agile-last-left">
 					<div class="agile-last-grid">
@@ -115,13 +103,18 @@
 						<div >
 							<h3>Submit your file images:</h3><hr>
 						</div>
-						
+						<div>
+                        <form id="uploadImage" enctype="multipart/form-data" method="post" action="#">
+					   <input id="fileupload" name="myfile" type="file" accept="image/*" onchange="preview_image(event)" /><br>
+					   <img id="output_image"/><hr>
+						</form>
+					</div>
+					</div>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
 			<button class="btn btn-primary btn-sm" style="font-size:180%;">Send</button>
 
->>>>>>> 8441303b0dd4d08fe0bf05149a690353093ca95c
     </div>
    </div>
 
@@ -202,7 +195,7 @@
 					<span>university</span>
 				</a>
 			</h2>
-			<p>© 2019 Fettle. All rights reserved | Design by
+			<p>ï¿½ 2019 Fettle. All rights reserved | Design by
 				<a href="">Sandra0710</a>
 			</p>
 			<div class="clearfix"></div>
