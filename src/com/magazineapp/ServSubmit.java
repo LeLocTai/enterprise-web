@@ -1,5 +1,6 @@
 package com.magazineapp;
 
+import java.util.Date;
 import java.util.List;
 import java.io.File;
 import java.io.IOException;
@@ -15,6 +16,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+
+import model.Submission;
+import repository.DatabaseHelper;
+import repository.SubmissionRepo;
 
 //import org.apache.tomcat.jni.File;
 //import org.apache.tomcat.util.http.fileupload.FileItem;
@@ -57,6 +62,20 @@ public class ServSubmit extends HttpServlet {
 	    Path path = Paths.get("C:/files/" + fileName);
 	    
 	    Files.copy(fileContent, path);
+	    
+	    Submission s = new Submission(
+	    			path.toString(),
+	    			new Date(),
+	    			false,
+	    			"",
+	    			false,
+	    			DatabaseHelper.getTestStudent(),
+	    			DatabaseHelper.getTestYear()
+	    		);
+	    
+	    s.set_path(path.toString());
+	    
+	    new SubmissionRepo().add(s);
 	}
 
 }
