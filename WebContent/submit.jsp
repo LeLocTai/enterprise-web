@@ -115,13 +115,7 @@
 						<div >
 							<h3>Submit your file images:</h3><hr>
 						</div>
-						<div>
-                        <form id="uploadImage" enctype="multipart/form-data" method="post" action="#">
-					   <input id="fileupload" name="myfile" type="file" accept="image/*" onchange="preview_image(event)" /><br>
-					   <img id="output_image"/><hr>
-						</form>
-					</div>
-					</div>
+						
 				</div>
 				<div class="clearfix"> </div>
 			</div>
