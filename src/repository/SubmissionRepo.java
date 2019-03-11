@@ -100,6 +100,14 @@ public class SubmissionRepo implements Repository<Submission> {
 
     @Override
     public int remove(int id) {
+        String sql = "DELETE FROM Submission WHERE Id = ?";
+        try {
+            return DatabaseHelper.executeUpdate(sql, stm -> {
+                stm.setInt(1, id);
+            });
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return 0;
     }
 }
