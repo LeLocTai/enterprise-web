@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+jsp<!DOCTYPE html>
 <head>
 <title>Coordinator</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,26 +42,26 @@
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a class="active" href="index.html">
+                    <a class="active" href="index.jsp">
                         <i class="fa fa-dashboard"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
                 
                 <li class="sub-menu">
-                    <a href="StudentSubmission.html">
+                    <a href="StudentSubmission.jsp">
                         <i class="glyphicon glyphicon-ok"></i>
                         <span>Student Submission</span>
                     </a>
                 </li>
                 <li>
-                    <a href="events.html">
+                    <a href="events.jsp">
                         <i class="glyphicon glyphicon-grain"></i>
                         <span>Events</span>
                     </a>
                 </li>
                 <li class="sub-menu">
-                    <a href="best.html">
+                    <a href="best.jsp">
                         <i class="glyphicon glyphicon-king"></i>
                         <span>The best magazine</span>
                     </a>
@@ -98,7 +98,7 @@
 							<td>Mark</td>
 							<td>@mdo</td>
 							<td>Programming</td>
-							<td><img src="images/1.png"></td>
+							<td><img src="images/b1.jpg"></td>
 							<td>@mdo</td>
 							<td>
 				              <a href="">
@@ -114,7 +114,7 @@
 							<td>Mark</td>
 							<td>@mdo</td>
 							<td>Programming</td>
-							<td><img src="images/1.png"></td>
+							<td><img src="images/b1.jpg"></td>
 							<td>@mdo</td>
 							<td>
 				              <a href="">
@@ -130,7 +130,7 @@
 							<td>Mark</td>
 							<td>@mdo</td>
 							<td>Programming</td>
-							<td><img src="images/1.png"></td>
+							<td><img src="images/b1.jpg"></td>
 							<td>@mdo</td>
 							<td>
 				              <a href="">
@@ -146,7 +146,7 @@
 							<td>Mark</td>
 							<td>@mdo</td>
 							<td>Programming</td>
-							<td><img src="images/1.png"></td>
+							<td><img src="images/b1.jpg"></td>
 							<td>@mdo</td>
 							<td>
 				              <a href="">
@@ -162,7 +162,7 @@
 							<td>Mark</td>
 							<td>@mdo</td>
 							<td>Programming</td>
-							<td><img src="images/1.png"></td>
+							<td><img src="images/b1.jpg"></td>
 							<td>@mdo</td>
 							<td>
 				              <a href="">
@@ -178,7 +178,23 @@
 							<td>Mark</td>
 							<td>@mdo</td>
 							<td>Programming</td>
-							<td><img src="images/1.png"></td>
+							<td><img src="images/b1.jpg"></td>
+							<td>@mdo</td>
+							<td>
+				              <a href="">
+				              <i class="glyphicon glyphicon-export" style="color:#2D67EA; font-size: 20px;"></i>
+				              </a>
+				              <!-- <a href="">
+				              <i class="fa fa-fw fa-trash" style="color:#EF2D1E; font-size: 20px;"></i>
+				              </a> -->
+				              </td>
+						</tr>
+						<tr>
+							<td>1</td>images/b1.jpg
+							<td>Mark</td>
+							<td>@mdo</td>
+							<td>Programming</td>
+							<td><img src="images/b1.jpg"></td>
 							<td>@mdo</td>
 							<td>
 				              <a href="">
@@ -194,7 +210,7 @@
 							<td>Mark</td>
 							<td>@mdo</td>
 							<td>Programming</td>
-							<td><img src="images/1.png"></td>
+							<td><img src="images/b1.jpg"></td>
 							<td>@mdo</td>
 							<td>
 				              <a href="">
@@ -210,23 +226,7 @@
 							<td>Mark</td>
 							<td>@mdo</td>
 							<td>Programming</td>
-							<td><img src="images/1.png"></td>
-							<td>@mdo</td>
-							<td>
-				              <a href="">
-				              <i class="glyphicon glyphicon-export" style="color:#2D67EA; font-size: 20px;"></i>
-				              </a>
-				              <!-- <a href="">
-				              <i class="fa fa-fw fa-trash" style="color:#EF2D1E; font-size: 20px;"></i>
-				              </a> -->
-				              </td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Mark</td>
-							<td>@mdo</td>
-							<td>Programming</td>
-							<td><img src="images/1.png"></td>
+							<td><img src="images/b1.jpg"></td>
 							<td>@mdo</td>
 							<td>
 				              <a href="">

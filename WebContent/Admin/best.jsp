@@ -1,4 +1,4 @@
-
+jsp
 <head>
 <title>Events</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,26 +42,26 @@
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a class="active" href="index.html">
+                    <a class="active" href="index.jsp">
                         <i class="fa fa-dashboard"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
                 
                 <li class="sub-menu">
-                    <a href="StudentSubmission.html">
+                    <a href="StudentSubmission.jsp">
                         <i class="glyphicon glyphicon-ok"></i>
                         <span>Student Submission</span>
                     </a>
                 </li>
                 <li>
-                    <a href="events.html">
+                    <a href="events.jsp">
                         <i class="glyphicon glyphicon-grain"></i>
                         <span>Events</span>
                     </a>
                 </li>
                 <li class="sub-menu">
-                    <a href="best.html">
+                    <a href="best.jsp">
                         <i class="glyphicon glyphicon-king"></i>
                         <span>The best magazine</span>
                     </a>
@@ -88,7 +88,7 @@
                             Event
                         </a>
                         <ul class="nav nav-pills nav-stacked mail-nav">
-                            <li class="active"><a href="mail.html"> <i class="fa fa-inbox"></i>Summer</a></li>
+                            <li class="active"><a href=""> <i class="glyphicon glyphicon-grain"></i>Summer</a></li>
                             <li><a href="#"> <i class="glyphicon glyphicon-grain"></i> Winter</a></li>
                             <li><a href="#"> <i class="glyphicon glyphicon-grain"></i> women day</a></li>
                             <li><a href="#"> <i class="glyphicon glyphicon-grain"></i> teacher day </a></li>
@@ -103,7 +103,7 @@
                       
                         <form action="#" class="pull-right mail-src-position">
                             <div class="input-append">
-                                <input type="text" class="form-control " placeholder="Search Mail">
+                                <input type="text" class="form-control " placeholder="Search ">
                             </div>
                         </form>
                     </header>

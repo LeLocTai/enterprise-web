@@ -42,26 +42,26 @@
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a class="active" href="index.html">
+                    <a class="active" href="index.jsp">
                         <i class="fa fa-dashboard"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
                 
                 <li class="sub-menu">
-                    <a href="StudentSubmission.html">
+                    <a href="StudentSubmission.jsp">
                         <i class="glyphicon glyphicon-ok"></i>
                         <span>Student Submission</span>
                     </a>
                 </li>
                 <li>
-                    <a href="events.html">
+                    <a href="events.jsp">
                         <i class="glyphicon glyphicon-grain"></i>
                         <span>Events</span>
                     </a>
                 </li>
                 <li class="sub-menu">
-                    <a href="best.html">
+                    <a href="best.jsp">
                         <i class="glyphicon glyphicon-king"></i>
                         <span>The best magazine</span>
                     </a>
@@ -106,7 +106,7 @@
             <td>1</td>
             <td>aaaa</td>
             <td>dog</td>
-            <td><img src="images/g2.jpg" width="60" heigh="80"></td>
+            <td><img src="images/b2.jpg" width="60" heigh="80"></td>
             <td>aa</td>
             <td>July 25th 2018</td>
             
@@ -115,7 +115,7 @@
             <td>1</td>
             <td>aaaa</td>
              <td>dog</td>
-            <td><img src="images/g2.jpg" width="60" heigh="80"></td>
+            <td><img src="images/b2.jpg" width="60" heigh="80"></td>
             <td>aa</td>
             <td>July 25th 2018</td>
           </tr>
@@ -123,7 +123,7 @@
              <td>1</td>
             <td>aaaa</td>
              <td>dog</td>
-            <td><img src="images/g2.jpg" width="60" heigh="80"></td>
+            <td><img src="images/b2.jpg" width="60" heigh="80"></td>
             <td>aa</td>
             <td>July 25th 2018</td>
           </tr>
@@ -131,7 +131,7 @@
             <td>1</td>
             <td>aaaa</td>
              <td>Jason</td>
-            <td><img src="images/g2.jpg" width="60" heigh="80"></td>
+            <td><img src="images/b2.jpg" width="60" heigh="80"></td>
             <td>aa</td>
             <td>July 25th 2018</td>
           </tr>
@@ -139,7 +139,7 @@
              <td>1</td>
             <td>aaaa</td>
              <td>Simon</td>
-            <td><img src="images/g2.jpg" width="60" heigh="80"></td>
+            <td><img src="images/b2.jpg" width="60" heigh="80"></td>
             <td>aa</td>
             <td>July 25th 2018</td>
           </tr>
@@ -147,7 +147,7 @@
              <td>1</td>
             <td>aaaa</td>
              <td>NH</td>
-            <td><img src="images/g2.jpg" width="60" heigh="80"></td>
+            <td><img src="images/b2.jpg" width="60" heigh="80"></td>
             <td>aa</td>
             <td>July 25th 2018</td>
           </tr>
@@ -155,7 +155,7 @@
             <td>1</td>
             <td>aaaa</td>
              <td>MD</td>
-            <td><img src="images/g2.jpg" width="60" heigh="80"></td>
+            <td><img src="images/b2.jpg" width="60" heigh="80"></td>
             <td>aa</td>
             <td>July 25th 2018</td>
           </tr>

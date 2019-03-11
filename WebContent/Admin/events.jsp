@@ -42,26 +42,26 @@
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a class="active" href="index.html">
+                    <a class="active" href="index.jsp">
                         <i class="fa fa-dashboard"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
                 
                 <li class="sub-menu">
-                    <a href="StudentSubmission.html">
+                    <a href="StudentSubmission.jsp">
                         <i class="glyphicon glyphicon-ok"></i>
                         <span>Student Submission</span>
                     </a>
                 </li>
                 <li>
-                    <a href="events.html">
+                    <a href="events.jsp">
                         <i class="glyphicon glyphicon-grain"></i>
                         <span>Events</span>
                     </a>
                 </li>
                 <li class="sub-menu">
-                    <a href="best.html">
+                    <a href="best.jsp">
                         <i class="glyphicon glyphicon-king"></i>
                         <span>The best magazine</span>
                     </a>
@@ -107,7 +107,7 @@
             <td>July 25th 2018</td>
             <td>Cancel</td>
             <td>
-                <a href="viewAllSubmission.html" >View All Submission</a>
+                <a href="viewAllSubmission.jsp" >View All Submission</a>
           </tr>
           <tr>
             <td>2</td>
@@ -115,7 +115,7 @@
             <td>July 25th 2018</td>
             <td>Cancel</td>
             <td>
-               <a href="viewAllSubmission.html" >View All Submission</a>
+               <a href="viewAllSubmission.jsp" >View All Submission</a>
           </tr>
           <tr>
             <td>3</td>
@@ -123,7 +123,7 @@
             <td>July 25th 2018</td>
             <td>Cancel</td>
             <td>
-                <a href="viewAllSubmission.html" >View All Submission</a>
+                <a href="viewAllSubmission.jsp" >View All Submission</a>
           </tr>
           <tr>
             <td>4</td>
@@ -131,7 +131,7 @@
             <td>July 25th 2018</td>
             <td>Cancel</td>
             <td>
-                <a href="viewAllSubmission.html" >View All Submission</a>
+                <a href="viewAllSubmission.jsp" >View All Submission</a>
           </tr>
           <tr>
             <td>5</td>
@@ -139,7 +139,7 @@
             <td>July 25th 2018</td>
             <td>Cancel</td>
             <td>
-                <a href="viewAllSubmission.html" >View All Submission</a>
+                <a href="viewAllSubmission.jsp" >View All Submission</a>
           </tr>
           <tr>
             <td>6</td>
@@ -147,7 +147,7 @@
             <td>July 25th 2018</td>
             <td>Cancel</td>
             <td>
-                <a href="viewAllSubmission.html" >View All Submission</a>
+                <a href="viewAllSubmission.jsp" >View All Submission</a>
           </tr>
           <tr>
             <td>7</td>
@@ -155,7 +155,7 @@
             <td>July 25th 2018</td>
             <td>Cancel</td>
             <td>
-                <a href="viewAllSubmission.html" >View All Submission</a>
+                <a href="viewAllSubmission.jsp" >View All Submission</a>
             </td>
           </tr>
         </tbody>
