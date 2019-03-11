@@ -4,14 +4,10 @@ import model.Faculty;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class FacultyRepo implements Repository<Faculty>
 {
-    @Override
-    public int add(Faculty item)
-    {
-        return 0;
-    }
 
     @Override
     public Faculty get(int id)
@@ -36,6 +32,17 @@ public class FacultyRepo implements Repository<Faculty>
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public ArrayList<Faculty> getAll()
+    {
+        return null;
+    }
+    @Override
+    public int add(Faculty item)
+    {
+        return 0;
     }
 
     @Override

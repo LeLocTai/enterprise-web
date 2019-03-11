@@ -47,7 +47,7 @@ public class Submission
         this._date = _date;
     }
 
-    public boolean is_has_Sent_Notice()
+    public boolean get_has_Sent_Notice()
     {
         return _has_Sent_Notice;
     }
@@ -67,7 +67,7 @@ public class Submission
         this._comment = _comment;
     }
 
-    public boolean is_is_Selected()
+    public boolean get_is_Selected()
     {
         return _is_Selected;
     }
