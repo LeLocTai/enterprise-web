@@ -19,6 +19,13 @@ body a {
 a:hover {
 	text-decoration: none;
 }
+.btn-send,.btn-send:hover {
+    background:#00A8B3;
+    color:#fff;
+}
+.btn-send:hover {
+    background:#009da7;
+}
 
 input[type="button"],
 input[type="submit"] {
@@ -30,7 +37,6 @@ input[type="submit"] {
 }
 
 h1,
-h2,
 h3,
 h4,
 h5,
@@ -39,6 +45,16 @@ h6 {
 	font-weight: 400;
 	font-family: 'Mallanna', sans-serif;
 }
+    h2 {
+    text-align: center;
+    font-size: 46px;
+    font-weight: 400;
+    letter-spacing: -2px;
+    line-height: 1em;
+    margin-bottom: 30px;
+    font-family: 'PT Sans';
+    font-weight: 700;
+    text-transform: uppercase; }
 
 p {
 	margin: 0;
@@ -55,6 +71,18 @@ ul {
 
 label {
 	margin: 0;
+}
+.agile-last-grid {
+  
+    padding: 2em;
+	border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.agile-last-left .agile-last-right {
+    width: 100%;
+	margin:1.5em 0;
+
 }
 /*<!-- faculty-->*/
 .content .section_1{
@@ -82,6 +110,7 @@ label {
     .content .section_1 {
       padding-bottom: 20px; } }
   .content .section_1 ul {
+  	list-style-type:none;
     margin-left: -40px; }
     @media screen and (max-width: 1280px) {
       .content .section_1 ul {
@@ -101,7 +130,9 @@ label {
           .content .section_1 ul li a {
             margin-left: 30px; } }
         .content .section_1 ul li a img {
-          width: 100%; }
+          width: 400px;
+          height: 500px;
+           }
       .content .section_1 ul li h2 {
         font-size: 34px;
         font-weight: 700;

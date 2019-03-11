@@ -1,9 +1,8 @@
-
-<!DOCTYPE html>
-<html> 
-
+<html>
 <head>
-	<title>GreenWich university</title>
+<title>Greenwich university</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 	<meta name="keywords"  />
@@ -19,7 +18,7 @@
 	</script>
 	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<link href="css/style.css" rel='stylesheet' type='text/css' />
-
+</head>
 <body>
 	<div class="headerIndex">
 		<header class="header" id="home">
@@ -45,16 +44,16 @@
 						<nav>
 							<ul class="top_nav">
 								<li>
-									<a class="active" href="index.html">Home</a>
+									<a class="active" href="index.jsp">Home</a>
 								</li>
 								<li>
-									<a href="submit.html">Submit</a>
+									<a href="submit.jsp">Submit</a>
 								</li>
 								<li>
-									<a href="gallery.html">Gallery</a>
+									<a href="gallery.jsp">Gallery</a>
 								</li>
 								<li>
-									<a href="contact.html">Contact</a>
+									<a href="contact.jsp">Contact</a>
 								</li>
 							</ul>
 						</nav>
@@ -277,11 +276,11 @@
 		</div>
 		<div class="copy">
 			<h2 class="footer-logo">
-				<a href="index.html">GreenWich
+				<a href="index.html">Greenwich
 					<span>university</span>
 				</a>
 			</h2>
-			<p>Â© 2019 Fettle. All rights reserved | Design by
+			<p>© 2019 Fettle. All rights reserved | Design by
 				<a href="">Sandra0710</a>
 			</p>
 			<div class="clearfix"></div>

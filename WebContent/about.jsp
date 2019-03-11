@@ -1,9 +1,9 @@
-
-
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>GreenWich university</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
@@ -38,7 +38,7 @@
 							<span class="icon-bar"></span>
 						</button>
 						<h1>
-							<a class="navbar-brand" href="index.html">GreenWich
+							<a class="navbar-brand" href="index.jsp">GreenWich
 								<span>University</span>
 							</a>
 						</h1>
@@ -48,16 +48,16 @@
 						<nav>
 							<ul class="top_nav">
 								<li>
-									<a class="" href="index.html">Home</a>
+									<a class="" href="index.jsp">Home</a>
 								</li>
 								<li>
-									<a class="active" href="about.html">Submit</a>
+									<a class="active" href="submit.jsp">Submit</a>
 								</li>
 								<li>
-									<a href="gallery.html">Gallery</a>
+									<a href="gallery.jsp">Gallery</a>
 								</li>
 								<li>
-									<a href="contact.html">Contact</a>
+									<a href="contact.jsp">Contact</a>
 								</li>
 							</ul>
 						</nav>
@@ -83,17 +83,75 @@
 	<!--//short-->
 	<!-- //inner_content -->
     <div class="contentNew">
+         <h2>Submit magazine for event  </h2>
     <div id="wrapper">
-    	<h3>Upload your file: </h3>
-    	<input type="file" id="real-file"/>
-		<button type="button" id="custom-button">CHOOSE A FILE</button>
-		<span id="custom-text">No file chosen, yet.</span><hr>
-		<h3>Upload your file images: </h3>
-    	<input type="file" accept="image/*" onchange="preview_image(event)"><br>
-    	<img id="output_image"/><hr>
-    	<button type="button" >Submit</button><hr>
+    	<div class="agile-last-grids">
+				<div class="col-md-6 agile-last-left">
+					<div class="agile-last-grid">
+						<div >
+							<h3>Submit your file: </h3><hr>
+						</div>
+						<form id="uploadFile" enctype="multipart/form-data" method="post" action="#">
+					   <input id="fileupload" name="myfile" type="file" />
+					</form>
+
+					</div>
+				</div>
+				<div class="col-md-6 agile-last-left ">
+					<div class="agile-last-grid">
+						<div >
+							<h3>Submit your file images:</h3><hr>
+						</div>
+						<div>
+                        <form id="uploadImage" enctype="multipart/form-data" method="post" action="#">
+					   <input id="fileupload" name="myfile" type="file" accept="image/*" onchange="preview_image(event)" /><br>
+					   <img id="output_image"/><hr>
+						</form>
+					</div>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<button class="btn btn-primary btn-sm" style="font-size:180%;">Send</button>
+
     </div>
    </div>
+
+   <hr>
+
+    <div class="content">
+    	<!--/top_spl_poses-->
+	<div class="section_1">
+		 <h2>Some example </h2>
+      	<ul class="clearfix">
+      		<li> 
+      			<a href="images/b1.jpg" ">
+          <img src="images/b2.jpg" alt="Lights" >
+          <div class="caption">
+          </div>
+        </a>
+           </li>
+
+           <li> 
+      			<a href="images/b1.jpg" ">
+          <img src="images/b2.jpg" alt="Lights" >
+          <div class="caption">
+          </div>
+        </a>
+           </li>
+
+           <li> 
+      			<a href="images/b1.jpg" ">
+          <img src="images/b2.jpg" alt="Lights">
+          <div class="caption">
+          </div>
+        </a>
+           </li>
+
+      	</ul>
+      </div>
+	<!--//top_spl_poses-->
+    </div>
 	<!--footer-->
 	<footer class="contact-footer">
 		<div class="bottom-social">
@@ -136,7 +194,7 @@
 					<span>university</span>
 				</a>
 			</h2>
-			<p>Â© 2019 Fettle. All rights reserved | Design by
+			<p>© 2019 Fettle. All rights reserved | Design by
 				<a href="">Sandra0710</a>
 			</p>
 			<div class="clearfix"></div>
