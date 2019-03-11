@@ -44,11 +44,10 @@ public class FacultyRepo implements Repository<Faculty> {
 
     @Override
     public int add(Faculty item) {
-        String sql = "INSERT INTO Faculty (Id, Name) VALUES (?,?)";
+        String sql = "INSERT INTO Faculty (Name) VALUES (?)";
         try {
             return DatabaseHelper.executeUpdate(sql, stm -> {
-                stm.setInt(1, item.get_id());
-                stm.setString(2, item.get_name());
+                stm.setString(1, item.get_name());
             });
         } catch (SQLException e) {
             e.printStackTrace();

@@ -33,11 +33,30 @@ public class UserRepo implements Repository<User> {
 
     @Override
     public ArrayList<User> getAll() {
+        ArrayList<User> user = new ArrayList<>();
+        String sql = "SELECT * from User";
+        try {
+            ResultSet resultSet = DatabaseHelper.executeQuery(sql, stm -> {
+            });
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
     @Override
     public int add(User item) {
+        String sql = "INSERT INTO User (Role, Faculty_Id, Has_Accepted_TOC, Email) VALUES (?,?,?,?)";
+        try {
+            return DatabaseHelper.executeUpdate(sql, stm -> {
+                stm.setString(1, item.get_role());
+                stm.setInt(2, item.get_faculty().get_id());
+                stm.setBoolean(3, item.get_has_Accepted_TOC());
+                stm.setString(4, item.get_email());
+            });
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return 0;
     }
 
