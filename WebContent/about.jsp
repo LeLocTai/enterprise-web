@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>GreenWich university</title>
+	<title>Greenwich university</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 	<meta name="keywords"  />
@@ -38,7 +38,7 @@
 							<span class="icon-bar"></span>
 						</button>
 						<h1>
-							<a class="navbar-brand" href="index.jsp">GreenWich
+							<a class="navbar-brand" href="index.jsp">Greenwich
 								<span>University</span>
 							</a>
 						</h1>
@@ -190,7 +190,7 @@
 		</div>
 		<div class="copy">
 			<h2 class="footer-logo">
-				<a href="index.html">GreenWich
+				<a href="index.html">Greenwich
 					<span>university</span>
 				</a>
 			</h2>

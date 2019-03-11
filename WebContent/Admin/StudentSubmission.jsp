@@ -1,4 +1,4 @@
-jsp<!DOCTYPE html>
+<!DOCTYPE html>
 <head>
 <title>Coordinator</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,7 +24,7 @@ jsp<!DOCTYPE html>
 <header class="header fixed-top clearfix">
 <!--logo start-->
 <div class="brand">
-    <a href="index.html" class="logo">
+    <a href="index.jsp" class="logo">
         Greenwich University
     </a>
     <div class="sidebar-toggle-box">
@@ -86,9 +86,8 @@ jsp<!DOCTYPE html>
 							<th>No</th>
 							<th>Name</th>
 							<th>Mail</th>
-							<th>Faculty</th>
-							<th>Images'magazine </th>
 							<th>magazine</th>
+                                                        <th>Status</th>
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -97,9 +96,8 @@ jsp<!DOCTYPE html>
 							<td>1</td>
 							<td>Mark</td>
 							<td>@mdo</td>
-							<td>Programming</td>
-							<td><img src="images/b1.jpg"></td>
-							<td>@mdo</td>
+							<td><a href="https://www.w3schools.com/html/">Dowload</a></td>
+                                                        <td>Pending</td>
 							<td>
 				              <a href="">
 				              <i class="glyphicon glyphicon-export" style="color:#2D67EA; font-size: 20px;"></i>
@@ -113,9 +111,8 @@ jsp<!DOCTYPE html>
 							<td>1</td>
 							<td>Mark</td>
 							<td>@mdo</td>
-							<td>Programming</td>
-							<td><img src="images/b1.jpg"></td>
-							<td>@mdo</td>
+							<td><a href="https://www.w3schools.com/html/">Dowload</a></td>
+                                                        <td>Pending</td>
 							<td>
 				              <a href="">
 				              <i class="glyphicon glyphicon-export" style="color:#2D67EA; font-size: 20px;"></i>
@@ -129,9 +126,8 @@ jsp<!DOCTYPE html>
 							<td>1</td>
 							<td>Mark</td>
 							<td>@mdo</td>
-							<td>Programming</td>
-							<td><img src="images/b1.jpg"></td>
-							<td>@mdo</td>
+							<td><a href="https://www.w3schools.com/html/">Dowload</a></td>
+                                                        <td>Pending</td>
 							<td>
 				              <a href="">
 				              <i class="glyphicon glyphicon-export" style="color:#2D67EA; font-size: 20px;"></i>
@@ -145,9 +141,8 @@ jsp<!DOCTYPE html>
 							<td>1</td>
 							<td>Mark</td>
 							<td>@mdo</td>
-							<td>Programming</td>
-							<td><img src="images/b1.jpg"></td>
-							<td>@mdo</td>
+							<td><a href="https://www.w3schools.com/html/">Dowload</a></td>
+                                                        <td>Pending</td>
 							<td>
 				              <a href="">
 				              <i class="glyphicon glyphicon-export" style="color:#2D67EA; font-size: 20px;"></i>
@@ -161,9 +156,8 @@ jsp<!DOCTYPE html>
 							<td>1</td>
 							<td>Mark</td>
 							<td>@mdo</td>
-							<td>Programming</td>
-							<td><img src="images/b1.jpg"></td>
-							<td>@mdo</td>
+							<td><a href="https://www.w3schools.com/html/">Dowload</a></td>
+                                                        <td>Pending</td>
 							<td>
 				              <a href="">
 				              <i class="glyphicon glyphicon-export" style="color:#2D67EA; font-size: 20px;"></i>
@@ -177,25 +171,8 @@ jsp<!DOCTYPE html>
 							<td>1</td>
 							<td>Mark</td>
 							<td>@mdo</td>
-							<td>Programming</td>
-							<td><img src="images/b1.jpg"></td>
-							<td>@mdo</td>
-							<td>
-				              <a href="">
-				              <i class="glyphicon glyphicon-export" style="color:#2D67EA; font-size: 20px;"></i>
-				              </a>
-				              <!-- <a href="">
-				              <i class="fa fa-fw fa-trash" style="color:#EF2D1E; font-size: 20px;"></i>
-				              </a> -->
-				              </td>
-						</tr>
-						<tr>
-							<td>1</td>images/b1.jpg
-							<td>Mark</td>
-							<td>@mdo</td>
-							<td>Programming</td>
-							<td><img src="images/b1.jpg"></td>
-							<td>@mdo</td>
+							<td><a href="https://www.w3schools.com/html/">Dowload</a></td>
+                                                        <td>Pending</td>
 							<td>
 				              <a href="">
 				              <i class="glyphicon glyphicon-export" style="color:#2D67EA; font-size: 20px;"></i>
@@ -209,9 +186,8 @@ jsp<!DOCTYPE html>
 							<td>1</td>
 							<td>Mark</td>
 							<td>@mdo</td>
-							<td>Programming</td>
-							<td><img src="images/b1.jpg"></td>
-							<td>@mdo</td>
+							<td><a href="https://www.w3schools.com/html/">Dowload</a></td>
+                                                        <td>Pending</td>
 							<td>
 				              <a href="">
 				              <i class="glyphicon glyphicon-export" style="color:#2D67EA; font-size: 20px;"></i>
@@ -225,9 +201,23 @@ jsp<!DOCTYPE html>
 							<td>1</td>
 							<td>Mark</td>
 							<td>@mdo</td>
-							<td>Programming</td>
-							<td><img src="images/b1.jpg"></td>
+							<td><a href="https://www.w3schools.com/html/">Dowload</a></td>
+                                                        <td>Pending</td>
+							<td>
+				              <a href="">
+				              <i class="glyphicon glyphicon-export" style="color:#2D67EA; font-size: 20px;"></i>
+				              </a>
+				              <!-- <a href="">
+				              <i class="fa fa-fw fa-trash" style="color:#EF2D1E; font-size: 20px;"></i>
+				              </a> -->
+				              </td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>Mark</td>
 							<td>@mdo</td>
+							<td><a href="https://www.w3schools.com/html/">Dowload</a></td>
+                                                        <td>Pending</td>
 							<td>
 				              <a href="">
 				              <i class="glyphicon glyphicon-export" style="color:#2D67EA; font-size: 20px;"></i>
@@ -246,7 +236,7 @@ jsp<!DOCTYPE html>
  <!-- footer -->
 		  <div class="footer">
 			<div class="wthree-copyright">
-			  <p>Â© 2019 Fettle. All rights reserved | Design by
+			  <p>© 2019 Fettle. All rights reserved | Design by
 				<a href="">Sandra0710</a>
 			</p>
 			</div>
