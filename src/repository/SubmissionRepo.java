@@ -84,13 +84,13 @@ public class SubmissionRepo implements Repository<Submission> {
         try {
             return DatabaseHelper.executeUpdate(sql, stm -> {
                 stm.setString(1, item.get_path());
-                stm.setDate(1, new Date(item.get_date().getTime()));
-                stm.setInt(1, item.get_year().get_id());
-                stm.setBoolean(1, item.get_has_Sent_Notice());
-                stm.setString(1, item.get_comment());
-                stm.setBoolean(1, item.get_is_Selected());
+                stm.setDate(2, new Date(item.get_date().getTime()));
+                stm.setInt(3, item.get_year().get_id());
+                stm.setBoolean(4, item.get_has_Sent_Notice());
+                stm.setString(5, item.get_comment());
+                stm.setBoolean(6, item.get_is_Selected());
 
-                stm.setInt(5, item.get_id());
+                stm.setInt(7, item.get_id());
             });
         } catch (SQLException e) {
             e.printStackTrace();
