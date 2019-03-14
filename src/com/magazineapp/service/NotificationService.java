@@ -1,6 +1,5 @@
 package com.magazineapp.service;
 
-import com.magazineapp.model.Faculty;
 import com.magazineapp.model.Submission;
 import com.magazineapp.model.User;
 import com.magazineapp.repository.SubmissionRepo;
@@ -22,21 +21,25 @@ public class NotificationService
     private static final String EMAIl_TEMPLATE = "<p>New magazine submission received, please visit <a href='%1$s'>%1$s</a> to view</p>";
 
     private Submission submission;
-    String coordinatorViewPath;
-    private User coordinator;
+    private String     coordinatorViewPath;
+    private User       coordinator;
 
-    public NotificationService(Submission submission, HttpServletRequest context)
+    public static void ScheduleFor(Submission submission, HttpServletRequest context)
     {
-        this.submission = submission;
+        NotificationService service = new NotificationService();
 
-        coordinator = new UserRepo().getCoordinatorOf(submission.get_author().get_faculty());
-        coordinatorViewPath = String.format("http://%s:%d%s/Admin/viewAllSubmission.jsp",
-                                            context.getServerName(),
-                                            context.getServerPort(),
-                                            context.getContextPath());
+        service.submission = submission;
+
+        service.coordinator = new UserRepo().getCoordinatorOf(submission.get_author().get_faculty());
+        service.coordinatorViewPath = String.format("http://%s:%d%s/Admin/viewAllSubmission.jsp",
+                                                    context.getServerName(),
+                                                    context.getServerPort(),
+                                                    context.getContextPath());
+        
+        service.scheduleEmail();
     }
 
-    private InternetAddress getRecipient() throws AddressException
+    private InternetAddress getEmailRecipient() throws AddressException
     {
         return new InternetAddress(coordinator.get_email()); //ewd.coordinator@sharklasers.com
     }
@@ -46,13 +49,13 @@ public class NotificationService
         return String.format(EMAIl_TEMPLATE, coordinatorViewPath);
     }
 
-    public void scheduleEmail()
+    private void scheduleEmail()
     {
         Properties props = System.getProperties();
         props.put("mail.transport.protocol", "smtp");
-        props.put("mail.smtp.host", SMTP_HOST);
-        props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.host", SMTP_HOST);
         props.put("mail.smtp.port", 587);
 
         Authenticator auth = new Authenticator()
@@ -65,7 +68,7 @@ public class NotificationService
         };
 
         Session session = Session.getInstance(props, auth);
-        
+
         new Thread(() -> sendEmail(session)).start();
     }
 
@@ -76,7 +79,7 @@ public class NotificationService
             MimeMessage message = new MimeMessage(session);
 
             message.setFrom(new InternetAddress(SMTP_EMAIL));
-            message.addRecipient(Message.RecipientType.TO, getRecipient());
+            message.addRecipient(Message.RecipientType.TO, getEmailRecipient());
             message.setSubject("New magazine submission");
             message.setContent(getMessageBody(), "text/html");
 

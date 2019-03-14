@@ -38,14 +38,11 @@ public class ServSubmit extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         Part   filePart     = request.getPart("myfile");
-        String userFileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
+        String submittedFileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
 
         User author = DatabaseHelper.getTestStudent();
 
-        Path fullFilePath = getOrCreateFullPath(
-                System.getenv("UPLOAD_ROOT"),
-                getUniqueName(userFileName, author)
-        );
+        Path fullFilePath = getOrCreateFullPath(getUniqueName(submittedFileName, author));
 
         Files.copy(filePart.getInputStream(), fullFilePath);
 
@@ -61,13 +58,14 @@ public class ServSubmit extends HttpServlet
 
         new SubmissionRepo().add(submission);
 
-        new NotificationService(submission, request).scheduleEmail();
+        NotificationService.ScheduleFor(submission, request);
 
         response.sendRedirect("viewSubmission.jsp");
     }
 
-    private Path getOrCreateFullPath(String uri, String fileName)
+    private Path getOrCreateFullPath(String fileName)
     {
+        String uri = System.getenv("UPLOAD_ROOT");
         if (uri == null) uri = "C:/files";
 
         File uploadRoot = new File(uri);
