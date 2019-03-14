@@ -1,6 +1,6 @@
-package repository;
+package com.magazineapp.repository;
 
-import model.Submission;
+import com.magazineapp.model.Submission;
 
 import java.sql.*;
 import java.util.ArrayList;

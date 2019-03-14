@@ -1,6 +1,6 @@
-package repository;
+package com.magazineapp.repository;
 
-import model.Year;
+import com.magazineapp.model.Year;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -1,6 +1,6 @@
-package repository;
+package com.magazineapp.repository;
 
-import model.User;
+import com.magazineapp.model.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
