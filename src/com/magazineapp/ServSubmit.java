@@ -2,9 +2,9 @@ package com.magazineapp;
 
 import java.io.File;
 import java.nio.file.*;
+import java.time.Instant;
 import java.util.Date;
 import java.io.IOException;
-import java.io.InputStream;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import com.magazineapp.model.Submission;
+import com.magazineapp.model.User;
 import com.magazineapp.repository.DatabaseHelper;
 import com.magazineapp.repository.SubmissionRepo;
 import com.magazineapp.service.NotificationService;
@@ -36,28 +37,25 @@ public class ServSubmit extends HttpServlet
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        Part        filePart    = request.getPart("myfile");
-        String      fileName    = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
-        InputStream fileContent = filePart.getInputStream();
+        Part   filePart     = request.getPart("myfile");
+        String userFileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
 
+        User author = DatabaseHelper.getTestStudent();
 
-        String uploadRootPath = System.getenv("UPLOAD_ROOT");
-        if (uploadRootPath == null) uploadRootPath = "C:/files";
+        Path fullFilePath = getOrCreateFullPath(
+                System.getenv("UPLOAD_ROOT"),
+                getUniqueName(userFileName, author)
+        );
 
-        File uploadRoot = new File(uploadRootPath);
-        if (!uploadRoot.exists()) uploadRoot.mkdirs();
-
-        Path filePath = Paths.get(uploadRootPath, fileName);
-
-        Files.copy(fileContent, filePath);
+        Files.copy(filePart.getInputStream(), fullFilePath);
 
         Submission submission = new Submission(
-                filePath.toString(),
+                fullFilePath.toString(),
                 new Date(),
                 false,
                 "",
                 false,
-                DatabaseHelper.getTestStudent(),
+                author,
                 DatabaseHelper.getTestYear()
         );
 
@@ -68,4 +66,21 @@ public class ServSubmit extends HttpServlet
         response.sendRedirect("viewSubmission.jsp");
     }
 
+    private Path getOrCreateFullPath(String uri, String fileName)
+    {
+        if (uri == null) uri = "C:/files";
+
+        File uploadRoot = new File(uri);
+        if (!uploadRoot.exists()) uploadRoot.mkdirs();
+
+        return Paths.get(uri, fileName);
+    }
+
+    private String getUniqueName(String baseName, User author)
+    {
+        return String.join(".",
+                           String.valueOf(author.get_id()),
+                           String.valueOf(Instant.now().toEpochMilli()),
+                           baseName);
+    }
 }
