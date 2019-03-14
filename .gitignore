@@ -190,3 +190,5 @@ hs_err_pid*
 # End of https://www.gitignore.io/api/java,intellij
 /build/
 /nbproject/private/
+
+!WebContent/WEB-INF/lib/*
