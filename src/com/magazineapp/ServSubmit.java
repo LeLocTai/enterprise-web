@@ -17,6 +17,7 @@ import javax.servlet.http.Part;
 import com.magazineapp.model.Submission;
 import com.magazineapp.repository.DatabaseHelper;
 import com.magazineapp.repository.SubmissionRepo;
+import com.magazineapp.service.NotificationService;
 
 //import org.apache.tomcat.jni.File;
 //import org.apache.tomcat.util.http.fileupload.FileItem;
@@ -50,7 +51,7 @@ public class ServSubmit extends HttpServlet
 
         Files.copy(fileContent, filePath);
 
-        Submission s = new Submission(
+        Submission submission = new Submission(
                 filePath.toString(),
                 new Date(),
                 false,
@@ -60,10 +61,10 @@ public class ServSubmit extends HttpServlet
                 DatabaseHelper.getTestYear()
         );
 
-        s.set_path(filePath.toString());
+        new SubmissionRepo().add(submission);
 
-        new SubmissionRepo().add(s);
-        
+        new NotificationService(submission, request).sendEmail();
+
         response.sendRedirect("viewSubmission.jsp");
     }
 

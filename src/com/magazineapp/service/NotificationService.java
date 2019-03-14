@@ -3,11 +3,14 @@ package com.magazineapp.service;
 import com.magazineapp.model.Faculty;
 import com.magazineapp.model.Submission;
 import com.magazineapp.model.User;
+import com.magazineapp.repository.SubmissionRepo;
 import com.magazineapp.repository.UserRepo;
 
 import javax.mail.*;
+import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Properties;
 
 public class NotificationService
@@ -15,21 +18,38 @@ public class NotificationService
     private static final String SMTP_HOST  = "smtp.mail.yahoo.com";
     private static final String SMTP_EMAIL = "ewd.system@yahoo.com";
     private static final String SMTP_PASS  = "123@123a";
-    
-    private Submission submission;
-    private User coordinator;
 
-    public NotificationService(Submission submission)
+    private static final String EMAIl_TEMPLATE = "<p>New magazine submission received, please visit <a href='%1$s'>%1$s</a> to view</p>";
+
+    private Submission         submission;
+    private HttpServletRequest context;
+    private User               coordinator;
+
+    public NotificationService(Submission submission, HttpServletRequest context)
     {
         this.submission = submission;
-        Faculty submissionFaculty = submission.get_author().get_faculty();
-        coordinator = new UserRepo().getCoordinatorOf(submissionFaculty);
+        this.context = context;
+
+        Faculty faculty = submission.get_author().get_faculty();
+        coordinator = new UserRepo().getCoordinatorOf(faculty);
+    }
+
+    private InternetAddress getRecipient() throws AddressException
+    {
+        return new InternetAddress(coordinator.get_email()); //ewd.coordinator@sharklasers.com
+    }
+
+    private String getMessageBody()
+    {
+        String coordinatorViewPath = String.format("http://%s:%d%s/Admin/viewAllSubmission.jsp",
+                                                   context.getServerName(),
+                                                   context.getServerPort(),
+                                                   context.getContextPath());
+        return String.format(EMAIl_TEMPLATE, coordinatorViewPath);
     }
 
     public void sendEmail()
     {
-        String to = "ewd.coordinator@sharklasers.com";
-
         Properties props = System.getProperties();
         props.put("mail.transport.protocol", "smtp");
         props.put("mail.smtp.host", SMTP_HOST);
@@ -50,12 +70,16 @@ public class NotificationService
         try
         {
             MimeMessage message = new MimeMessage(session);
+
             message.setFrom(new InternetAddress(SMTP_EMAIL));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-            message.setSubject("New Magazine submission");
-            message.setText("test body");
+            message.addRecipient(Message.RecipientType.TO, getRecipient());
+            message.setSubject("New magazine submission");
+            message.setContent(getMessageBody(), "text/html");
 
             Transport.send(message);
+
+            submission.set_has_Sent_Notice(true);
+            new SubmissionRepo().update(submission);
 
             System.out.println("Sent message successfully....");
         } catch (MessagingException e)
