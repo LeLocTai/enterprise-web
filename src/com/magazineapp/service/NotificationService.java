@@ -21,17 +21,19 @@ public class NotificationService
 
     private static final String EMAIl_TEMPLATE = "<p>New magazine submission received, please visit <a href='%1$s'>%1$s</a> to view</p>";
 
-    private Submission         submission;
-    private HttpServletRequest context;
-    private User               coordinator;
+    private Submission submission;
+    String coordinatorViewPath;
+    private User coordinator;
 
     public NotificationService(Submission submission, HttpServletRequest context)
     {
         this.submission = submission;
-        this.context = context;
 
-        Faculty faculty = submission.get_author().get_faculty();
-        coordinator = new UserRepo().getCoordinatorOf(faculty);
+        coordinator = new UserRepo().getCoordinatorOf(submission.get_author().get_faculty());
+        coordinatorViewPath = String.format("http://%s:%d%s/Admin/viewAllSubmission.jsp",
+                                            context.getServerName(),
+                                            context.getServerPort(),
+                                            context.getContextPath());
     }
 
     private InternetAddress getRecipient() throws AddressException
@@ -41,14 +43,10 @@ public class NotificationService
 
     private String getMessageBody()
     {
-        String coordinatorViewPath = String.format("http://%s:%d%s/Admin/viewAllSubmission.jsp",
-                                                   context.getServerName(),
-                                                   context.getServerPort(),
-                                                   context.getContextPath());
         return String.format(EMAIl_TEMPLATE, coordinatorViewPath);
     }
 
-    public void sendEmail()
+    public void scheduleEmail()
     {
         Properties props = System.getProperties();
         props.put("mail.transport.protocol", "smtp");
@@ -66,7 +64,13 @@ public class NotificationService
             }
         };
 
-        Session session = Session.getDefaultInstance(props, auth);
+        Session session = Session.getInstance(props, auth);
+        
+        new Thread(() -> sendEmail(session)).start();
+    }
+
+    private void sendEmail(Session session)
+    {
         try
         {
             MimeMessage message = new MimeMessage(session);

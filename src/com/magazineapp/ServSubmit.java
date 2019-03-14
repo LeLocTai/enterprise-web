@@ -61,7 +61,7 @@ public class ServSubmit extends HttpServlet
 
         new SubmissionRepo().add(submission);
 
-        new NotificationService(submission, request).sendEmail();
+        new NotificationService(submission, request).scheduleEmail();
 
         response.sendRedirect("viewSubmission.jsp");
     }
