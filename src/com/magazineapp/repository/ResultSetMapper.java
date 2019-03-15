@@ -1,4 +1,4 @@
-package repository;
+package com.magazineapp.repository;
 
 import java.sql.ResultSet;
 
