@@ -54,10 +54,10 @@
 									<a class="" href="index.jsp">Home</a>
 								</li>
 								<li>
-									<a class="active" href="submit.jsp">Submit</a>
+									<a  href="submit.jsp">Submit</a>
 								</li>
 								<li>
-									<a href="viewSubmission.jsp">View Submission</a>
+									<a class="active" href="viewSubmission.jsp">View Submission</a>
 								</li>
 								<li>
 									<a href="contact.jsp">Contact</a>
