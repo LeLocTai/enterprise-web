@@ -1,9 +1,8 @@
-package repository;
+package com.magazineapp.repository;
 
-import model.*;
+import com.magazineapp.model.*;
 
 import java.sql.*;
-import java.util.function.Consumer;
 
 public class DatabaseHelper
 {

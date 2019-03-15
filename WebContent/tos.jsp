@@ -1,6 +1,6 @@
-<%@ page import="repository.DatabaseHelper" %>
-<%@ page import="repository.UserRepo" %>
-<%@ page import="model.User" %>
+<%@ page import="com.magazineapp.repository.DatabaseHelper" %>
+<%@ page import="com.magazineapp.repository.UserRepo" %>
+<%@ page import="com.magazineapp.model.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     session.setAttribute("user", DatabaseHelper.getTestStudent());
