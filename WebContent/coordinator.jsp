@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="css/monthly.css">
 <!-- //calendar -->
 <!-- Custom CSS -->
-<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link href="css/styleCoordinator.css" rel='stylesheet' type='text/css' />
 <link href="css/style-responsive.css" rel="stylesheet"/>
 <link href="css/font-awesome.css" rel="stylesheet"> 
 <!-- //font-awesome icons -->
@@ -41,29 +41,11 @@
         <!-- sidebar menu start-->
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
-                <li>
-                    <a class="active" href="index.jsp">
-                        <i class="fa fa-dashboard"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
                 
                 <li class="sub-menu">
                     <a href="StudentSubmission.jsp">
                         <i class="glyphicon glyphicon-ok"></i>
                         <span>Student Submission</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="events.jsp">
-                        <i class="glyphicon glyphicon-grain"></i>
-                        <span>Events</span>
-                    </a>
-                </li>
-                <li class="sub-menu">
-                    <a href="best.jsp">
-                        <i class="glyphicon glyphicon-king"></i>
-                        <span>The best magazine</span>
                     </a>
                 </li>
                
@@ -236,7 +218,7 @@
  <!-- footer -->
 		  <div class="footer">
 			<div class="wthree-copyright">
-			  <p>© 2019 Fettle. All rights reserved | Design by
+			  <p>Â© 2019 Fettle. All rights reserved | Design by
 				<a href="">Sandra0710</a>
 			</p>
 			</div>
