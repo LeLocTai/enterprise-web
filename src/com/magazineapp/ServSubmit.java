@@ -77,7 +77,7 @@ public class ServSubmit extends HttpServlet
     private String getUniqueName(String baseName, User author)
     {
         return String.join(".",
-                           //String.valueOf(author.get_id()),
+                           String.valueOf(author.get_id()),
                            String.valueOf(Instant.now().toEpochMilli()),
                            baseName);
     }
