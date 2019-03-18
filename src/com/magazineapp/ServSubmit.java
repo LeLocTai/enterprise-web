@@ -33,19 +33,56 @@ public class ServSubmit extends HttpServlet
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        if (!canSubmit()) return;
-        
-        Part   filePart          = request.getPart("myfile");
+        if (!canSubmit())
+        {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "You are not allowed to submit");
+            return;
+        }
+
+        User   author        = DatabaseHelper.getTestStudent();
+        String savedFilePath = saveFile(request.getPart("myfile"), author);
+        if (savedFilePath == null)
+        {
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            return;
+        }
+
+        Submission submission = saveSubmissionToDB(author, savedFilePath);
+        if (submission == null)
+        {
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            return;
+        }
+
+        NotificationService.ScheduleFor(submission, request);
+        response.sendRedirect("viewSubmission.jsp");
+    }
+
+    private boolean canSubmit()
+    {
+        Year currentYear = new YearRepo().getCurrentYear();
+        if (currentYear == null) return true;//temp fix until implemented
+
+        Date now = new Date();
+
+        return !now.after(currentYear.get_entry_ClosureDate());
+    }
+
+    private String saveFile(Part filePart, User author) throws IOException
+    {
         String submittedFileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
-
-        User author = DatabaseHelper.getTestStudent();
-
-        Path fullFilePath = getOrCreateFullPath(getUniqueName(submittedFileName, author));
+        String fileName          = getUniqueName(submittedFileName, author);
+        Path   fullFilePath      = getOrCreateFullPath(fileName);
 
         Files.copy(filePart.getInputStream(), fullFilePath);
 
+        return fullFilePath.toString();
+    }
+
+    private Submission saveSubmissionToDB(User author, String savedFilePath)
+    {
         Submission submission = new Submission(
-                fullFilePath.toString(),
+                savedFilePath,
                 new Date(),
                 false,
                 "",
@@ -54,32 +91,22 @@ public class ServSubmit extends HttpServlet
                 DatabaseHelper.getTestYear()
         );
 
-        new SubmissionRepo().add(submission);
+        int dbRowsAffected = new SubmissionRepo().add(submission);
 
-        NotificationService.ScheduleFor(submission, request);
-
-        response.sendRedirect("viewSubmission.jsp");
-    }
-
-    private boolean canSubmit()
-    {
-        Year currentYear = new YearRepo().getCurrentYear();
-        if(currentYear == null) return true;//temp fix until implemented
-        
-        Date now         = new Date();
-        
-        return !now.after(currentYear.get_entry_ClosureDate());
+        return dbRowsAffected < 1 ? null : submission;
     }
 
     private Path getOrCreateFullPath(String fileName)
     {
-        String uri = System.getenv("UPLOAD_ROOT");
-        if (uri == null) uri = "C:/files";
+        String userHome         = System.getProperty("user.home");
+        String uploadFolderName = "magazineApp/upload-root";
 
-        File uploadRoot = new File(uri);
+        Path uploadRootPath = Paths.get(userHome, uploadFolderName);
+
+        File uploadRoot = new File(uploadRootPath.toUri());
         if (!uploadRoot.exists()) uploadRoot.mkdirs();
 
-        return Paths.get(uri, fileName);
+        return Paths.get(uploadRootPath.toString(), fileName);
     }
 
     private String getUniqueName(String baseName, User author)
