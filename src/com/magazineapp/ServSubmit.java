@@ -98,13 +98,15 @@ public class ServSubmit extends HttpServlet
 
     private Path getOrCreateFullPath(String fileName)
     {
-        String uri = System.getenv("UPLOAD_ROOT");
-        if (uri == null) uri = "C:/files";
+        String userHome         = System.getProperty("user.home");
+        String uploadFolderName = "magazineApp/upload-root";
 
-        File uploadRoot = new File(uri);
+        Path uploadRootPath = Paths.get(userHome, uploadFolderName);
+
+        File uploadRoot = new File(uploadRootPath.toUri());
         if (!uploadRoot.exists()) uploadRoot.mkdirs();
 
-        return Paths.get(uri, fileName);
+        return Paths.get(uploadRootPath.toString(), fileName);
     }
 
     private String getUniqueName(String baseName, User author)
