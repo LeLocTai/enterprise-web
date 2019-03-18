@@ -15,7 +15,7 @@
         <property name="yearIsDateType" value="false" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="magazinedb@aws" uuid="77585655-0665-4434-ba55-2d850da12da1">
+    <data-source source="LOCAL" name="ewd@aws" uuid="77585655-0665-4434-ba55-2d850da12da1">
       <driver-ref>mariadb</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>

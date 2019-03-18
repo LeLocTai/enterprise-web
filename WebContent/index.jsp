@@ -1,9 +1,8 @@
-
-<!DOCTYPE html>
-<html> 
-
+<html>
 <head>
-	<title>GreenWich university</title>
+<title>Greenwich university</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 	<meta name="keywords"  />
@@ -19,7 +18,8 @@
 	</script>
 	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<link href="css/style.css" rel='stylesheet' type='text/css' />
-
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 <body>
 	<div class="headerIndex">
 		<header class="header" id="home">
@@ -35,7 +35,7 @@
 							<span class="icon-bar"></span>
 						</button>
 						<h1>
-							<a class="navbar-brand" href="index.html">GreenWich
+							<a class="navbar-brand" href="index.jsp">Greenwich
 								<span>University</span>
 							</a>
 						</h1>
@@ -45,16 +45,16 @@
 						<nav>
 							<ul class="top_nav">
 								<li>
-									<a class="active" href="index.html">Home</a>
+									<a class="active" href="index.jsp">Home</a>
 								</li>
 								<li>
-									<a href="submit.html">Submit</a>
+									<a href="submit.jsp">Submit</a>
 								</li>
 								<li>
-									<a href="gallery.html">Gallery</a>
+									<a href="viewSubmission.jsp">View Submission</a>
 								</li>
 								<li>
-									<a href="contact.html">Contact</a>
+									<a href="contact.jsp">Contact</a>
 								</li>
 							</ul>
 						</nav>
@@ -258,8 +258,8 @@
 				</div>
 				<div class="col-md-4 social-icons" data-aos="zoom-in">
 					<h6>Connect with us</h6>
-					<a class="btn btn-block btn social btn-twitter" href="#">
-						<span class="fa fa-twitter"></span>
+					<a class="facebook" href="#">
+						<span class="fa fa-facebook"></span>
 					</a>
 					<a class="twitter" href="#">
 						<span class="fa fa-twitter"></span>
@@ -277,11 +277,11 @@
 		</div>
 		<div class="copy">
 			<h2 class="footer-logo">
-				<a href="index.html">GreenWich
+				<a href="index.jsp">Greenwich
 					<span>university</span>
 				</a>
 			</h2>
-			<p>Â© 2019 Fettle. All rights reserved | Design by
+			<p>© 2019 Fettle. All rights reserved | Design by
 				<a href="">Sandra0710</a>
 			</p>
 			<div class="clearfix"></div>

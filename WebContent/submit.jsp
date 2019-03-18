@@ -1,9 +1,11 @@
-
-<!DOCTYPE html>
-<html> 
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-	<title>GreenWich university</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<head>
+	<title>Greenwich university</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 	<meta name="keywords"  />
@@ -19,9 +21,12 @@
 	</script>
 	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<link href="css/style.css" rel='stylesheet' type='text/css' />
+	<link href="css/news.css" rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 
 <body>
-	<div class="headerIndex">
+	<div class="headerIndex inner_banner">
 		<header class="header" id="home">
 			<!--/top-bar-->
 			<div class="top-bar">
@@ -35,7 +40,7 @@
 							<span class="icon-bar"></span>
 						</button>
 						<h1>
-							<a class="navbar-brand" href="index.html">GreenWich
+							<a class="navbar-brand" href="index.jsp">GreenWich
 								<span>University</span>
 							</a>
 						</h1>
@@ -45,16 +50,16 @@
 						<nav>
 							<ul class="top_nav">
 								<li>
-									<a class="active" href="index.html">Home</a>
+									<a class="" href="index.jsp">Home</a>
 								</li>
 								<li>
-									<a href="submit.html">Submit</a>
+									<a class="active" href="submit.jsp">Submit</a>
 								</li>
 								<li>
-									<a href="gallery.html">Gallery</a>
+									<a href="viewSubmission.jsp">View Submission</a>
 								</li>
 								<li>
-									<a href="contact.html">Contact</a>
+									<a href="contact.jsp">Contact</a>
 								</li>
 							</ul>
 						</nav>
@@ -63,41 +68,56 @@
 			</div>
 			<!--//top-bar-->
 		</header>
-		<!-- banner-text -->
-		<div class="slider">
-			<div class="callbacks_container">
-				<ul class="rslides callbacks callbacks1" id="slider4">
-					<li>
-						<div class="banner-top"></div>
-					</li>
-					<li>
-						<div class="banner-top1"></div>
-					</li>
-					<li>
-						<div class="banner-top2"></div>
-					</li>
-					<li>
-						<div class="banner-top3"></div>
-					</li>
-				</ul>
-			</div>
-			<div class="clearfix"> </div>
-
-			<!--banner Slider starts Here-->
+	</div>
+	<!--//inner_banner-->
+	<!--/short-->
+	<div class="breadcrumb">
+		<div class="inner_breadcrumb">
+			<ul class="short">
+				<li>
+					<a href="index.jsp">Home</a>
+					<span>|</span>
+				</li>
+				<li>Submit</li>
+			</ul>
 		</div>
 	</div>
-	<!--//Slider-->
+	<!--//short-->
+	<!-- //inner_content -->
+    <div class="contentNew">
+         <h2>Submit magazine for event  </h2>
+    <div id="wrapper">
+    	<div class="agile-last-grids">
+				<div class="col-md-6 agile-last-left ">
+					<div class="agile-last-grid">
+						<div >
+							<h3>Submit your file:</h3><hr>
+						</div>
+						<div>
+                        <form id="uploadImage" enctype="multipart/form-data" method="post" action="ServSubmit">
+						   <input id="fileupload" name="myfile" type="file" /><br>
+						   <input type="submit">
+						</form>
+					</div>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
 
-	
-	<div class="content">
-		<!-- faculty-->
+    </div>
+   </div>
+
+   <hr>
+
+    <div class="content">
+    	<!--/top_spl_poses-->
 	<div class="section_1">
+		 <h2>Some example </h2>
       	<ul class="clearfix">
       		<li> 
       			<a href="images/b1.jpg" ">
-          <img src="images/b1.jpg" alt="Lights" >
+          <img src="images/b2.jpg" alt="Lights" >
           <div class="caption">
-            <h2>Programming</h2>
           </div>
         </a>
            </li>
@@ -106,7 +126,6 @@
       			<a href="images/b1.jpg" ">
           <img src="images/b2.jpg" alt="Lights" >
           <div class="caption">
-            <h2>Design</h2>
           </div>
         </a>
            </li>
@@ -115,118 +134,6 @@
       			<a href="images/b1.jpg" ">
           <img src="images/b2.jpg" alt="Lights">
           <div class="caption">
-            <h2>Business</h2>
-          </div>
-        </a>
-           </li>
-
-      	</ul>
-      </div>
-      <!--faculty -->
-
-      <div class="section_2 clearfix">
-		  <div class="mainWrap">
-		   <div class="column_1 col-md-8">
-		    <h2>NEWS</h2>
-		    <ul>
-		       <li>
-				      <a href="">
-				       <img src="images/b1.jpg" alt="">
-				       <div class="wrapper">
-				        <h3 class="cut100"></h3>
-				        <span class="time"> 2019.03.01</span>
-				       </div>
-				      </a>
-				     </li>
-		          <li>
-				      <a href="">
-				       <img src="images/b1.jpg" alt="">
-				       <div class="wrapper">
-				        <h3 class="cut100"></h3>
-				        <span class="time"> 2019.03.01</span>
-				       </div>
-				      </a>
-				     </li>
-		         <li>
-				      <a href="">
-				       <img src="images/b1.jpg" alt="">
-				       <div class="wrapper">
-				        <h3 class="cut100"></h3>
-				        <span class="time"> 2019.03.01</span>
-				       </div>
-				      </a>
-				     </li>
-		         </ul>
-		   </div>
-
-		   <div class="column_2 col-md-4" >
-		    <div class="wrapper">
-		     <h2>EVENTS</h2>
-		     <ul>
-		         <li class="clearfix">
-			       <a href="">
-			        <div class="time">
-			         <span>11</span>2019.01
-			        </div>
-			        <div class="txtwrapper">
-			         <h3 class="cut100">Surviving the Misinformation Age</h3>
-			        </div>
-			       </a>
-		      </li>
-		         <li class="clearfix">
-			       <a href="" >
-			        <div class="time">
-			         <span>11</span>2019.01
-			        </div>
-			        <div class="txtwrapper">
-			         <h3 class="cut100">Surviving the Misinformation Age</h3>
-			        </div>
-			       </a>
-		      </li>
-		          <li class="clearfix">
-			       <a href="" >
-			        <div class="time">
-			         <span>11</span>2019.01
-			        </div>
-			        <div class="txtwrapper">
-			         <h3 class="cut100">Surviving the Misinformation Age</h3>
-			        </div>
-			       </a>
-		      </li>
-		         </ul>
-		    </div>
-		    
-		   </div>
-		  </div>
- </div>
-
-      <!--/top_spl_poses-->
-	<div class="section_1">
-		 <h2>Best </h2>
-      	<ul class="clearfix">
-      		<li> 
-      			<a href="images/b1.jpg" ">
-          <img src="images/b2.jpg" alt="Lights" >
-          <div class="caption">
-            <h2>Programming</h2>
-          </div>
-        </a>
-           </li>
-
-           <li> 
-      			<a href="images/b1.jpg" ">
-          <img src="images/b2.jpg" alt="Lights" >
-          <div class="caption">
-            <h2>Design</h2>
-          </div>
-        </a>
-           </li>
-
-           <li> 
-      			<a href="images/b1.jpg" ">
-          <img src="images/b2.jpg" alt="Lights">
-          <div class="caption">
-            <h2>Business</h2>
           </div>
         </a>
            </li>
@@ -235,15 +142,11 @@
       </div>
 	<!--//top_spl_poses-->
     </div>
-
-
-	
-
 	<!--footer-->
 	<footer class="contact-footer">
 		<div class="bottom-social">
 			<div class="container">
-				<div class="col-md-8 botttom-nav">
+				<div class="col-md-8 botttom-nav-w3ls-agile">
 					<ul  data-aos="zoom-in">
 						<li>
 							<h4>Email: </h4>
@@ -277,18 +180,17 @@
 		</div>
 		<div class="copy">
 			<h2 class="footer-logo">
-				<a href="index.html">GreenWich
+				<a href="index.html">Greenwich
 					<span>university</span>
 				</a>
 			</h2>
-			<p>© 2019 Fettle. All rights reserved | Design by
+			<p>� 2019 Fettle. All rights reserved | Design by
 				<a href="">Sandra0710</a>
 			</p>
 			<div class="clearfix"></div>
 		</div>
 	</footer>
 	<!--/footer -->
-
 	<!-- js -->
 	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
 	
@@ -330,7 +232,48 @@
 	<a href="#home" class="scroll" id="toTop" style="display: block;">
 		<span id="toTopHover" style="opacity: 1;"> </span>
 	</a>
-	<script type="text/javascript" src="js/bootstrap.js"></script>
+ 	<script type="text/javascript" src="js/bootstrap.js"></script>
+
+	<script type="text/javascript">
+		   const realFileBtn = document.getElementById("real-file");
+			const customBtn = document.getElementById("custom-button");
+			const customTxt = document.getElementById("custom-text");
+
+			customBtn.addEventListener("click", function() {
+			  realFileBtn.click();
+			});
+
+			realFileBtn.addEventListener("change", function() {
+			  if (realFileBtn.value) {
+			    customTxt.innerHTML = realFileBtn.value.match(
+			      /[\/\\]([\w\d\s\.\-\(\)]+)$/
+			    )[1];
+			  } else {
+			    customTxt.innerHTML = "No file chosen, yet.";
+			  }
+			});
+	</script> 
+<script type="text/javascript">
+	function preview_image(event){
+		var reader =  new FileReader();
+		reader.onload = function(){
+			var output = document.getElementById("output_image");
+			output.src = reader.result;
+		}
+		reader.readAsDataURL(event.target.files[0]);
+	}
+</script>
+
+<script>
+    $('#submit').click(function(event) {
+        var val = $('input[type=file]').val().toLowerCase();
+        var regex = new RegExp("(.*?)\.(pdf|docx|doc)$");
+        if(!(regex.test(val))) {
+            $('.uploadExtensionError').show();
+            event.preventDefault();
+        }
+    });
+</script>
 
 
 </body>
