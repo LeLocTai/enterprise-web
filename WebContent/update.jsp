@@ -1,9 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+
+<!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 <head>
 	<title>Greenwich university</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,7 +42,7 @@
 							<span class="icon-bar"></span>
 						</button>
 						<h1>
-							<a class="navbar-brand" href="index.jsp">GreenWich
+							<a class="navbar-brand" href="index.html">Greenwich
 								<span>University</span>
 							</a>
 						</h1>
@@ -84,64 +86,60 @@
 	</div>
 	<!--//short-->
 	<!-- //inner_content -->
-    <div class="contentNew">
-         <h2>Submit magazine for event  </h2>
-    <div id="wrapper">
-    	<div class="agile-last-grids">
-				<div class="col-md-6 agile-last-left ">
-					<div class="agile-last-grid">
-						<div >
-							<h3>Submit your file:</h3><hr>
-						</div>
-						<div>
-                        <form id="uploadImage" enctype="multipart/form-data" method="post" action="ServSubmit">
-						   <input id="fileupload" name="myfile" type="file" /><br>
-						   <input type="submit">
-						</form>
-					</div>
-					</div>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-
-    </div>
-   </div>
-
-   <hr>
-
     <div class="content">
-    	<!--/top_spl_poses-->
+		<!-- faculty-->
 	<div class="section_1">
-		 <h2>Some example </h2>
-      	<ul class="clearfix">
-      		<li> 
-      			<a href="images/b1.jpg" ">
-          <img src="images/b2.jpg" alt="Lights" >
-          <div class="caption">
-          </div>
-        </a>
-           </li>
+  <section class="wrapper">
+		<div class="typo-agile">
+		<h2 class="w3ls_head">View submission</h2>
+			<div class="row">
+			</div><!-- /.row -->
+			<div class="bs-docs-example">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>No</th>
+							<th>Name </th>
+							<th>Mail</th>
+							<th>magazine</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Tet holiday</td>
+							<td>@mdo</td>
+							<td>
+								<form id="uploadFile" enctype="multipart/form-data" method="post" action="#">
+					   <input id="fileupload" name="myfile" type="file" />
+					</form>
+							</td>
+							<td>
+				              <button class="btn btn-primary btn-sm" style="font-size:100%;">Send</button>
+				              </td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>Tet holiday</td>
+							<td>@mdo</td>
+							<td>
+								<form id="uploadFile" enctype="multipart/form-data" method="post" action="#">
+					   <input id="fileupload" name="myfile" type="file" />
+					</form>
+							</td>
+							<td>
+				              <button class="btn btn-primary btn-sm" style="font-size:100%;">Send</button>
+				              </td>
+						</tr>
 
-           <li> 
-      			<a href="images/b1.jpg" ">
-          <img src="images/b2.jpg" alt="Lights" >
-          <div class="caption">
-          </div>
-        </a>
-           </li>
-
-           <li> 
-      			<a href="images/b1.jpg" ">
-          <img src="images/b2.jpg" alt="Lights">
-          <div class="caption">
-          </div>
-        </a>
-           </li>
-
-      	</ul>
-      </div>
-	<!--//top_spl_poses-->
-    </div>
+					</tbody>
+				</table>
+			</div>
+		</div>
+</section>
+</div>
+</div>
 	<!--footer-->
 	<footer class="contact-footer">
 		<div class="bottom-social">
@@ -180,11 +178,11 @@
 		</div>
 		<div class="copy">
 			<h2 class="footer-logo">
-				<a href="index.html">Greenwich
+				<a href="index.jsp">Greenwich
 					<span>university</span>
 				</a>
 			</h2>
-			<p>� 2019 Fettle. All rights reserved | Design by
+			<p>© 2019 Fettle. All rights reserved | Design by
 				<a href="">Sandra0710</a>
 			</p>
 			<div class="clearfix"></div>

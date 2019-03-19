@@ -18,6 +18,7 @@
 	</script>
 	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<link href="css/style.css" rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 	<div class="headerIndex">
@@ -34,7 +35,7 @@
 							<span class="icon-bar"></span>
 						</button>
 						<h1>
-							<a class="navbar-brand" href="index.html">GreenWich
+							<a class="navbar-brand" href="index.jsp">Greenwich
 								<span>University</span>
 							</a>
 						</h1>
@@ -50,7 +51,7 @@
 									<a href="submit.jsp">Submit</a>
 								</li>
 								<li>
-									<a href="gallery.jsp">Gallery</a>
+									<a href="viewSubmission.jsp">View Submission</a>
 								</li>
 								<li>
 									<a href="contact.jsp">Contact</a>
@@ -257,8 +258,8 @@
 				</div>
 				<div class="col-md-4 social-icons" data-aos="zoom-in">
 					<h6>Connect with us</h6>
-					<a class="btn btn-block btn social btn-twitter" href="#">
-						<span class="fa fa-twitter"></span>
+					<a class="facebook" href="#">
+						<span class="fa fa-facebook"></span>
 					</a>
 					<a class="twitter" href="#">
 						<span class="fa fa-twitter"></span>
@@ -276,7 +277,7 @@
 		</div>
 		<div class="copy">
 			<h2 class="footer-logo">
-				<a href="index.html">Greenwich
+				<a href="index.jsp">Greenwich
 					<span>university</span>
 				</a>
 			</h2>
