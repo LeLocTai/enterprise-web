@@ -35,7 +35,7 @@ public class ServSubmit extends HttpServlet
     {
         if (!canSubmit())
         {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "You are not allowed to submit");
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "You are not allowed to submit");
             return;
         }
 
