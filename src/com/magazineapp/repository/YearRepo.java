@@ -35,6 +35,10 @@ public class YearRepo implements Repository<Year> {
     public ArrayList<Year> getAll() {
         return null;
     }
+    
+    public Year getCurrentYear(){
+        return null;
+    }
 
     @Override
     public int add(Year item) {
