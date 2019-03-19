@@ -1,4 +1,4 @@
-package com.magazineapp;
+package com.magazineapp.filter;
 
 import com.magazineapp.model.User;
 
@@ -25,15 +25,21 @@ public class SubmissionFilter implements Filter
     {
         HttpServletRequest  request  = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
-        HttpSession         session  = request.getSession(false); //dont auto create
+        HttpSession         session  = request.getSession();
 
         User user = (User) session.getAttribute("user");
 
-        if (user.get_role().equalsIgnoreCase("student") ||
+        if (user == null)
+        {
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
+        } else if (user.get_role().equalsIgnoreCase("student") ||
                 user.get_role().equalsIgnoreCase("coordinator"))
+        {
             filterChain.doFilter(request, response);
-        else
+        } else
+        {
             response.sendError(HttpServletResponse.SC_FORBIDDEN);
+        }
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.magazineapp;
+package com.magazineapp.filter;
 
 import com.magazineapp.model.User;
 
