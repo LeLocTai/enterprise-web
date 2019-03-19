@@ -39,7 +39,7 @@ public class ServSubmit extends HttpServlet
             return;
         }
 
-        User   author        = DatabaseHelper.getTestStudent();
+        User   author        = (User) request.getSession().getAttribute("user");
         String savedFilePath = saveFile(request.getPart("myfile"), author);
         if (savedFilePath == null)
         {
