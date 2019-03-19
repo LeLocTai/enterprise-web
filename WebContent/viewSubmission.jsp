@@ -1,6 +1,16 @@
 
 
+<%@page import="com.magazineapp.repository.DatabaseHelper"%>
+<%@page import="com.magazineapp.repository.SubmissionRepo"%>
+<%@page import="com.magazineapp.model.Submission"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+	
+	ArrayList<Submission> subList = new SubmissionRepo().getFromAuthor(DatabaseHelper.getTestStudent()) ;
+	
+ %>
 
 
 <!DOCTYPE html>
@@ -24,6 +34,7 @@
 	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<link href="css/style.css" rel='stylesheet' type='text/css' />
 	<link href="css/news.css" rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -54,10 +65,10 @@
 									<a class="" href="index.jsp">Home</a>
 								</li>
 								<li>
-									<a class="active" href="submit.jsp">Submit</a>
+									<a  href="submit.jsp">Submit</a>
 								</li>
 								<li>
-									<a href="viewSubmission.jsp">View Submission</a>
+									<a class="active" href="viewSubmission.jsp">View Submission</a>
 								</li>
 								<li>
 									<a href="contact.jsp">Contact</a>
@@ -98,39 +109,35 @@
 					<thead>
 						<tr>
 							<th>No</th>
-							<th>Name Events</th>
-							<th>Mail</th>
+							<th>Path</th>
+							<th>Author_id</th>
 							<th>Date</th>
-							<th>Your magazine</th>
+							<th>Year</th>
+							<th>Notice</th>
+							<th>Comment</th>
 							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
 							<td>1</td>
-							<td>Tet holiday</td>
-							<td>@mdo</td>
-							<td>July 25th 2018</td>
-							<td><a href="">dowload</a></td>
-							<td>
-                                                            <a href="update.jsp">update</a>
-				              <!-- <a href="">
-				              <i class="fa fa-fw fa-trash" style="color:#EF2D1E; font-size: 20px;"></i>
-				              </a> -->
-				              </td>
+							<td></td>
+							<td>GCH23221</td>
+							<td>July 25th</td>
+							<td>2018</td>
+							<td>aaaa</td>
+							<td>dsdsds</td>
+							<td><a href="update.jsp">update</a></td>
 						</tr>
 						<tr>
 							<td>1</td>
-							<td>Tet holiday</td>
-							<td>@mdo</td>
-							<td>July 25th 2018</td>
-							<td><a href="">dowload</a></td>
-							<td>
-                                                            <a href="update.jsp">update</a>
-				              <!-- <a href="">
-				              <i class="fa fa-fw fa-trash" style="color:#EF2D1E; font-size: 20px;"></i>
-				              </a> -->
-				              </td>
+							<td></td>
+							<td>GCH23221</td>
+							<td>July 25th</td>
+							<td>2018</td>
+							<td>aaaa</td>
+							<td>dsdsds</td>
+							<td><a href="update.jsp">update</a></td>
 						</tr>
 
 					</tbody>

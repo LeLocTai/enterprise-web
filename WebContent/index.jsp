@@ -18,6 +18,7 @@
 	</script>
 	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<link href="css/style.css" rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 	<div class="headerIndex">
@@ -257,8 +258,8 @@
 				</div>
 				<div class="col-md-4 social-icons" data-aos="zoom-in">
 					<h6>Connect with us</h6>
-					<a class="btn btn-block btn social btn-twitter" href="#">
-						<span class="fa fa-twitter"></span>
+					<a class="facebook" href="#">
+						<span class="fa fa-facebook"></span>
 					</a>
 					<a class="twitter" href="#">
 						<span class="fa fa-twitter"></span>
