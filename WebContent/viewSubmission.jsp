@@ -1,6 +1,16 @@
 
 
+<%@page import="com.magazineapp.repository.DatabaseHelper"%>
+<%@page import="com.magazineapp.repository.SubmissionRepo"%>
+<%@page import="com.magazineapp.model.Submission"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+	
+	ArrayList<Submission> subList = new SubmissionRepo().getFromAuthor(DatabaseHelper.getTestStudent()) ;
+	
+ %>
 
 
 <!DOCTYPE html>
