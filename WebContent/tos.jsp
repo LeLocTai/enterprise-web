@@ -3,11 +3,7 @@
 <%@ page import="com.magazineapp.model.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    session.setAttribute("user", DatabaseHelper.getTestStudent());
-
-
     User user = (User) session.getAttribute("user");
-    System.out.println("User: " + user.get_email());
 
     if (user != null && request.getParameter("tos-accepted").equals("true"))
     {

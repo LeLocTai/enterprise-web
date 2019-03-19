@@ -1,6 +1,7 @@
 package com.magazineapp.repository;
 
 import com.magazineapp.model.Submission;
+import com.magazineapp.model.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -109,5 +110,9 @@ public class SubmissionRepo implements Repository<Submission> {
             e.printStackTrace();
         }
         return 0;
+    }
+    
+    public ArrayList<Submission> getFromAuthor(User author) {
+    	return new ArrayList<Submission>(0);
     }
 }
