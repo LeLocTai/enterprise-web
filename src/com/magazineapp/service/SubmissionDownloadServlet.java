@@ -12,14 +12,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
-@WebServlet("/submission-download")
+@WebServlet("/download-submission/*")
 public class SubmissionDownloadServlet extends HttpServlet
 {
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response) throws ServletException, IOException
     {
-        int        submissionId = Integer.parseInt(request.getParameter("submission-id"));
-        Submission submission   = new SubmissionRepo().get(submissionId);
+        String submissionIdString = request.getPathInfo().substring(1);
+        int    submissionId;
+        try
+        {
+            submissionId = Integer.parseInt(submissionIdString);
+        } catch (NumberFormatException e)
+        {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+            return;
+        }
+        
+        Submission submission = new SubmissionRepo().get(submissionId);
         if (submission == null) return;
 
         User authUser = (User) request.getSession().getAttribute("user");
@@ -45,6 +55,9 @@ public class SubmissionDownloadServlet extends HttpServlet
 
     private boolean isAuthorized(Submission submission, User authUser)
     {
+        if (authUser == null)
+            return false;
+
         if (authUser.get_role().equalsIgnoreCase("manager") ||
             authUser.get_role().equalsIgnoreCase("coordinator"))
             return true;
