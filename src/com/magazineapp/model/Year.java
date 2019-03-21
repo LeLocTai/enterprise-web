@@ -79,8 +79,8 @@ public class Year {
             year = new Year(); 
             year.set_id(resultSet.getInt("Id")); 
             year.set_startDate(resultSet.getDate("StartDate")); 
-            year.set_startDate(resultSet.getDate("EndDate")); 
-            year.set_startDate(resultSet.getDate("Entry_ClosureDate")); 
+            year.set_endDate(resultSet.getDate("EndDate")); 
+            year.set_entry_ClosureDate(resultSet.getDate("Entry_ClosureDate")); 
         } 
         return year; 
     } 
