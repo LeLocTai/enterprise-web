@@ -113,6 +113,21 @@ public class SubmissionRepo implements Repository<Submission> {
     }
     
     public ArrayList<Submission> getFromAuthor(User author) {
-    	return new ArrayList<Submission>(0);
+    	String sql = "SELECT * FROM Submission WHERE Author_Id = ?";
+        ArrayList<Submission> submissions = new ArrayList<>();
+        try {
+            ResultSet resultSet = DatabaseHelper.executeQuery(sql, stm -> {
+                stm.setInt(1, author.get_id());
+            });
+
+            while (resultSet.next()) {
+                submissions.add(extractObjectFrom(resultSet));
+            }
+            return submissions;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }
