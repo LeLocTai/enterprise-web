@@ -109,35 +109,35 @@
 					<thead>
 						<tr>
 							<th>No</th>
-							<th>Path</th>
-							<th>Author_id</th>
+							<th>Author_email</th>
 							<th>Date</th>
 							<th>Year</th>
 							<th>Notice</th>
 							<th>Comment</th>
-							<th>Action</th>
+							<th>Dowload</th>
+							<th>Upload</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
 							<td>1</td>
-							<td></td>
-							<td>GCH23221</td>
+							<td>a@fpt.edu.vn</td>
 							<td>July 25th</td>
 							<td>2018</td>
 							<td>aaaa</td>
 							<td>dsdsds</td>
-							<td><a href="update.jsp">update</a></td>
+							<td><a href="">Dowload</a></td>
+							<td><a href="update.jsp">Upload</a></td>
 						</tr>
 						<tr>
 							<td>1</td>
-							<td></td>
-							<td>GCH23221</td>
+							<td>a@fpt.edu.vn</td>
 							<td>July 25th</td>
 							<td>2018</td>
 							<td>aaaa</td>
 							<td>dsdsds</td>
-							<td><a href="update.jsp">update</a></td>
+							<td><a href="">Dowload</a></td>
+							<td><a href="update.jsp">Upload</a></td>
 						</tr>
 
 					</tbody>
