@@ -2,12 +2,12 @@ package com.magazineapp.repository;
 
 import com.magazineapp.model.Year;
 
-import java.sql.ResultSet; 
-import java.sql.SQLException; 
-import java.text.DateFormat; 
-import java.text.SimpleDateFormat; 
-import java.util.ArrayList; 
-import java.util.Date; 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class YearRepo implements Repository<Year> {
 
@@ -38,25 +38,25 @@ public class YearRepo implements Repository<Year> {
     public ArrayList<Year> getAll() {
         return null;
     }
-    
-    public Year getCurrentYear(Year item){ 
-        Date date = new Date(); 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd"); 
-         
-        String sql = "SELECT * FROM Year WHERE ?<EndDate "; 
-        try 
-        { 
-            ResultSet resultSet = DatabaseHelper.executeQuery(sql, stm -> 
-                    stm.setString(1, dateFormat.format(date)) 
-            ); 
- 
-            return Year.fromResultSet(resultSet); 
-        } catch (SQLException e) 
-        { 
-            e.printStackTrace(); 
-        } 
-        return null; 
-    } 
+
+    public Year getCurrentYear() {
+        Date date = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+
+        String sql = "SELECT * FROM Year WHERE ?>StartDate AND ?<EndDate ";
+        try {
+            ResultSet resultSet = DatabaseHelper.executeQuery(sql, stm -> {
+                        stm.setString(1, dateFormat.format(date));
+                        stm.setString(2, dateFormat.format(date));
+                    }
+            );
+
+            return Year.fromResultSet(resultSet);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     @Override
     public int add(Year item) {
