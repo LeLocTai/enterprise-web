@@ -35,11 +35,11 @@ public class ServSubmit extends HttpServlet
     {
         if (!canSubmit())
         {
-            response.sendError(HttpServletResponse.SC_FORBIDDEN, "You are not allowed to submit");
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "You are not allowed to submit");
             return;
         }
 
-        User   author        = (User) request.getSession().getAttribute("user");
+        User   author        = DatabaseHelper.getTestStudent();
         String savedFilePath = saveFile(request.getPart("myfile"), author);
         if (savedFilePath == null)
         {
