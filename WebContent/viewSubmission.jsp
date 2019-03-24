@@ -126,7 +126,7 @@
 							<td>2018</td>
 							<td>aaaa</td>
 							<td>dsdsds</td>
-							<td><a href="">Dowload</a></td>
+							<td><a href="download-submission/33">Dowload</a></td>
 							<td><a href="update.jsp">Upload</a></td>
 						</tr>
 						<tr>
@@ -136,7 +136,7 @@
 							<td>2018</td>
 							<td>aaaa</td>
 							<td>dsdsds</td>
-							<td><a href="">Dowload</a></td>
+							<td><a href="download-submission/35">Dowload</a></td>
 							<td><a href="update.jsp">Upload</a></td>
 						</tr>
 
