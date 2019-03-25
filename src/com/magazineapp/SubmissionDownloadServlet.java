@@ -4,7 +4,6 @@ import com.magazineapp.model.Submission;
 import com.magazineapp.model.User;
 import com.magazineapp.repository.SubmissionRepo;
 
-import javax.mail.Session;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
