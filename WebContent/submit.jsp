@@ -95,7 +95,7 @@
                         <hr>
                     </div>
                     <div>
-                        <form id="uploadImage" enctype="multipart/form-data" method="post" action="ServSubmit">
+                        <form id="uploadImage" enctype="multipart/form-data" method="post" action="FileUploadServlet">
                             <input id="fileupload" name="myfile" type="file"/><br>
                             <input type="submit">
                         </form>
@@ -116,26 +116,26 @@
         <h2>Some example </h2>
         <ul class="clearfix">
             <li>
-                <a href="images/b1.jpg" ">
-                <img src="images/b2.jpg" alt="Lights">
-                <div class="caption">
-                </div>
+                <a href="images/b1.jpg">
+                    <img src="images/b2.jpg" alt="Lights">
+                    <div class="caption">
+                    </div>
                 </a>
             </li>
 
             <li>
-                <a href="images/b1.jpg" ">
-                <img src="images/b2.jpg" alt="Lights">
-                <div class="caption">
-                </div>
+                <a href="images/b1.jpg">
+                    <img src="images/b2.jpg" alt="Lights">
+                    <div class="caption">
+                    </div>
                 </a>
             </li>
 
             <li>
-                <a href="images/b1.jpg" ">
-                <img src="images/b2.jpg" alt="Lights">
-                <div class="caption">
-                </div>
+                <a href="images/b1.jpg">
+                    <img src="images/b2.jpg" alt="Lights">
+                    <div class="caption">
+                    </div>
                 </a>
             </li>
 
@@ -229,21 +229,10 @@
 <!-- start-smoth-scrolling -->
 
 
-</script>
-<
-a
-href = "#home"
-class
-= "scroll"
-id = "toTop"
-style = "display: block;" >
-    < span
-id = "toTopHover"
-style = "opacity: 1;" > < /span>
-    < /a>
-    < script
-type = "text/javascript"
-src = "js/bootstrap.js" ></script>
+<a href="#home" class="scroll" id="toTop" style="display: block;">
+    <span id="toTopHover" style="opacity: 1;"> </span>
+</a>
+<script type="text/javascript" src="js/bootstrap.js"></script>
 
 <script type="text/javascript">
     const realFileBtn = document.getElementById("real-file");
