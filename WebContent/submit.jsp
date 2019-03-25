@@ -115,7 +115,7 @@
 		 <h2>Some example </h2>
       	<ul class="clearfix">
       		<li> 
-      			<a href="images/b1.jpg" ">
+      			<a href="images/b1.jpg" >
           <img src="images/b2.jpg" alt="Lights" >
           <div class="caption">
           </div>
@@ -123,7 +123,7 @@
            </li>
 
            <li> 
-      			<a href="images/b1.jpg" ">
+      			<a href="images/b1.jpg" >
           <img src="images/b2.jpg" alt="Lights" >
           <div class="caption">
           </div>
@@ -131,7 +131,7 @@
            </li>
 
            <li> 
-      			<a href="images/b1.jpg" ">
+      			<a href="images/b1.jpg" >
           <img src="images/b2.jpg" alt="Lights">
           <div class="caption">
           </div>
