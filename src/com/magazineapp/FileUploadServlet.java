@@ -25,7 +25,7 @@ import com.magazineapp.service.NotificationService;
 /**
  * Servlet implementation class FileUploadServlet
  */
-@WebServlet("/FileUploadServlet")
+@WebServlet("/file-upload")
 @MultipartConfig
 public class FileUploadServlet extends HttpServlet
 {
