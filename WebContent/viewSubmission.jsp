@@ -1,4 +1,7 @@
-
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
 
 <%@page import="com.magazineapp.repository.DatabaseHelper"%>
 <%@page import="com.magazineapp.repository.SubmissionRepo"%>
@@ -11,9 +14,26 @@
 	ArrayList<Submission> subList = new SubmissionRepo().getFromAuthor(DatabaseHelper.getTestStudent()) ;
 	
  %>
+ <!--  %
+String id = request.getParameter("userId");
+String driverName = "org.mariadb.jdbc.Driver";
+String connectionUrl = "jdbc:mariadb://localhost:3306/";
+String dbName = "magazinedb";
+String userId = "author";
+String password = "12345";
 
+try {
+Class.forName(viewSubmission);
+} catch (ClassNotFoundException e) {
+e.printStackTrace();
+}
 
-<!DOCTYPE html>
+Connection connection = null;
+Statement statement = null;
+ResultSet resultSet = null;
+%-->
+
+ <!DOCTYPE html>
 <html>
 
 <head>
@@ -118,15 +138,24 @@
 							<th>Upload</th>
 						</tr>
 					</thead>
+					<!--  %
+try{ 
+connection = DriverManager.getConnection(connectionUrl+dbName, userId, password);
+statement=connection.createStatement();
+String sql ="SELECT * FROM Submission WHERE Id = 33";
+
+resultSet = statement.executeQuery(sql);
+while(resultSet.next()){
+%-->
 					<tbody>
-						<tr>
+						  <tr>
 							<td>1</td>
 							<td>a@fpt.edu.vn</td>
 							<td>July 25th</td>
 							<td>2018</td>
 							<td>aaaa</td>
 							<td>dsdsds</td>
-							<td><a href="download-submission/33">Dowload</a></td>
+							<td><a href="download-submission/35">Dowload</a></td>
 							<td><a href="update.jsp">Upload</a></td>
 						</tr>
 						<tr>
@@ -141,6 +170,13 @@
 						</tr>
 
 					</tbody>
+					<!-- % 
+}
+
+} catch (Exception e) {
+e.printStackTrace();
+}
+%-->
 				</table>
 			</div>
 		</div>
