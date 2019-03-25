@@ -1,12 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
-<%@page import="com.magazineapp.repository.DatabaseHelper" %>
-<%@page import="com.magazineapp.repository.SubmissionRepo" %>
 <%@page import="com.magazineapp.model.Submission" %>
+<%@page import="com.magazineapp.model.User" %>
+<%@page import="com.magazineapp.repository.SubmissionRepo" %>
 <%@page import="java.util.ArrayList" %>
-<%@ page import="com.magazineapp.model.User" %>
-<%@ page import="com.magazineapp.model.Year" %>
-<%@ page import="java.text.SimpleDateFormat" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 
 <%
@@ -111,15 +108,21 @@
                 <div class="row">
                 </div><!-- /.row -->
                 <div class="bs-docs-example">
-                    <display:table name="submissions" id="row" class="table"
+                    <display:table name="submissions" id="submission" class="table"
                                    decorator="com.magazineapp.service.SubmissionTableDecorator">
                         <display:column title="Author Email" property="_author._email"/>
                         <display:column title="Date" property="_date"/>
                         <display:column title="Year" property="shortYear"/>
                         <display:column title="Comment" property="_comment"/>
-                        <display:column title="Dowload" href="download-submission/${row._id}">Download</display:column>
-                        <display:column title="Upload" href="file-upload/${row._id}">Upload</display:column>
-                        <display:column title="Select" href="#!${row._id}">Select</display:column>
+                        <display:column title="Dowload">
+                            <a href="download-submission/${submission._id}">Download</a>
+                        </display:column>
+                        <display:column title="Upload">
+                            <a href="file-upload/${submission._id}">Upload</a>
+                        </display:column>
+                        <display:column title="Select">
+                            <a href="#!${submission._id}">Select</a>
+                        </display:column>
                     </display:table>
                 </div>
             </div>
