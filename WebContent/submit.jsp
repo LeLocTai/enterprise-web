@@ -95,7 +95,7 @@
                         <hr>
                     </div>
                     <div>
-                        <form id="uploadImage" enctype="multipart/form-data" method="post" action="/file-upload">
+                        <form id="uploadImage" enctype="multipart/form-data" method="post" action="file-upload">
                             <input id="fileupload" name="myfile" type="file"/><br>
                             <input type="submit">
                         </form>
