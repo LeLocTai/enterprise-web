@@ -2,11 +2,13 @@
 <%@page import="com.magazineapp.repository.SubmissionRepo" %>
 <%@page import="com.magazineapp.model.Submission" %>
 <%@page import="java.util.ArrayList" %>
+<%@ page import="com.magazineapp.model.User" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 
 <%
+    User user = (User) session.getAttribute("user");
 
-    ArrayList<Submission> subList = new SubmissionRepo().getFromAuthor(DatabaseHelper.getTestStudent());
+    ArrayList<Submission> submissions = new SubmissionRepo().getFromAuthor(DatabaseHelper.getTestStudent());
 
 %>
 
@@ -107,38 +109,25 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th>No</th>
-                            <th>Author_email</th>
+                            <th>Author Email</th>
                             <th>Date</th>
                             <th>Year</th>
-                            <th>Notice</th>
                             <th>Comment</th>
                             <th>Dowload</th>
                             <th>Upload</th>
+                            <th>Select</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td>1</td>
                             <td>a@fpt.edu.vn</td>
                             <td>July 25th</td>
                             <td>2018</td>
-                            <td>aaaa</td>
                             <td>dsdsds</td>
-                            <td><a href="download-submission/33">Dowload</a></td>
-                            <td><a href="update.jsp">Upload</a></td>
+                            <td><a href="#">Dowload</a></td>
+                            <td><a href="#">Upload</a></td>
+                            <td><a href="#">Select</a></td>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>a@fpt.edu.vn</td>
-                            <td>July 25th</td>
-                            <td>2018</td>
-                            <td>aaaa</td>
-                            <td>dsdsds</td>
-                            <td><a href="download-submission/35">Dowload</a></td>
-                            <td><a href="update.jsp">Upload</a></td>
-                        </tr>
-
                         </tbody>
                     </table>
                 </div>
