@@ -8,10 +8,6 @@
 <%@ page import="com.magazineapp.model.Year" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.Statement"%>
-<%@page import="java.sql.Connection"%>
 
 <%
     User user = (User) session.getAttribute("user");
@@ -20,31 +16,9 @@
 
     request.setAttribute("submissions", submissions);
 %>
-<%
-	
-	ArrayList<Submission> subList = new SubmissionRepo().getFromAuthor(DatabaseHelper.getTestStudent()) ;
-	
- %>
- <!--  %
-String id = request.getParameter("userId");
-String driverName = "org.mariadb.jdbc.Driver";
-String connectionUrl = "jdbc:mariadb://localhost:3306/";
-String dbName = "magazinedb";
-String userId = "author";
-String password = "12345";
 
-try {
-Class.forName(viewSubmission);
-} catch (ClassNotFoundException e) {
-e.printStackTrace();
-}
 
-Connection connection = null;
-Statement statement = null;
-ResultSet resultSet = null;
-%-->
-
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -112,129 +86,6 @@ ResultSet resultSet = null;
         </div>
         <!--//top-bar-->
     </header>
-	<div class="headerIndex inner_banner">
-		<header class="header" id="home">
-			<!--/top-bar-->
-			<div class="top-bar">
-				<nav class="navbar navbar-default">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<h1>
-							<a class="navbar-brand" href="index.jsp">Greenwich
-								<span>University</span>
-							</a>
-						</h1>
-					</div>
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
-						<nav>
-							<ul class="top_nav">
-								<li>
-									<a class="" href="index.jsp">Home</a>
-								</li>
-								<li>
-									<a  href="submit.jsp">Submit</a>
-								</li>
-								<li>
-									<a class="active" href="viewSubmission.jsp">View Submission</a>
-								</li>
-								<li>
-									<a href="contact.jsp">Contact</a>
-								</li>
-							</ul>
-						</nav>
-					</div>
-				</nav>
-			</div>
-			<!--//top-bar-->
-		</header>
-	</div>
-	<!--//inner_banner-->
-	<!--/short-->
-	<div class="breadcrumb">
-		<div class="inner_breadcrumb">
-			<ul class="short">
-				<li>
-					<a href="index.jsp">Home</a>
-					<span>|</span>
-				</li>
-				<li>View Submission</li>
-			</ul>
-		</div>
-	</div>
-	<!--//short-->
-	<!-- //inner_content -->
-	<div class="content">
-		<!-- faculty-->
-	<div class="section_1">
-  <section class="wrapper">
-		<div class="typo-agile">
-		<h2 class="w3ls_head">View submission</h2>
-			<div class="row">
-			</div><!-- /.row -->
-			<div class="bs-docs-example">
-				<table class="table">
-					<thead>
-						<tr>
-							<th>No</th>
-							<th>Author_email</th>
-							<th>Date</th>
-							<th>Year</th>
-							<th>Notice</th>
-							<th>Comment</th>
-							<th>Dowload</th>
-							<th>Upload</th>
-						</tr>
-					</thead>
-					<!--  %
-try{ 
-connection = DriverManager.getConnection(connectionUrl+dbName, userId, password);
-statement=connection.createStatement();
-String sql ="SELECT * FROM Submission WHERE Id = 33";
-
-resultSet = statement.executeQuery(sql);
-while(resultSet.next()){
-%-->
-					<tbody>
-						  <tr>
-							<td>1</td>
-							<td>a@fpt.edu.vn</td>
-							<td>July 25th</td>
-							<td>2018</td>
-							<td>aaaa</td>
-							<td>dsdsds</td>
-							<td><a href="download-submission/35">Dowload</a></td>
-							<td><a href="update.jsp">Upload</a></td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>a@fpt.edu.vn</td>
-							<td>July 25th</td>
-							<td>2018</td>
-							<td>aaaa</td>
-							<td>dsdsds</td>
-							<td><a href="download-submission/35">Dowload</a></td>
-							<td><a href="update.jsp">Upload</a></td>
-						</tr>
-
-					</tbody>
-					<!-- % 
-}
-
-} catch (Exception e) {
-e.printStackTrace();
-}
-%-->
-				</table>
-			</div>
-		</div>
-</section>
 </div>
 <!--//inner_banner-->
 <!--/short-->
