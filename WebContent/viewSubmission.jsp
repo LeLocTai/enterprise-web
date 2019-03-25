@@ -1,15 +1,20 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
 <%@page import="com.magazineapp.repository.DatabaseHelper" %>
 <%@page import="com.magazineapp.repository.SubmissionRepo" %>
 <%@page import="com.magazineapp.model.Submission" %>
 <%@page import="java.util.ArrayList" %>
 <%@ page import="com.magazineapp.model.User" %>
+<%@ page import="com.magazineapp.model.Year" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 
 <%
     User user = (User) session.getAttribute("user");
 
-    ArrayList<Submission> submissions = new SubmissionRepo().getFromAuthor(DatabaseHelper.getTestStudent());
+    ArrayList<Submission> submissions = new SubmissionRepo().getFromAuthor(user);
 
+    request.setAttribute("submissions", submissions);
 %>
 
 
@@ -106,30 +111,16 @@
                 <div class="row">
                 </div><!-- /.row -->
                 <div class="bs-docs-example">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Author Email</th>
-                            <th>Date</th>
-                            <th>Year</th>
-                            <th>Comment</th>
-                            <th>Dowload</th>
-                            <th>Upload</th>
-                            <th>Select</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>a@fpt.edu.vn</td>
-                            <td>July 25th</td>
-                            <td>2018</td>
-                            <td>dsdsds</td>
-                            <td><a href="#">Dowload</a></td>
-                            <td><a href="#">Upload</a></td>
-                            <td><a href="#">Select</a></td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <display:table name="submissions" id="row" class="table"
+                                   decorator="com.magazineapp.service.SubmissionTableDecorator">
+                        <display:column title="Author Email" property="_author._email"/>
+                        <display:column title="Date" property="_date"/>
+                        <display:column title="Year" property="shortYear"/>
+                        <display:column title="Comment" property="_comment"/>
+                        <display:column title="Dowload" href="download-submission/${row._id}">Download</display:column>
+                        <display:column title="Upload" href="file-upload/${row._id}">Upload</display:column>
+                        <display:column title="Select" href="#!${row._id}">Select</display:column>
+                    </display:table>
                 </div>
             </div>
         </section>
