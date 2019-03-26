@@ -5,6 +5,7 @@
          version="3.1">
     <filter-mapping>
         <filter-name>authentication</filter-name>
+        <url-pattern>/submit.jsp</url-pattern>
         <url-pattern>/viewSubmission.jsp</url-pattern>
         <url-pattern>/download-submission/*</url-pattern>
     </filter-mapping>
