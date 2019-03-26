@@ -33,7 +33,7 @@ public class SubmissionFilter implements Filter
             user.get_role().equalsIgnoreCase("coordinator"))
         {
             if (!user.get_has_Accepted_TOC())
-                response.sendRedirect(request.getContextPath() + "/tos.jsp");
+                response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/tos.jsp"));
             else
                 filterChain.doFilter(request, response);
         } else

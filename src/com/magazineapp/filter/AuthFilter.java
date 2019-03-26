@@ -10,34 +10,41 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebFilter(filterName = "authentication")
-public class AuthFilter implements Filter {
+public class AuthFilter implements Filter
+{
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) throws ServletException
+    {
 
     }
 
     @Override
     public void doFilter(ServletRequest servletRequest,
                          ServletResponse servletResponse,
-                         FilterChain filterChain) throws IOException, ServletException {
-        HttpServletRequest request = (HttpServletRequest) servletRequest;
+                         FilterChain filterChain) throws IOException, ServletException
+    {
+        HttpServletRequest  request  = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
-        HttpSession session = request.getSession(false); //dont auto create
-        String loginURI = request.getContextPath() + "/login.jsp";
+        HttpSession         session  = request.getSession(false); //dont auto create
 
-        boolean isLoggedIn = session != null && session.getAttribute("user") != null;
-        boolean isTryingToLogin = request.getRequestURI().equals(loginURI);
+        String loginURI    = request.getContextPath() + "/login.jsp";
+        String destination = request.getRequestURI();
+
+        boolean isLoggedIn      = session != null && session.getAttribute("user") != null;
+        boolean isTryingToLogin = destination.equals(loginURI);
 
         if (isLoggedIn || isTryingToLogin)
             filterChain.doFilter(request, response);
-        else {
-            response.setHeader("Redirect", request.getRequestURL().toString());
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
+        else
+        {
+            request.getSession().setAttribute("Redirect", destination);
+            response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/login.jsp"));
         }
     }
 
     @Override
-    public void destroy() {
+    public void destroy()
+    {
 
     }
 }

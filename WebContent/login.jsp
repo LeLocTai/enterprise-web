@@ -3,27 +3,28 @@
 <%@ page import="org.apache.commons.lang.StringUtils" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    String redirect = response.getHeader("Redirect");
-    if (StringUtils.isNotBlank(redirect) && !redirect.contentEquals(request.getRequestURL()))
-        session.setAttribute("Redirect", redirect);
-    else
-        session.setAttribute("Redirect", request.getContextPath() + "/");
-
     User user = null;
     String userRole = request.getParameter("role");
 
-    if ("student".equals(userRole)) {
+    if ("student".equals(userRole))
+    {
         user = DatabaseHelper.getTestStudent();
-    } else if ("coordinator".equals(userRole)) {
+    } else if ("coordinator".equals(userRole))
+    {
         user = DatabaseHelper.getTestCoordinator();
-    } else if ("manager".equals(userRole)) {
+    } else if ("manager".equals(userRole))
+    {
         user = DatabaseHelper.getTestManager();
     }
 
     session.setAttribute("user", user);
 
-    if (user != null) {
-        response.sendRedirect((String) session.getAttribute("Redirect"));
+    if (user != null)
+    {
+        String dest = (String) session.getAttribute("Redirect");
+        if (StringUtils.isBlank(dest))
+            dest = request.getContextPath() + "/";
+        response.sendRedirect(response.encodeRedirectURL(dest));
     }
 %>
 <html>
