@@ -4,7 +4,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String redirect = response.getHeader("Redirect");
-    if (StringUtils.isNotBlank(redirect) || !redirect.contentEquals(request.getRequestURL()))
+    if (StringUtils.isNotBlank(redirect) && !redirect.contentEquals(request.getRequestURL()))
         session.setAttribute("Redirect", redirect);
     else
         session.setAttribute("Redirect", request.getContextPath() + "/");
