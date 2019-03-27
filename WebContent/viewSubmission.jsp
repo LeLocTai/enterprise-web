@@ -114,13 +114,9 @@
                         <display:column title="Date" property="_date"/>
                         <display:column title="Year" property="shortYear"/>
                         <display:column title="Comment" property="_comment"/>
-                        <display:column title="Dowload">
-                            <a href="download-submission/${submission._id}">Download</a>
-                        </display:column>
-                        <display:column title="Upload">
-                            <a href="submit.jsp?id=${submission._id}">Upload</a>
-                        </display:column>
-                        <display:column title="Select">
+                        <display:column title="Action">
+                            <a href="download-submission/${submission._id}">Download</a> | 
+                            <a href="submit.jsp?id=${submission._id}">Resubmit</a> | 
                             <a href="#!${submission._id}">Select</a>
                         </display:column>
                     </display:table>
