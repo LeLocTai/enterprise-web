@@ -1,13 +1,12 @@
 package com.magazineapp.filter;
 
-import com.magazineapp.model.User;
-
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.HashSet;
 
 @WebFilter(filterName = "AuthFilter")
 public class AuthFilter implements Filter
@@ -15,7 +14,6 @@ public class AuthFilter implements Filter
     @Override
     public void init(FilterConfig filterConfig) throws ServletException
     {
-
     }
 
     @Override
@@ -25,19 +23,23 @@ public class AuthFilter implements Filter
     {
         HttpServletRequest  request  = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
-        HttpSession         session  = request.getSession(false); //dont auto create
 
-        String loginURI    = request.getContextPath() + "/login.jsp";
-        String destination = request.getRequestURI();
-
-        boolean isLoggedIn      = session != null && session.getAttribute("user") != null;
-        boolean isTryingToLogin = destination.equals(loginURI);
-
-        if (isLoggedIn || isTryingToLogin)
-            filterChain.doFilter(request, response);
-        else
+        if (FilterHelper.AUTH_URL_WHITE_LIST.contains(FilterHelper.getRelativePath(request)))
         {
-            request.getSession().setAttribute("Redirect", destination);
+            filterChain.doFilter(request, response);
+            return;
+        }
+
+        HttpSession session = request.getSession(false); //dont auto create
+
+        boolean isLoggedIn = session != null && session.getAttribute("user") != null;
+
+        if (isLoggedIn)
+        {
+            filterChain.doFilter(request, response);
+        } else
+        {
+            request.getSession().setAttribute("Redirect", request.getRequestURI());
             response.sendRedirect(request.getContextPath() + "/login.jsp");
         }
     }

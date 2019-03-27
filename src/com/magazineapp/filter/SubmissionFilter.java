@@ -43,12 +43,6 @@ public class SubmissionFilter implements Filter
             return;
         }
 
-        if (!user.isStudent() && !user.isCoordinator())
-        {
-            response.sendError(HttpServletResponse.SC_FORBIDDEN);
-            return;
-        }
-
         Submission submission = new SubmissionRepo().get(submissionId);
         if (user.isStudent() && submission != null && user.get_id() != submission.get_author().get_id())
         {
