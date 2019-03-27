@@ -100,7 +100,7 @@ public class SubmissionPersistService
         return String.join(
                 ".",
                 String.valueOf(author.get_id()),
-                String.valueOf(Instant.now().toEpochMilli()),
+                Long.toString(Instant.now().toEpochMilli(), Character.MAX_RADIX),
                 baseName
         );
     }
