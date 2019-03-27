@@ -38,7 +38,7 @@ public class AuthFilter implements Filter
         else
         {
             request.getSession().setAttribute("Redirect", destination);
-            response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/login.jsp"));
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
         }
     }
 

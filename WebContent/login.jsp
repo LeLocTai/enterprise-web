@@ -24,7 +24,7 @@
         String dest = (String) session.getAttribute("Redirect");
         if (StringUtils.isBlank(dest))
             dest = request.getContextPath() + "/";
-        response.sendRedirect(response.encodeRedirectURL(dest));
+        response.sendRedirect(dest);
     }
 %>
 <html>
