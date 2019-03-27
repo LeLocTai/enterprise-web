@@ -4,14 +4,23 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
     <filter-mapping>
-        <filter-name>authentication</filter-name>
+        <filter-name>AuthFilter</filter-name>
         <url-pattern>/submit.jsp</url-pattern>
+        <url-pattern>/file-upload</url-pattern>
         <url-pattern>/viewSubmission.jsp</url-pattern>
         <url-pattern>/download-submission/*</url-pattern>
     </filter-mapping>
     <filter-mapping>
-        <filter-name>submission</filter-name>
+        <filter-name>RoleFilter</filter-name>
         <url-pattern>/submit.jsp</url-pattern>
+        <url-pattern>/file-upload</url-pattern>
+        <url-pattern>/viewSubmission.jsp</url-pattern>
+        <url-pattern>/download-submission/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SubmissionFilter</filter-name>
+        <url-pattern>/submit.jsp</url-pattern>
+        <url-pattern>/file-upload</url-pattern>
     </filter-mapping>
 </web-app>
 

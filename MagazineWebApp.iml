@@ -34,7 +34,9 @@
         <CLASSES>
           <root url="file://$MODULE_DIR$/WebContent/WEB-INF/lib" />
         </CLASSES>
-        <JAVADOC />
+        <JAVADOC>
+          <root url="https://commons.apache.org/proper/commons-lang/javadocs/api-2.3/" />
+        </JAVADOC>
         <SOURCES />
         <jarDirectory url="file://$MODULE_DIR$/WebContent/WEB-INF/lib" recursive="false" />
       </library>

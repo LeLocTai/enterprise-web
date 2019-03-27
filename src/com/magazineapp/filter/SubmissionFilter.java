@@ -1,6 +1,10 @@
 package com.magazineapp.filter;
 
+import com.magazineapp.model.Submission;
 import com.magazineapp.model.User;
+import com.magazineapp.repository.SubmissionRepo;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.math.NumberUtils;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -9,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(filterName = "submission")
+@WebFilter(filterName = "SubmissionFilter")
 public class SubmissionFilter implements Filter
 {
     @Override
@@ -29,17 +33,36 @@ public class SubmissionFilter implements Filter
 
         User user = (User) session.getAttribute("user");
 
-        if (user.get_role().equalsIgnoreCase("student") ||
-            user.get_role().equalsIgnoreCase("coordinator"))
+        String  idString     = request.getParameter("id");
+        boolean isUpdate     = StringUtils.isNotBlank(idString);
+        int     submissionId = NumberUtils.toInt(idString);
+
+        if (isUpdate && submissionId == 0)
         {
-            if (!user.get_has_Accepted_TOC())
-                response.sendRedirect(request.getContextPath() + "/tos.jsp");
-            else
-                filterChain.doFilter(request, response);
-        } else
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+            return;
+        }
+
+        if (!user.isStudent() && !user.isCoordinator())
         {
             response.sendError(HttpServletResponse.SC_FORBIDDEN);
+            return;
         }
+
+        Submission submission = new SubmissionRepo().get(submissionId);
+        if (user.isStudent() && submission != null && user.get_id() != submission.get_author().get_id())
+        {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN);
+            return;
+        }
+
+        if (!user.get_has_Accepted_TOC())
+        {
+            response.sendRedirect(request.getContextPath() + "/tos.jsp");
+            return;
+        }
+
+        filterChain.doFilter(request, response);
     }
 
     @Override
