@@ -118,7 +118,7 @@
                             <a href="download-submission/${submission._id}">Download</a>
                         </display:column>
                         <display:column title="Upload">
-                            <a href="file-upload?id=${submission._id}">Upload</a>
+                            <a href="submit.jsp?id=${submission._id}">Upload</a>
                         </display:column>
                         <display:column title="Select">
                             <a href="#!${submission._id}">Select</a>
