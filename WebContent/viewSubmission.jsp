@@ -139,8 +139,14 @@
                                 &nbsp;|&nbsp;<a href="submit.jsp?id=${submission._id}">Resubmit</a>
                             </c:if>
                             <c:if test="${user.coordinator}">
-                                &nbsp;|&nbsp;<a href="select-submission?id=${submission._id}&value=true">Select</a>
-                                &nbsp;|&nbsp;<a href="select-submission?id=${submission._id}&value=false">Un-Select</a>
+                                <c:choose>
+                                    <c:when test="${submission._is_Selected}">
+                                        &nbsp;|&nbsp;<a href="select-submission?id=${submission._id}&value=false">Un-Select</a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        &nbsp;|&nbsp;<a href="select-submission?id=${submission._id}&value=true">Select</a>
+                                    </c:otherwise>
+                                </c:choose>
                             </c:if>
                         </display:column>
                     </display:table>
