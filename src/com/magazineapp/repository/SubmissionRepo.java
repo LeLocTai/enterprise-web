@@ -1,5 +1,6 @@
 package com.magazineapp.repository;
 
+import com.magazineapp.model.Faculty;
 import com.magazineapp.model.Submission;
 import com.magazineapp.model.User;
 import com.magazineapp.model.Year;
@@ -131,5 +132,9 @@ public class SubmissionRepo implements Repository<Submission> {
         }
 
         return null;
+    }
+
+    public ArrayList<Submission> getFromFaculty(Faculty faculty){
+        return getAll(); //TODO
     }
 }
