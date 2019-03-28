@@ -5,16 +5,23 @@
          version="3.1">
     <filter-mapping>
         <filter-name>AuthFilter</filter-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/tos.jsp</url-pattern>
+        <url-pattern>/submit.jsp</url-pattern>
+        <url-pattern>/viewSubmission.jsp</url-pattern>
+        <url-pattern>/upload-submission</url-pattern>
+        <url-pattern>/download-submission</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>RoleFilter</filter-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/submit.jsp</url-pattern>
+        <url-pattern>/viewSubmission.jsp</url-pattern>
+        <url-pattern>/upload-submission</url-pattern>
+        <url-pattern>/download-submission</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>SubmissionFilter</filter-name>
         <url-pattern>/submit.jsp</url-pattern>
-        <url-pattern>/file-upload</url-pattern>
+        <url-pattern>/upload-submission</url-pattern>
     </filter-mapping>
 </web-app>
 

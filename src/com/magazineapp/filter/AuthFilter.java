@@ -24,12 +24,6 @@ public class AuthFilter implements Filter
         HttpServletRequest  request  = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
-        if (FilterHelper.AUTH_URL_WHITE_LIST.contains(FilterHelper.getRelativePath(request)))
-        {
-            filterChain.doFilter(request, response);
-            return;
-        }
-
         HttpSession session = request.getSession(false); //dont auto create
 
         boolean isLoggedIn = session != null && session.getAttribute("user") != null;

@@ -36,13 +36,7 @@ public class RoleFilter implements Filter
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession         session  = request.getSession();
 
-        String relPath = FilterHelper.getRelativePath(request);
-
-        if (!FilterHelper.isAuthRequired(request))
-        {
-            filterChain.doFilter(request, response);
-            return;
-        }
+        String relPath = getRelativePath(request);
 
         User user = (User) session.getAttribute("user");
 
@@ -52,6 +46,11 @@ public class RoleFilter implements Filter
             response.sendError(HttpServletResponse.SC_FORBIDDEN);
         else
             filterChain.doFilter(request, response);
+    }
+
+    private static String getRelativePath(HttpServletRequest request)
+    {
+        return request.getRequestURI().substring(request.getContextPath().length());
     }
 
     @Override
