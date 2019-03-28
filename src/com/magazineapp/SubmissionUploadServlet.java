@@ -22,12 +22,9 @@ import com.magazineapp.service.NotificationService;
 import com.magazineapp.service.SubmissionPersistService;
 import org.apache.commons.lang.math.NumberUtils;
 
-/**
- * Servlet implementation class FileUploadServlet
- */
-@WebServlet("/file-upload")
+@WebServlet("/upload-submission")
 @MultipartConfig
-public class FileUploadServlet extends HttpServlet
+public class SubmissionUploadServlet extends HttpServlet
 {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {

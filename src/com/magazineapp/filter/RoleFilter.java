@@ -23,7 +23,7 @@ public class RoleFilter implements Filter
     {
         HashSet<String> url = new HashSet<>();
         url.add("/submit.jsp");
-        url.add("/file-upload");
+        url.add("/upload-submission");
         ROLE_URL_BLACKLIST.put("manager", url);
     }
 
@@ -38,7 +38,7 @@ public class RoleFilter implements Filter
 
         String relPath = FilterHelper.getRelativePath(request);
 
-        if (FilterHelper.AUTH_URL_WHITE_LIST.contains(relPath))
+        if (!FilterHelper.isAuthRequired(request))
         {
             filterChain.doFilter(request, response);
             return;

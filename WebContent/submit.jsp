@@ -95,7 +95,7 @@
                         <hr>
                     </div>
                     <div>
-                        <form id="uploadImage" enctype="multipart/form-data" method="post" action="file-upload">
+                        <form id="uploadImage" enctype="multipart/form-data" method="post" action="upload-submission">
                             <input type="hidden" name="id" value="<%=request.getParameter("id")%>"/>
                             <input id="fileupload" name="myfile" type="file"/><br>
                             <input type="submit"/>
