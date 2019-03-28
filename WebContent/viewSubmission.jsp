@@ -8,8 +8,18 @@
 
 <%
     User user = (User) session.getAttribute("user");
+    pageContext.setAttribute("user", user);
 
-    ArrayList<Submission> submissions = new SubmissionRepo().getFromAuthor(user);
+    ArrayList<Submission> submissions;
+    if (user.isStudent())
+        submissions = new SubmissionRepo().getFromAuthor(user);
+    else if (user.isCoordinator())
+        submissions = new SubmissionRepo().getFromFaculty(user.get_faculty());
+    else
+    {
+        response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+        return;
+    }
 
     request.setAttribute("submissions", submissions);
 %>
@@ -113,11 +123,27 @@
                         <display:column title="Author Email" property="_author._email"/>
                         <display:column title="Date" property="_date"/>
                         <display:column title="Year" property="shortYear"/>
-                        <display:column title="Comment" property="_comment"/>
+                        <display:column title="Comment">
+                            <form action="edit-comment">
+                                <textarea name="comment">
+                            <c:out value="${submission._comment}"/>
+                                </textarea>
+                                <input type="submit">
+                            </form>
+                        </display:column>
                         <display:column title="Action">
-                            <a href="download-submission/${submission._id}">Download</a> | 
-                            <a href="submit.jsp?id=${submission._id}">Resubmit</a> | 
-                            <a href="#!${submission._id}">Select</a>
+                            <c:if test="${user.student || user.coordinator || user.manager}">
+                                <a href="download-submission?id=${submission._id}">Download</a>
+                            </c:if>
+                            <c:if test="${user.student || user.coordinator}">
+                                &nbsp;|&nbsp;<a href="submit.jsp?id=${submission._id}">Resubmit</a>
+                            </c:if><c:if test="${user.student || user.coordinator}">
+                                &nbsp;|&nbsp;<a href="submit.jsp?id=${submission._id}">Resubmit</a>
+                            </c:if>
+                            <c:if test="${user.coordinator}">
+                                &nbsp;|&nbsp;<a href="select-submission?id=${submission._id}&value=true">Select</a>
+                                &nbsp;|&nbsp;<a href="select-submission?id=${submission._id}&value=false">Un-Select</a>
+                            </c:if>
                         </display:column>
                     </display:table>
                 </div>
