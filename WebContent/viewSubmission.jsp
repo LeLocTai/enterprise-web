@@ -137,8 +137,6 @@
                             </c:if>
                             <c:if test="${user.student || user.coordinator}">
                                 &nbsp;|&nbsp;<a href="submit.jsp?id=${submission._id}">Resubmit</a>
-                            </c:if><c:if test="${user.student || user.coordinator}">
-                                &nbsp;|&nbsp;<a href="submit.jsp?id=${submission._id}">Resubmit</a>
                             </c:if>
                             <c:if test="${user.coordinator}">
                                 &nbsp;|&nbsp;<a href="select-submission?id=${submission._id}&value=true">Select</a>
