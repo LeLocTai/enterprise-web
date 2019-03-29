@@ -142,7 +142,7 @@ public class SubmissionRepo implements Repository<Submission> {
                 + "WHERE f.Id = ?";
         try {
             ResultSet resultSet = DatabaseHelper.executeQuery(sql, stm -> {
-                stm.setInt(1, new Faculty().get_id());
+                stm.setInt(1, faculty.get_id());
             });
             while (resultSet.next()) {
                 submissions.add(extractObjectFrom(resultSet));
