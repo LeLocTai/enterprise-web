@@ -134,7 +134,23 @@ public class SubmissionRepo implements Repository<Submission> {
         return null;
     }
 
-    public ArrayList<Submission> getFromFaculty(Faculty faculty){
-        return getAll(); //TODO
+    public ArrayList<Submission> getFromFaculty(Faculty faculty) {
+        ArrayList<Submission> submissions = new ArrayList<>();
+        String sql = "SELECT * FROM submission\n"
+                + "JOIN user u ON submission.Author_Id = u.Id\n"
+                + "JOIN faculty f ON u.Faculty_Id = f.Id\n"
+                + "WHERE f.Id = ?";
+        try {
+            ResultSet resultSet = DatabaseHelper.executeQuery(sql, stm -> {
+                stm.setInt(1, new Faculty().get_id());
+            });
+            while (resultSet.next()) {
+                submissions.add(extractObjectFrom(resultSet));
+            }
+            return submissions;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
