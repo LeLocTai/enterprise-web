@@ -124,7 +124,7 @@
                         <display:column title="Date" property="_date"/>
                         <display:column title="Year" property="shortYear"/>
                         <display:column title="Comment">
-                            <form action="edit-comment">
+                            <form action="edit-comment" method="post">
                                 <textarea name="comment">
                             <c:out value="${submission._comment}"/>
                                 </textarea>
