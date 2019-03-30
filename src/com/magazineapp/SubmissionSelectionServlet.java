@@ -32,7 +32,7 @@ public class SubmissionSelectionServlet extends HttpServlet
         Submission     submission = repo.get(submissionId);
         if (submission == null)
         {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
 
