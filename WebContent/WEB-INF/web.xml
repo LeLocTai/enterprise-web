@@ -17,6 +17,8 @@
         <url-pattern>/viewSubmission.jsp</url-pattern>
         <url-pattern>/upload-submission</url-pattern>
         <url-pattern>/download-submission</url-pattern>
+        <url-pattern>/select-submission</url-pattern>
+        <url-pattern>/edit-comment</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>SubmissionFilter</filter-name>
