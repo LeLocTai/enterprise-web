@@ -125,9 +125,8 @@
                         <display:column title="Year" property="shortYear"/>
                         <display:column title="Comment">
                             <form action="edit-comment" method="post">
-                                <textarea name="comment">
-                            <c:out value="${submission._comment}"/>
-                                </textarea>
+                                <input type="hidden" name="id" value="${submission._id}">
+                                <textarea name="comment"><c:out value="${submission._comment}"/></textarea>
                                 <input type="submit">
                             </form>
                         </display:column>
