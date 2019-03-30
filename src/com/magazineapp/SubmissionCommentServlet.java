@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/edit-comment")
-public class EditCommentServlet extends HttpServlet
+public class SubmissionCommentServlet extends HttpServlet
 {
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException
