@@ -21,10 +21,20 @@ public class RoleFilter implements Filter
     @Override
     public void init(FilterConfig filterConfig) throws ServletException
     {
-        HashSet<String> url = new HashSet<>();
-        url.add("/submit.jsp");
-        url.add("/upload-submission");
-        ROLE_URL_BLACKLIST.put("manager", url);
+        HashSet<String> url1 = new HashSet<>();
+        url1.add("/edit-comment");
+        url1.add("/select-submission");
+        ROLE_URL_BLACKLIST.put("student", url1);
+
+        HashSet<String> url2 = new HashSet<>();
+        ROLE_URL_BLACKLIST.put("coordinator", url2);
+
+        HashSet<String> url3 = new HashSet<>();
+        url3.add("/submit.jsp");
+        url3.add("/upload-submission");
+        url3.add("/edit-comment");
+        url3.add("/select-submission");
+        ROLE_URL_BLACKLIST.put("manager", url3);
     }
 
 
