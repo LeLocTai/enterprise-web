@@ -1,7 +1,10 @@
 package com.magazineapp.model;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.sql.PreparedStatement; 
+import java.sql.ResultSet; 
+import java.sql.SQLException; 
+import java.util.ArrayList; 
+import java.util.Date; 
 
 public class Year {
     private int _id;
@@ -60,4 +63,25 @@ public class Year {
     public void set_submissions(ArrayList<Submission> _submissions) {
         this._submissions = _submissions;
     }
+        
+    public void fillStatement(PreparedStatement stm) throws SQLException 
+    { 
+        stm.setDate(1, (java.sql.Date) get_startDate()); 
+        stm.setDate(2, (java.sql.Date) get_endDate()); 
+        stm.setDate(3, (java.sql.Date) get_entry_ClosureDate()); 
+    } 
+     
+    public static Year fromResultSet(ResultSet resultSet) throws SQLException 
+    { 
+        Year year = null; 
+        if (resultSet.first()) 
+        { 
+            year = new Year(); 
+            year.set_id(resultSet.getInt("Id")); 
+            year.set_startDate(resultSet.getDate("StartDate")); 
+            year.set_endDate(resultSet.getDate("EndDate")); 
+            year.set_entry_ClosureDate(resultSet.getDate("Entry_ClosureDate")); 
+        } 
+        return year; 
+    } 
 }

@@ -1,21 +1,19 @@
 package com.magazineapp.filter;
 
-import com.magazineapp.model.User;
-
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.HashSet;
 
-@WebFilter(filterName = "authentication")
+@WebFilter(filterName = "AuthFilter")
 public class AuthFilter implements Filter
 {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException
     {
-
     }
 
     @Override
@@ -25,16 +23,19 @@ public class AuthFilter implements Filter
     {
         HttpServletRequest  request  = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
-        HttpSession         session  = request.getSession(false); //dont auto create
-        String              loginURI = request.getContextPath() + "/login.jsp";
 
-        boolean isLoggedIn      = session != null && session.getAttribute("user") != null;
-        boolean isTryingToLogin = request.getRequestURI().equals(loginURI);
+        HttpSession session = request.getSession(false); //dont auto create
 
-        if (isLoggedIn || isTryingToLogin)
+        boolean isLoggedIn = session != null && session.getAttribute("user") != null;
+
+        if (isLoggedIn)
+        {
             filterChain.doFilter(request, response);
-        else
-            response.sendRedirect(loginURI);
+        } else
+        {
+            request.getSession().setAttribute("Redirect", request.getRequestURI());
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
+        }
     }
 
     @Override

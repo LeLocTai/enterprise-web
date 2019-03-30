@@ -80,6 +80,19 @@ public class User
     {
     }
 
+    public boolean isStudent()
+    {
+        return _role.equalsIgnoreCase("student");
+    }
+    public boolean isCoordinator()
+    {
+        return _role.equalsIgnoreCase("coordinator");
+    }
+    public boolean isManager()
+    {
+        return _role.equalsIgnoreCase("manager");
+    }
+
     public void fillStatement(PreparedStatement stm) throws SQLException
     {
         stm.setString(1, get_role());

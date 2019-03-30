@@ -3,8 +3,8 @@ package com.magazineapp;
 import com.magazineapp.model.Submission;
 import com.magazineapp.model.User;
 import com.magazineapp.repository.SubmissionRepo;
+import org.apache.commons.lang.math.NumberUtils;
 
-import javax.mail.Session;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,23 +12,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
-@WebServlet("/download-submission/*")
+@WebServlet("/download-submission")
 public class SubmissionDownloadServlet extends HttpServlet
 {
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response) throws ServletException, IOException
     {
-        String submissionIdString = request.getPathInfo().substring(1);
-        int    submissionId;
-        try
-        {
-            submissionId = Integer.parseInt(submissionIdString);
-        } catch (NumberFormatException e)
+        String submissionIdString = request.getParameter("id");
+        int    submissionId       = NumberUtils.toInt(submissionIdString);
+        if (submissionId == 0)
         {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST);
             return;
         }
-        
+
         Submission submission = new SubmissionRepo().get(submissionId);
         if (submission == null) return;
 
