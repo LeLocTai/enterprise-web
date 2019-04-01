@@ -3,6 +3,7 @@ package com.magazineapp;
 import com.magazineapp.model.Submission;
 import com.magazineapp.model.User;
 import com.magazineapp.repository.SubmissionRepo;
+import com.magazineapp.service.FileSystemService;
 import org.apache.commons.lang.math.NumberUtils;
 
 import javax.servlet.ServletException;
@@ -43,11 +44,14 @@ public class SubmissionDownloadServlet extends HttpServlet
         response.setHeader("Content-Transfer-Encoding", "binary");
         response.setHeader("Content-Disposition", "attachment; filename=\"" + file.getName() + "\"");
 
-        copyBuffered(
-                new FileInputStream(file),
-                response.getOutputStream(),
-                new byte[1024 * 4]
-        );
+        try (FileInputStream submissionFileInStream = new FileInputStream(file))
+        {
+            FileSystemService.transferStreamsBuffered(
+                    submissionFileInStream,
+                    response.getOutputStream(),
+                    1024 * 4
+            );
+        }
     }
 
     private boolean isAuthorized(Submission submission, User authUser)
@@ -63,17 +67,5 @@ public class SubmissionDownloadServlet extends HttpServlet
             return true;
 
         return false;
-    }
-
-    private void copyBuffered(InputStream from, OutputStream to, byte[] buffer) throws IOException
-    {
-        int nextLength;
-        while ((nextLength = from.read(buffer)) > 0)
-        {
-            to.write(buffer, 0, nextLength);
-        }
-
-        from.close();
-        to.flush();
     }
 }
