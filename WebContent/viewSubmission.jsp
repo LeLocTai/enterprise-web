@@ -124,10 +124,10 @@
                         <display:column title="Date" property="_date"/>
                         <display:column title="Year" property="shortYear"/>
                         <display:column title="Comment">
-                            <form action="edit-comment" method="post">
+                            <form action="edit-comment" method="post" id="comment">
                                 <input type="hidden" name="id" value="${submission._id}">
                                 <textarea name="comment"><c:out value="${submission._comment}"/></textarea>
-                                <input type="submit">
+                                <input type="button" name="Send" id="send" onclick="load_ajax()" value="send">
                             </form>
                         </display:column>
                         <display:column title="Action">
@@ -140,10 +140,10 @@
                             <c:if test="${user.coordinator}">
                                 <c:choose>
                                     <c:when test="${submission._is_Selected}">
-                                        &nbsp;|&nbsp;<a href="select-submission?id=${submission._id}&value=false">Un-Select</a>
+                                        &nbsp;|&nbsp;<a class="un-select" href="select-submission?id=${submission._id}&value=false" >Un-Select</a>
                                     </c:when>
                                     <c:otherwise>
-                                        &nbsp;|&nbsp;<a href="select-submission?id=${submission._id}&value=true">Select</a>
+                                        &nbsp;|&nbsp;<a class="select" href="select-submission?id=${submission._id}&value=true" >Select</a>
                                     </c:otherwise>
                                 </c:choose>
                             </c:if>
@@ -209,6 +209,35 @@
 
 <!--search-bar-->
 <script src="js/responsiveslides.min.js"></script>
+<script type="text/javascript">
+    function load_ajax()
+    {
+        $.ajax({
+            url : 'viewSubmission.jsp',
+            type: 'POST',
+            dataType: 'text',
+            success: function(){
+                alert("success");
+            }
+        });
+    }
+</script>
+<script>
+    $('.select').on('click', function (event) {
+    event.preventDefault();
+    $.ajax({
+        method: 'POST',
+        url: 'viewSubmission.jsp',
+        data: {
+           
+        }
+    }).done(function() {
+        // add button change here
+        // select the buttons I'd and manipulate e.g.
+       $('#buttonID').html('change');
+   });
+});
+</script>
 <script>
     $(function () {
         $("#slider4").responsiveSlides({
