@@ -52,7 +52,5 @@ public class FileSystemService
         {
             to.write(buffer, 0, nextLength);
         }
-
-        to.flush();
     }
 }
