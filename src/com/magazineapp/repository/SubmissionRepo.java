@@ -1,6 +1,9 @@
 package com.magazineapp.repository;
 
+import com.magazineapp.model.Faculty;
 import com.magazineapp.model.Submission;
+import com.magazineapp.model.User;
+import com.magazineapp.model.Year;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,6 +16,7 @@ public class SubmissionRepo implements Repository<Submission> {
         submission.set_path(resultSet.getString("Path"));
         submission.set_author(new UserRepo().get(resultSet.getInt("Author_Id")));
         submission.set_date(resultSet.getDate("Date"));
+        submission.set_year(new YearRepo().get(resultSet.getInt("Year_Id")));
         submission.set_has_Sent_Notice(resultSet.getBoolean("Has_Sent_Notice"));
         submission.set_comment(resultSet.getString("Comment"));
         submission.set_is_Selected(resultSet.getBoolean("Is_Selected"));
@@ -100,6 +104,53 @@ public class SubmissionRepo implements Repository<Submission> {
 
     @Override
     public int remove(int id) {
+        String sql = "DELETE FROM Submission WHERE Id = ?";
+        try {
+            return DatabaseHelper.executeUpdate(sql, stm -> {
+                stm.setInt(1, id);
+            });
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return 0;
+    }
+
+    public ArrayList<Submission> getFromAuthor(User author) {
+        String sql = "SELECT * FROM Submission WHERE Author_Id = ?";
+        ArrayList<Submission> submissions = new ArrayList<>();
+        try {
+            ResultSet resultSet = DatabaseHelper.executeQuery(sql, stm -> {
+                stm.setInt(1, author.get_id());
+            });
+
+            while (resultSet.next()) {
+                submissions.add(extractObjectFrom(resultSet));
+            }
+            return submissions;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public ArrayList<Submission> getFromFaculty(Faculty faculty) {
+        ArrayList<Submission> submissions = new ArrayList<>();
+        String sql = "SELECT * FROM submission\n"
+                + "JOIN user u ON submission.Author_Id = u.Id\n"
+                + "JOIN faculty f ON u.Faculty_Id = f.Id\n"
+                + "WHERE f.Id = ?";
+        try {
+            ResultSet resultSet = DatabaseHelper.executeQuery(sql, stm -> {
+                stm.setInt(1, faculty.get_id());
+            });
+            while (resultSet.next()) {
+                submissions.add(extractObjectFrom(resultSet));
+            }
+            return submissions;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

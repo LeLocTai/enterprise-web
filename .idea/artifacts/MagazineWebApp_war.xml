@@ -1,11 +1,8 @@
 <component name="ArtifactManager">
   <artifact type="war" build-on-make="true" name="MagazineWebApp:war">
-    <output-path>$PROJECT_DIR$/out/artifacts/</output-path>
-    <root id="archive" name="MagazineWebApp.war">
+    <output-path>$PROJECT_DIR$/out/artifacts/MagazineWebApp_war</output-path>
+    <root id="archive" name="MagazineWebApp_war.war">
       <element id="artifact" artifact-name="MagazineWebApp:war exploded" />
-      <element id="directory" name=".ebextensions">
-        <element id="dir-copy" path="$PROJECT_DIR$/.ebextensions" />
-      </element>
     </root>
   </artifact>
 </component>

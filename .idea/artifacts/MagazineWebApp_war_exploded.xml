@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="MagazineWebApp:war exploded">
+  <artifact type="exploded-war" build-on-make="true" name="MagazineWebApp:war exploded">
     <output-path>$PROJECT_DIR$/out/artifacts/MagazineWebApp_war_exploded</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
@@ -7,8 +7,7 @@
           <element id="module-output" name="MagazineWebApp" />
         </element>
         <element id="directory" name="lib">
-          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/javax.mail.jar" />
-          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/mariadb-java-client-2.4.0.jar" />
+          <element id="dir-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="MagazineWebApp/web/Web" />

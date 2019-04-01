@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/tos.jsp</url-pattern>
+        <url-pattern>/submit.jsp</url-pattern>
+        <url-pattern>/viewSubmission.jsp</url-pattern>
+        <url-pattern>/upload-submission</url-pattern>
+        <url-pattern>/download-submission</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>RoleFilter</filter-name>
+        <url-pattern>/submit.jsp</url-pattern>
+        <url-pattern>/viewSubmission.jsp</url-pattern>
+        <url-pattern>/upload-submission</url-pattern>
+        <url-pattern>/download-submission</url-pattern>
+        <url-pattern>/select-submission</url-pattern>
+        <url-pattern>/edit-comment</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SubmissionFilter</filter-name>
+        <url-pattern>/submit.jsp</url-pattern>
+        <url-pattern>/upload-submission</url-pattern>
+    </filter-mapping>
+</web-app>
+
