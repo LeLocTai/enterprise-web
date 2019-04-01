@@ -17,8 +17,6 @@ import java.util.Date;
 
 public class SubmissionPersistService
 {
-    private static final String UPLOAD_FOLDER_NAME = "magazineApp/upload-root";
-
     private Part filePart;
     private User author;
 
@@ -76,23 +74,12 @@ public class SubmissionPersistService
     {
         String submittedFileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
         Path fullFilePath = Paths.get(
-                getUploadRoot().toString(),
+                FileSystemService.getUploadFolderPath().toString(),
                 getUniqueName(submittedFileName)
         );
 
         Files.copy(filePart.getInputStream(), fullFilePath, StandardCopyOption.REPLACE_EXISTING);
         return fullFilePath.toString();
-    }
-
-    private Path getUploadRoot()
-    {
-        String userHome       = System.getProperty("user.home");
-        Path   uploadRootPath = Paths.get(userHome, UPLOAD_FOLDER_NAME);
-
-        File uploadRootDir = uploadRootPath.toFile();
-        if (!uploadRootDir.exists()) uploadRootDir.mkdirs();
-
-        return uploadRootPath;
     }
 
     private String getUniqueName(String baseName)
