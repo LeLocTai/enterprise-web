@@ -23,9 +23,9 @@ public class FileSystemService
 
     public static Path getZipFilePath()
     {
-        Path path = Paths.get(getAppDataPath().toString(), ZIP_FILE_NAME);
-        makeSurePathExists(path);
-        return path;
+        Path root = getAppDataPath();
+        makeSurePathExists(root);
+        return Paths.get(root.toString(), ZIP_FILE_NAME);
     }
 
     public static Path getAppDataPath()
