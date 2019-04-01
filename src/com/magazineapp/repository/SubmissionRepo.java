@@ -3,7 +3,6 @@ package com.magazineapp.repository;
 import com.magazineapp.model.Faculty;
 import com.magazineapp.model.Submission;
 import com.magazineapp.model.User;
-import com.magazineapp.model.Year;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -120,6 +119,7 @@ public class SubmissionRepo implements Repository<Submission> {
 
     public ArrayList<Submission> getFromAuthor(User author) {
         String sql = "SELECT * FROM Submission WHERE Author_Id = ?";
+        
         return getSubmissionsFromIdBasedQuery(sql, author.get_id());
     }
 
@@ -128,6 +128,7 @@ public class SubmissionRepo implements Repository<Submission> {
                      + "JOIN user u ON submission.Author_Id = u.Id\n"
                      + "JOIN faculty f ON u.Faculty_Id = f.Id\n"
                      + "WHERE f.Id = ?";
+        
         return getSubmissionsFromIdBasedQuery(sql, faculty.get_id());
     }
 
