@@ -3,7 +3,7 @@ package com.magazineapp;
 import com.magazineapp.model.Submission;
 import com.magazineapp.model.User;
 import com.magazineapp.repository.SubmissionRepo;
-import com.magazineapp.service.FileSystemService;
+import com.magazineapp.service.HttpResponseService;
 import org.apache.commons.lang.math.NumberUtils;
 
 import javax.servlet.ServletException;
@@ -37,21 +37,9 @@ public class SubmissionDownloadServlet extends HttpServlet
             return;
         }
 
-        File file = new File(submission.get_path());
+        File submissionFile = new File(submission.get_path());
 
-        response.setContentType("application/force-download");
-        response.setContentLength((int) file.length());
-        response.setHeader("Content-Transfer-Encoding", "binary");
-        response.setHeader("Content-Disposition", "attachment; filename=\"" + file.getName() + "\"");
-
-        try (FileInputStream submissionFileInStream = new FileInputStream(file))
-        {
-            FileSystemService.transferStreamsBuffered(
-                    submissionFileInStream,
-                    response.getOutputStream(),
-                    1024 * 4
-            );
-        }
+        HttpResponseService.ForceDownload(response, submissionFile);
     }
 
     private boolean isAuthorized(Submission submission, User authUser)
