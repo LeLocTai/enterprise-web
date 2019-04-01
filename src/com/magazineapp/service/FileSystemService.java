@@ -44,6 +44,11 @@ public class FileSystemService
         if (!uploadRootDir.exists()) uploadRootDir.mkdirs();
     }
 
+    public static void transferStreamsBuffered(InputStream from, OutputStream to) throws IOException
+    {
+        transferStreamsBuffered(from, to, 1024 * 4);
+    }
+
     public static void transferStreamsBuffered(InputStream from, OutputStream to, int bufferSize) throws IOException
     {
         byte[] buffer = new byte[bufferSize];
