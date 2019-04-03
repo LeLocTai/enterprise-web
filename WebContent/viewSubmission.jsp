@@ -17,8 +17,7 @@
         submissions = new SubmissionRepo().getFromFaculty(user.get_faculty());
     else
     {
-        response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-        return;
+        submissions = new SubmissionRepo().getSelected();
     }
 
     request.setAttribute("submissions", submissions);
