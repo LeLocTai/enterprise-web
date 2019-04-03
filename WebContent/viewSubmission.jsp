@@ -124,11 +124,16 @@
                         <display:column title="Date" property="_date"/>
                         <display:column title="Year" property="shortYear"/>
                         <display:column title="Comment">
-                            <form action="edit-comment" method="post">
-                                <input type="hidden" name="id" value="${submission._id}">
-                                <textarea name="comment"><c:out value="${submission._comment}"/></textarea>
-                                <input type="submit">
-                            </form>
+                            <c:if test="${user.coordinator}">
+                                <form action="edit-comment" method="post">
+                                    <input type="hidden" name="id" value="${submission._id}">
+                                    <textarea name="comment"><c:out value="${submission._comment}"/></textarea>
+                                    <input type="submit">
+                                </form>
+                            </c:if>
+                            <c:if test="${!user.coordinator}">
+                                <c:out value="${submission._comment}"/>
+                            </c:if>
                         </display:column>
                         <display:column title="Action">
                             <c:if test="${user.student || user.coordinator || user.manager}">
@@ -138,14 +143,12 @@
                                 &nbsp;|&nbsp;<a href="submit.jsp?id=${submission._id}">Resubmit</a>
                             </c:if>
                             <c:if test="${user.coordinator}">
-                                <c:choose>
-                                    <c:when test="${submission._is_Selected}">
-                                        &nbsp;|&nbsp;<a href="select-submission?id=${submission._id}&value=false">Un-Select</a>
-                                    </c:when>
-                                    <c:otherwise>
-                                        &nbsp;|&nbsp;<a href="select-submission?id=${submission._id}&value=true">Select</a>
-                                    </c:otherwise>
-                                </c:choose>
+                                <c:if test="${submission._is_Selected}">
+                                    &nbsp;|&nbsp;<a href="select-submission?id=${submission._id}&value=false">Un-Select</a>
+                                </c:if>
+                                <c:if test="${!submission._is_Selected}">
+                                    &nbsp;|&nbsp;<a href="select-submission?id=${submission._id}&value=true">Select</a>
+                                </c:if>
                             </c:if>
                         </display:column>
                     </display:table>
