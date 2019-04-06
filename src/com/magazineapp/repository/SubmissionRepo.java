@@ -3,6 +3,7 @@ package com.magazineapp.repository;
 import com.magazineapp.model.Faculty;
 import com.magazineapp.model.Submission;
 import com.magazineapp.model.User;
+import com.magazineapp.model.Year;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -132,7 +133,8 @@ public class SubmissionRepo implements Repository<Submission> {
         return getSubmissionsFromIdBasedQuery(sql, faculty.get_id());
     }
 
-    public ArrayList<Submission> getSelected() {
-        return getAll();
+    public ArrayList<Submission> getSelected(Year year) {
+        String sql = "SELECT * FROM Submission WHERE Is_Selected = true && Year_Id = ?";
+        return getSubmissionsFromIdBasedQuery(sql, year.get_id());
     }
 }
