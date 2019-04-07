@@ -124,10 +124,10 @@
                         <display:column title="Date" property="_date"/>
                         <display:column title="Year" property="shortYear"/>
                         <display:column title="Comment">
-                            <form action="edit-comment" method="post" id="comment">
-                                <input type="hidden" name="id" value="${submission._id}">
-                                <textarea name="comment"><c:out value="${submission._comment}"/></textarea>
-                                <input type="button" name="Send" id="send" onclick="load_ajax()" value="send">
+                            <form action="edit-comment" method="post" class="comment" data-sid="${submission._id}">
+                                <input type="hidden" name="id" value="${submission._id}" id="sid-${submission._id}">
+                                <textarea name="comment" id="comment-${submission._id}"><c:out value="${submission._comment}"/></textarea>
+                                <input type="submit" name="Send" value="send">
                             </form>
                         </display:column>
                         <display:column title="Action">
@@ -140,10 +140,10 @@
                             <c:if test="${user.coordinator}">
                                 <c:choose>
                                     <c:when test="${submission._is_Selected}">
-                                        &nbsp;|&nbsp;<a class="un-select" href="select-submission?id=${submission._id}&value=false" >Un-Select</a>
+                                        &nbsp;|&nbsp;<a class="btn un-select selected" href="select-submission?id=${submission._id}&value=false" >Un-Select</a>
                                     </c:when>
                                     <c:otherwise>
-                                        &nbsp;|&nbsp;<a class="select" href="select-submission?id=${submission._id}&value=true" >Select</a>
+                                        &nbsp;|&nbsp;<a class="btn select selected" href="select-submission?id=${submission._id}&value=true" >Select</a>
                                     </c:otherwise>
                                 </c:choose>
                             </c:if>
@@ -210,33 +210,38 @@
 <!--search-bar-->
 <script src="js/responsiveslides.min.js"></script>
 <script type="text/javascript">
-    function load_ajax()
+    $(".comment").submit((event)=>
     {
-        $.ajax({
-            url : 'viewSubmission.jsp',
-            type: 'POST',
-            dataType: 'text',
-            success: function(){
-                alert("success");
-            }
-        });
-    }
+        event.preventDefault()
+        var form = $(event.target);
+        var data = form.serializeArray()
+        
+        $.post( 'edit-comment', {
+            id: data[0].value,
+            comment: data[1].value
+        })
+        .done(()=>{});
+    })   
 </script>
 <script>
-    $('.select').on('click', function (event) {
-    event.preventDefault();
-    $.ajax({
-        method: 'POST',
-        url: 'viewSubmission.jsp',
-        data: {
-           
-        }
-    }).done(function() {
-        // add button change here
-        // select the buttons I'd and manipulate e.g.
-       $('#buttonID').html('change');
-   });
-});
+    $(document).ready(function () {
+            $("").click(function(){
+                var data_test = 'This is first demo';
+                $.ajax({
+                    url: 'viewSubmission.jsp',
+                    type: 'POST',
+                    data: ,
+                    success: function (data) {
+                        setTimeout(function(){
+                            $('#demo-ajax').html(data);
+                        }, 1000);
+                    },
+                    error: function (e) {
+                        console.log(e.message);
+                    }
+                });
+            });
+        });
 </script>
 <script>
     $(function () {
