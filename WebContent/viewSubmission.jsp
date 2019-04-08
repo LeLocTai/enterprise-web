@@ -227,17 +227,16 @@
         .done(()=>{});
     })   
 </script>
-<script type="text/javascript">/*
-    select-submission?id=${submission._id}&value=false
-    $(".btn").submit((event)=>
+<script type="text/javascript">
+    $(".value").submit((event)=>
     {
         event.preventDefault()
         var form = $(event.target);
         var data = form.serializeArray()
         
-        $.post( 'edit-comment', {
+        $.post( 'select-submission', {
             id: data[0].value,
-            comment: data[1].value
+            value: data[1].value
         })
         .done(()=>{});
     })  */
