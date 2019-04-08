@@ -11,14 +11,14 @@
     pageContext.setAttribute("user", user);
 
     ArrayList<Submission> submissions;
-    if (user.isStudent())
+    if (user == null)
+        submissions = new SubmissionRepo().getSelected();
+    else if (user.isStudent())
         submissions = new SubmissionRepo().getFromAuthor(user);
     else if (user.isCoordinator())
         submissions = new SubmissionRepo().getFromFaculty(user.get_faculty());
-    else
-    {
-        response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-        return;
+    else {
+        submissions = new SubmissionRepo().getSelected();
     }
 
     request.setAttribute("submissions", submissions);
@@ -124,12 +124,18 @@
                         <display:column title="Date" property="_date"/>
                         <display:column title="Year" property="shortYear"/>
                         <display:column title="Comment">
-                            <form action="edit-comment">
-                                <textarea name="comment">
-                            <c:out value="${submission._comment}"/>
-                                </textarea>
-                                <input type="submit">
-                            </form>
+                            <c:choose>
+                                <c:when test="${user.coordinator && !submission.overCommentingDeadline}">
+                                    <form action="edit-comment" method="post" class="comment-form">
+                                        <input type="hidden" name="id" value="${submission._id}">
+                                        <textarea name="comment"><c:out value="${submission._comment}"/></textarea>
+                                        <input type="submit">
+                                    </form>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:out value="${submission._comment}"/>
+                                </c:otherwise>
+                            </c:choose>
                         </display:column>
                         <display:column title="Action">
                             <c:if test="${user.student || user.coordinator || user.manager}">
@@ -139,14 +145,11 @@
                                 &nbsp;|&nbsp;<a href="submit.jsp?id=${submission._id}">Resubmit</a>
                             </c:if>
                             <c:if test="${user.coordinator}">
-                                <c:choose>
-                                    <c:when test="${submission._is_Selected}">
-                                        &nbsp;|&nbsp;<a href="select-submission?id=${submission._id}&value=false">Un-Select</a>
-                                    </c:when>
-                                    <c:otherwise>
-                                        &nbsp;|&nbsp;<a href="select-submission?id=${submission._id}&value=true">Select</a>
-                                    </c:otherwise>
-                                </c:choose>
+                                <form action="select-submission" method="post">
+                                    <input type="hidden" name="id" value="${submission._id}">
+                                    <input type="hidden" name="value" value="${!submission._is_Selected}">
+                                    <input type="submit" value="${submission._is_Selected?"Un-Select":"Select"}">
+                                </form>
                             </c:if>
                         </display:column>
                     </display:table>
@@ -210,6 +213,55 @@
 
 <!--search-bar-->
 <script src="js/responsiveslides.min.js"></script>
+<script type="text/javascript">
+    $(".comment-form").submit((event)=>
+    {
+        event.preventDefault()
+        var form = $(event.target);
+        var data = form.serializeArray()
+        
+        $.post( 'edit-comment', {
+            id: data[0].value,
+            comment: data[1].value
+        })
+        .done(()=>{});
+    })   
+</script>
+<script type="text/javascript">/*
+    select-submission?id=${submission._id}&value=false
+    $(".btn").submit((event)=>
+    {
+        event.preventDefault()
+        var form = $(event.target);
+        var data = form.serializeArray()
+        
+        $.post( 'edit-comment', {
+            id: data[0].value,
+            comment: data[1].value
+        })
+        .done(()=>{});
+    })  */
+</script>
+<script>/*
+    $(document).ready(function () {
+            $("").click(function(){
+                var data_test = 'This is first demo';
+                $.ajax({
+                    url: 'viewSubmission.jsp',
+                    type: 'POST',
+                    data: ,
+                    success: function (data) {
+                        setTimeout(function(){
+                            $('#demo-ajax').html(data);
+                        }, 1000);
+                    },
+                    error: function (e) {
+                        console.log(e.message);
+                    }
+                });
+            });
+        });*/
+</script>
 <script>
     $(function () {
         $("#slider4").responsiveSlides({
@@ -239,8 +291,6 @@
         });
     });
 </script>
-<!-- start-smoth-scrolling -->
-
 
 <a href="#home" class="scroll" id="toTop" style="display: block;">
     <span id="toTopHover" style="opacity: 1;"> </span>

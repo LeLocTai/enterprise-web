@@ -57,17 +57,24 @@ public class DatabaseHelper
     {
         return new UserRepo().get(1);
     }
+
+    public static User getTestStudent2()
+    {
+        return new UserRepo().get(5);
+    }
+
     public static User getTestCoordinator()
     {
         return new UserRepo().get(2);
     }
+
+    public static User getTestCoordinator2()
+    {
+        return new UserRepo().get(4);
+    }
+
     public static User getTestManager()
     {
         return new UserRepo().get(3);
-    }
-
-    public static Year getTestYear()
-    {
-        return new YearRepo().get(1);
     }
 }

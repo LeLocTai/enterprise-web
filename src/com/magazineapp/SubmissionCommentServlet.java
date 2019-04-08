@@ -2,7 +2,7 @@ package com.magazineapp;
 
 import com.magazineapp.model.Submission;
 import com.magazineapp.repository.SubmissionRepo;
-import org.apache.commons.lang.BooleanUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
 
 import javax.servlet.ServletException;
@@ -12,12 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/select-submission")
-public class SubmissionSelectionServlet extends HttpServlet
+@WebServlet("/edit-comment")
+public class SubmissionCommentServlet extends HttpServlet
 {
-    @Override
     protected void doPost(HttpServletRequest request,
-                         HttpServletResponse response) throws ServletException, IOException
+                          HttpServletResponse response) throws ServletException, IOException
     {
         int submissionId = NumberUtils.toInt(request.getParameter("id"));
         if (submissionId < 1)
@@ -26,24 +25,35 @@ public class SubmissionSelectionServlet extends HttpServlet
             return;
         }
 
-        boolean isBeingSelected = BooleanUtils.toBoolean(request.getParameter("value"));
+        String comment = request.getParameter("comment");
+        if (comment == null)
+        {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+            return;
+        }
 
-        SubmissionRepo repo       = new SubmissionRepo();
-        Submission     submission = repo.get(submissionId);
+        SubmissionRepo repo = new SubmissionRepo();
+
+        Submission submission = repo.get(submissionId);
         if (submission == null)
         {
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
+        if (submission.isOverCommentingDeadline())
+        {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN);
+            return;
+        }
 
-        submission.set_is_Selected(isBeingSelected);
+        submission.set_comment(StringUtils.strip(comment));
         repo.update(submission);
 
         response.setStatus(HttpServletResponse.SC_OK);
         response.getWriter().write(String.format(
-                "{\n  \"id\": \"%d\",\n  \"selected\": \"%s\"\n}",
+                "{\n  \"id\": \"%d\",\n  \"comment\": \"%s\"\n}",
                 submissionId,
-                BooleanUtils.toStringTrueFalse(isBeingSelected)
+                comment
         ));
         response.getWriter().flush();
     }
