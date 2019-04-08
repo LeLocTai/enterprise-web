@@ -129,6 +129,10 @@ public class SubmissionRepo implements Repository<Submission> {
         return getSubmissionsFromIdBasedQuery(sql, faculty.get_id());
     }
 
+    public ArrayList<Submission> getSelected() {
+        return getSelected(new YearRepo().getCurrentYear());
+    }
+
     public ArrayList<Submission> getSelected(Year year) {
         String sql = "SELECT * FROM Submission WHERE Is_Selected = true && Year_Id = ?";
         return getSubmissionsFromIdBasedQuery(sql, year.get_id());
