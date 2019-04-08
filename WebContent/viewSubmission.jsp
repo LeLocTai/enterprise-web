@@ -84,7 +84,10 @@
                                 <a class="active" href="viewSubmission.jsp">View Submission</a>
                             </li>
                             <li>
-                                <a href="contact.jsp">Contact</a>
+                                <a href="login.jsp">Login</a>
+                            </li>
+                            <li>
+                                <a href="logout.jsp">Logout</a>
                             </li>
                         </ul>
                     </nav>
