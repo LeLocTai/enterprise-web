@@ -12,19 +12,22 @@ public class ReportDataService
 
     private Hashtable<Integer, JSONObject> yearIdObjectDict = new Hashtable<>();
 
-    public static String GetJsonString()
+    public static String GetDataInRange(Date from, Date to)
     {
         ReportDataService instance = new ReportDataService();
-        instance.ExecuteProcedure();
+        instance.ExecuteProcedure(from, to);
         return instance.json.toString();
     }
 
-    private void ExecuteProcedure()
+    private void ExecuteProcedure(Date from, Date to)
     {
-        final String sql = "CALL Get_report_data()";
+        final String sql = "CALL Get_report_data(?,?)";
         try (Connection connection = DatabaseHelper.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql))
         {
+            statement.setDate(1, from);
+            statement.setDate(2, to);
+
             statement.execute();
             ResultSet resultSet = statement.getResultSet();
             processOverviewData(resultSet);
