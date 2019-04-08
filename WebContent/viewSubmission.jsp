@@ -145,14 +145,11 @@
                                 &nbsp;|&nbsp;<a href="submit.jsp?id=${submission._id}">Resubmit</a>
                             </c:if>
                             <c:if test="${user.coordinator}">
-                                <c:choose>
-                                    <c:when test="${submission._is_Selected}">
-                                        &nbsp;|&nbsp;<a href="select-submission?id=${submission._id}&value=false">Un-Select</a>
-                                    </c:when>
-                                    <c:otherwise>
-                                        &nbsp;|&nbsp;<a href="select-submission?id=${submission._id}&value=true">Select</a>
-                                    </c:otherwise>
-                                </c:choose>
+                                <form action="select-submission" method="post">
+                                    <input type="hidden" name="id" value="${submission._id}">
+                                    <input type="hidden" name="value" value="${!submission._is_Selected}">
+                                    <input type="submit" value="${submission._is_Selected?"Un-Select":"Select"}">
+                                </form>
                             </c:if>
                         </display:column>
                     </display:table>
