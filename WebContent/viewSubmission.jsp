@@ -118,6 +118,9 @@
                 <div class="row">
                 </div><!-- /.row -->
                 <div class="bs-docs-example">
+                    <c:if test="${user != null && user.manager}">
+                        <a href="download-selected-as-zip">Download all selected submissions</a>
+                    </c:if>
                     <display:table name="submissions" id="submission" class="table"
                                    decorator="com.magazineapp.service.SubmissionTableDecorator">
                         <display:column title="Author Email" property="_author._email"/>
