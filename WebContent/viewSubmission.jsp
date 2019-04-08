@@ -223,6 +223,21 @@
         .done(()=>{});
     })   
 </script>
+<script type="text/javascript">
+    select-submission?id=${submission._id}&value=false
+    $(".btn").submit((event)=>
+    {
+        event.preventDefault()
+        var form = $(event.target);
+        var data = form.serializeArray()
+        
+        $.post( 'edit-comment', {
+            id: data[0].value,
+            comment: data[1].value
+        })
+        .done(()=>{});
+    })  
+</script>
 <script>
     $(document).ready(function () {
             $("").click(function(){
@@ -272,8 +287,6 @@
         });
     });
 </script>
-<!-- start-smoth-scrolling -->
-
 
 <a href="#home" class="scroll" id="toTop" style="display: block;">
     <span id="toTopHover" style="opacity: 1;"> </span>
