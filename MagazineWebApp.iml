@@ -36,6 +36,8 @@
         </CLASSES>
         <JAVADOC>
           <root url="https://commons.apache.org/proper/commons-lang/javadocs/api-2.3/" />
+          <root url="file://$USER_HOME$/glassfish5/docs" />
+          <root url="https://javaee.github.io/javaee-spec/javadocs/" />
         </JAVADOC>
         <SOURCES />
         <jarDirectory url="file://$MODULE_DIR$/WebContent/WEB-INF/lib" recursive="false" />
