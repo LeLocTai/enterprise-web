@@ -283,7 +283,7 @@
                 <span>university</span>
             </a>
         </h2>
-        <p> 2019 Fettle. All rights reserved | Design by
+        <p>© 2019 Fettle. All rights reserved | Design by
             <a href="">Sandra0710</a>
         </p>
         <div class="clearfix"></div>

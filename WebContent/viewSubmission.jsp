@@ -234,7 +234,6 @@
     })
 </script>
 <script type="text/javascript">/*
-    select-submission?id=${submission._id}&value=false
     $(".btn").submit((event)=>
     {
         event.preventDefault()
