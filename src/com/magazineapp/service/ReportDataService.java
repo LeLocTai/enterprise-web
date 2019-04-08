@@ -27,7 +27,7 @@ public class ReportDataService
         {
             statement.execute();
             ResultSet resultSet = statement.getResultSet();
-            getOverviewData(resultSet);
+            processOverviewData(resultSet);
 
             statement.getMoreResults(Statement.CLOSE_CURRENT_RESULT);
             resultSet = statement.getResultSet();
@@ -38,7 +38,7 @@ public class ReportDataService
         }
     }
 
-    private void getOverviewData(ResultSet resultSet) throws SQLException
+    private void processOverviewData(ResultSet resultSet) throws SQLException
     {
         while (resultSet.next())
         {
