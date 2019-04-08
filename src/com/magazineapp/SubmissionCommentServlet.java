@@ -2,8 +2,6 @@ package com.magazineapp;
 
 import com.magazineapp.model.Submission;
 import com.magazineapp.repository.SubmissionRepo;
-import org.apache.commons.lang.BooleanUtils;
-import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
 
@@ -42,10 +40,13 @@ public class SubmissionCommentServlet extends HttpServlet
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
+        if (submission.isOverCommentingDeadline())
+        {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN);
+            return;
+        }
 
-        comment = StringUtils.strip(comment);
-        
-        submission.set_comment(comment);
+        submission.set_comment(StringUtils.strip(comment));
         repo.update(submission);
 
         response.setStatus(HttpServletResponse.SC_OK);

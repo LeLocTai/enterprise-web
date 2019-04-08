@@ -7,14 +7,12 @@
         <filter-name>AuthFilter</filter-name>
         <url-pattern>/tos.jsp</url-pattern>
         <url-pattern>/submit.jsp</url-pattern>
-        <url-pattern>/viewSubmission.jsp</url-pattern>
         <url-pattern>/upload-submission</url-pattern>
         <url-pattern>/download-submission</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>RoleFilter</filter-name>
         <url-pattern>/submit.jsp</url-pattern>
-        <url-pattern>/viewSubmission.jsp</url-pattern>
         <url-pattern>/upload-submission</url-pattern>
         <url-pattern>/download-submission</url-pattern>
         <url-pattern>/select-submission</url-pattern>

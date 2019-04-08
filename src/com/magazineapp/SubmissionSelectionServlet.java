@@ -16,7 +16,7 @@ import java.io.IOException;
 public class SubmissionSelectionServlet extends HttpServlet
 {
     @Override
-    protected void doGet(HttpServletRequest request,
+    protected void doPost(HttpServletRequest request,
                          HttpServletResponse response) throws ServletException, IOException
     {
         int submissionId = NumberUtils.toInt(request.getParameter("id"));

@@ -6,6 +6,8 @@ import com.magazineapp.repository.YearRepo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 
 public class Submission
@@ -102,6 +104,12 @@ public class Submission
     public void set_year(Year _year)
     {
         this._year = _year;
+    }
+
+    public boolean isOverCommentingDeadline()
+    {
+        LocalDate commentDeadline = ((java.sql.Date) get_date()).toLocalDate().plusDays(14);
+        return LocalDate.now().isAfter(commentDeadline);
     }
 
     public Submission(String _path,
