@@ -126,7 +126,7 @@
                         <display:column title="Comment">
                             <c:choose>
                                 <c:when test="${user.coordinator && !submission.overCommentingDeadline}">
-                                    <form action="edit-comment" method="post">
+                                    <form action="edit-comment" method="post" class="comment-form">
                                         <input type="hidden" name="id" value="${submission._id}">
                                         <textarea name="comment"><c:out value="${submission._comment}"/></textarea>
                                         <input type="submit">
@@ -214,7 +214,7 @@
 <!--search-bar-->
 <script src="js/responsiveslides.min.js"></script>
 <script type="text/javascript">
-    $(".comment").submit((event)=>
+    $(".comment-form").submit((event)=>
     {
         event.preventDefault()
         var form = $(event.target);
@@ -227,7 +227,7 @@
         .done(()=>{});
     })   
 </script>
-<script type="text/javascript">
+<script type="text/javascript">/*
     select-submission?id=${submission._id}&value=false
     $(".btn").submit((event)=>
     {
@@ -240,9 +240,9 @@
             comment: data[1].value
         })
         .done(()=>{});
-    })  
+    })  */
 </script>
-<script>
+<script>/*
     $(document).ready(function () {
             $("").click(function(){
                 var data_test = 'This is first demo';
@@ -260,7 +260,7 @@
                     }
                 });
             });
-        });
+        });*/
 </script>
 <script>
     $(function () {
