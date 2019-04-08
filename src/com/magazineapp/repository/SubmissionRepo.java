@@ -103,19 +103,15 @@ public class SubmissionRepo implements Repository<Submission> {
     private ArrayList<Submission> getSubmissionsFromIdBasedQuery(String sql, int id) {
         ArrayList<Submission> submissions = new ArrayList<>();
         try {
-            ResultSet resultSet = DatabaseHelper.executeQuery(sql, stm -> {
-                stm.setInt(1, id);
-            });
+            ResultSet resultSet = DatabaseHelper.executeQuery(sql, stm -> stm.setInt(1, id));
 
             while (resultSet.next()) {
                 submissions.add(Submission.fromResultSet(resultSet));
             }
-            return submissions;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        return null;
+        return submissions;
     }
 
     public ArrayList<Submission> getFromAuthor(User author) {
