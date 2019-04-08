@@ -55,7 +55,10 @@
                                 <a href="viewSubmission.jsp">View Submission</a>
                             </li>
                             <li>
-                                <a href="contact.jsp">Contact</a>
+                                <a href="login.jsp">Login</a>
+                            </li>
+                            <li>
+                                <a href="logout.jsp">Logout</a>
                             </li>
                         </ul>
                     </nav>
@@ -325,21 +328,10 @@
 <!-- start-smoth-scrolling -->
 
 
-</script>
-<
-a
-href = "#home"
-class
-= "scroll"
-id = "toTop"
-style = "display: block;" >
-    < span
-id = "toTopHover"
-style = "opacity: 1;" > < /span>
-    < /a>
-    < script
-type = "text/javascript"
-src = "js/bootstrap.js" ></script>
+<a href="#home" class="scroll" id="toTop" style="display: block;">
+    <span id="toTopHover" style="opacity: 1;"> </span>
+</a>
+<script type="text/javascript" src="js/bootstrap.js"></script>
 
 
 </body>
