@@ -123,28 +123,28 @@
                         <display:column title="Author Email" property="_author._email"/>
                         <display:column title="Date" property="_date"/>
                         <display:column title="Year" property="shortYear"/>
-                        <display:column title="Comment">
-                            <c:choose>
-                                <c:when test="${user.coordinator && !submission.overCommentingDeadline}">
-                                    <form action="edit-comment" method="post" class="comment-form">
-                                        <input type="hidden" name="id" value="${submission._id}">
-                                        <textarea name="comment"><c:out value="${submission._comment}"/></textarea>
-                                        <input type="submit">
-                                    </form>
-                                </c:when>
-                                <c:otherwise>
-                                    <c:out value="${submission._comment}"/>
-                                </c:otherwise>
-                            </c:choose>
-                        </display:column>
+                        <c:if test="${user!=null}">
+                            <display:column title="Comment">
+                                <c:choose>
+                                    <c:when test="${user.coordinator && !submission.overCommentingDeadline}">
+                                        <form action="edit-comment" method="post" class="comment-form">
+                                            <input type="hidden" name="id" value="${submission._id}">
+                                            <textarea name="comment"><c:out value="${submission._comment}"/></textarea>
+                                            <input type="submit">
+                                        </form>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:out value="${submission._comment}"/>
+                                    </c:otherwise>
+                                </c:choose>
+                            </display:column>
+                        </c:if>
                         <display:column title="Action">
-                            <c:if test="${user.student || user.coordinator || user.manager}">
-                                <a href="download-submission?id=${submission._id}">Download</a>
-                            </c:if>
-                            <c:if test="${user.student || user.coordinator}">
+                            <a href="download-submission?id=${submission._id}">Download</a>
+                            <c:if test="${user != null && (user.student || user.coordinator)}">
                                 &nbsp;|&nbsp;<a href="submit.jsp?id=${submission._id}">Resubmit</a>
                             </c:if>
-                            <c:if test="${user.coordinator}">
+                            <c:if test="${user != null && (user.coordinator)}">
                                 <form action="select-submission" method="post">
                                     <input type="hidden" name="id" value="${submission._id}">
                                     <input type="hidden" name="value" value="${!submission._is_Selected}">
@@ -214,18 +214,18 @@
 <!--search-bar-->
 <script src="js/responsiveslides.min.js"></script>
 <script type="text/javascript">
-    $(".comment-form").submit((event)=>
-    {
+    $(".comment-form").submit((event) => {
         event.preventDefault()
         var form = $(event.target);
         var data = form.serializeArray()
-        
-        $.post( 'edit-comment', {
+
+        $.post('edit-comment', {
             id: data[0].value,
             comment: data[1].value
         })
-        .done(()=>{});
-    })   
+            .done(() => {
+            });
+    })
 </script>
 <script type="text/javascript">/*
     select-submission?id=${submission._id}&value=false
