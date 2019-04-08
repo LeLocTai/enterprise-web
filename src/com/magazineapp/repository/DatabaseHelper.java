@@ -77,9 +77,4 @@ public class DatabaseHelper
     {
         return new UserRepo().get(3);
     }
-
-    public static Year getTestYear()
-    {
-        return new YearRepo().get(1);
-    }
 }

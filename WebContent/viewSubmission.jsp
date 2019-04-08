@@ -11,14 +11,14 @@
     pageContext.setAttribute("user", user);
 
     ArrayList<Submission> submissions;
-    if (user.isStudent())
+    if (user == null)
+        submissions = new SubmissionRepo().getSelected();
+    else if (user.isStudent())
         submissions = new SubmissionRepo().getFromAuthor(user);
     else if (user.isCoordinator())
         submissions = new SubmissionRepo().getFromFaculty(user.get_faculty());
-    else
-    {
-        response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-        return;
+    else {
+        submissions = new SubmissionRepo().getSelected();
     }
 
     request.setAttribute("submissions", submissions);
@@ -124,11 +124,18 @@
                         <display:column title="Date" property="_date"/>
                         <display:column title="Year" property="shortYear"/>
                         <display:column title="Comment">
-                            <form action="edit-comment" method="post" class="comment" data-sid="${submission._id}">
-                                <input type="hidden" name="id" value="${submission._id}" id="sid-${submission._id}">
-                                <textarea name="comment" id="comment-${submission._id}"><c:out value="${submission._comment}"/></textarea>
-                                <input type="submit" name="Send" value="send">
-                            </form>
+                            <c:choose>
+                                <c:when test="${user.coordinator && !submission.overCommentingDeadline}">
+                                    <form action="edit-comment" method="post">
+                                        <input type="hidden" name="id" value="${submission._id}">
+                                        <textarea name="comment"><c:out value="${submission._comment}"/></textarea>
+                                        <input type="submit">
+                                    </form>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:out value="${submission._comment}"/>
+                                </c:otherwise>
+                            </c:choose>
                         </display:column>
                         <display:column title="Action">
                             <c:if test="${user.student || user.coordinator || user.manager}">
@@ -138,14 +145,11 @@
                                 &nbsp;|&nbsp;<a href="submit.jsp?id=${submission._id}">Resubmit</a>
                             </c:if>
                             <c:if test="${user.coordinator}">
-                                <c:choose>
-                                    <c:when test="${submission._is_Selected}">
-                                        &nbsp;|&nbsp;<a class="btn un-select selected" href="select-submission?id=${submission._id}&value=false" >Un-Select</a>
-                                    </c:when>
-                                    <c:otherwise>
-                                        &nbsp;|&nbsp;<a class="btn select selected" href="select-submission?id=${submission._id}&value=true" >Select</a>
-                                    </c:otherwise>
-                                </c:choose>
+                                <form action="select-submission" method="post">
+                                    <input type="hidden" name="id" value="${submission._id}">
+                                    <input type="hidden" name="value" value="${!submission._is_Selected}">
+                                    <input type="submit" value="${submission._is_Selected?"Un-Select":"Select"}">
+                                </form>
                             </c:if>
                         </display:column>
                     </display:table>
