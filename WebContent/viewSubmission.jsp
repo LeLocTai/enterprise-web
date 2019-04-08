@@ -11,12 +11,13 @@
     pageContext.setAttribute("user", user);
 
     ArrayList<Submission> submissions;
-    if (user.isStudent())
+    if (user == null)
+        submissions = new SubmissionRepo().getSelected();
+    else if (user.isStudent())
         submissions = new SubmissionRepo().getFromAuthor(user);
     else if (user.isCoordinator())
         submissions = new SubmissionRepo().getFromFaculty(user.get_faculty());
-    else
-    {
+    else {
         submissions = new SubmissionRepo().getSelected();
     }
 
