@@ -61,11 +61,11 @@ public class ReportDataService
 
         facultyBuilder.put("id", resultSet.getInt("FACULTY_ID"));
         facultyBuilder.put("name", resultSet.getString("FACULTY_NAME"));
-        facultyBuilder.put("n-student", resultSet.getInt("N_STUDENT"));
-        facultyBuilder.put("n-contributor", resultSet.getInt("N_CONTRIBUTOR"));
-        facultyBuilder.put("n-submission", resultSet.getInt("N_SUBMISSION"));
-        facultyBuilder.put("n-submission-selected", resultSet.getInt("N_SUBMISSION_SELECTED"));
-        facultyBuilder.put("n-submission-wo-comment", resultSet.getInt("N_SUBMISSION_WO_COMMENT"));
+        facultyBuilder.put("nstudent", resultSet.getInt("N_STUDENT"));
+        facultyBuilder.put("ncontributor", resultSet.getInt("N_CONTRIBUTOR"));
+        facultyBuilder.put("nsubmission", resultSet.getInt("N_SUBMISSION"));
+        facultyBuilder.put("nsubmissionselected", resultSet.getInt("N_SUBMISSION_SELECTED"));
+        facultyBuilder.put("nsubmissionwocomment", resultSet.getInt("N_SUBMISSION_WO_COMMENT"));
 
         return facultyBuilder;
     }
@@ -80,8 +80,8 @@ public class ReportDataService
             year = new JSONObject();
 
             year.put("id", yearId);
-            year.put("start-date", resultSet.getString("YEAR_START"));
-            year.put("end-date", resultSet.getString("YEAR_END"));
+            year.put("startdate", resultSet.getString("YEAR_START"));
+            year.put("enddate", resultSet.getString("YEAR_END"));
             year.put("faculties", new JSONArray());
 
             yearIdObjectDict.put(yearId, year);
