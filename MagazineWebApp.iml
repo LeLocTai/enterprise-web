@@ -44,5 +44,6 @@
         <jarDirectory url="file://$MODULE_DIR$/WebContent/WEB-INF/lib" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="@types/chart.js" level="application" />
   </component>
 </module>
