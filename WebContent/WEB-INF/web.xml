@@ -9,6 +9,8 @@
         <url-pattern>/submit.jsp</url-pattern>
         <url-pattern>/upload-submission</url-pattern>
         <url-pattern>/download-submission</url-pattern>
+        <url-pattern>/download-selected-as-zip</url-pattern>
+        <url-pattern>/report-data</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>RoleFilter</filter-name>
@@ -17,6 +19,8 @@
         <url-pattern>/download-submission</url-pattern>
         <url-pattern>/select-submission</url-pattern>
         <url-pattern>/edit-comment</url-pattern>
+        <url-pattern>/download-selected-as-zip</url-pattern>
+        <url-pattern>/report-data</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>SubmissionFilter</filter-name>
