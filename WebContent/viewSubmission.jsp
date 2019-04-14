@@ -151,10 +151,10 @@
                                 &nbsp;|&nbsp;<a href="submit.jsp?id=${submission._id}">Resubmit</a>
                             </c:if>
                             <c:if test="${user != null && (user.coordinator)}">
-                                <form action="select-submission" method="post">
+                                <form action="select-submission" method="post" class ="select">
                                     <input type="hidden" name="id" value="${submission._id}">
                                     <input type="hidden" name="value" value="${!submission._is_Selected}">
-                                    <input type="submit" value="${submission._is_Selected?"Un-Select":"Select"}">
+                                    <input id="button" type="submit" value="${submission._is_Selected?"Un-Select":"Select"}">
                                 </form>
                             </c:if>
                         </display:column>
@@ -194,25 +194,32 @@
         $.post('edit-comment', {
             id: data[0].value,
             comment: data[1].value
-        })
-            .done(() => {
+        }).done(() => {
             });
     })
 </script>
-<script type="text/javascript">/*
-    $(".btn").submit((event)=>
+<script type="text/javascript">
+    $(".select").submit((event)=>
     {
-        event.preventDefault()
+        //event.preventDefault()
         var form = $(event.target);
         var data = form.serializeArray()
         
-        $.post( 'edit-comment', {
+        $.post( 'select-submission', {
             id: data[0].value,
-            comment: data[1].value
-        })
-        .done(()=>{});
-    })  */
+            selected: data[1].value
+        }).done(function(selected){
+            if(selected == "true"){
+            $("#button").attr("Select","Un-Select");
+            }else{
+            $("#button").attr("Un-Select","Select");
+        }
+        window.location.reload();
+    });
+        
+    })  
 </script>
+
 <script>/*
     $(document).ready(function () {
             $("").click(function(){
