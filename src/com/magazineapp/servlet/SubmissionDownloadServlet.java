@@ -1,4 +1,4 @@
-package com.magazineapp;
+package com.magazineapp.servlet;
 
 import com.magazineapp.model.Submission;
 import com.magazineapp.model.User;
