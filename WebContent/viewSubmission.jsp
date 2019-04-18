@@ -135,7 +135,7 @@
                                     <c:when test="${user.coordinator && !submission.overCommentingDeadline}">
                                         <form action="edit-comment" method="post" class="comment-form">
                                             <input type="hidden" name="id" value="${submission._id}">
-                                            <textarea name="comment"><c:out value="${submission._comment}"/></textarea>
+                                            <textarea name="comment" maxlength="4194303"><c:out value="${submission._comment}"/></textarea>
                                             <input type="submit">
                                         </form>
                                     </c:when>
