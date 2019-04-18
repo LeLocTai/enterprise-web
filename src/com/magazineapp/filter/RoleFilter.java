@@ -26,11 +26,13 @@ public class RoleFilter implements Filter
         url1.add("/select-submission");
         url1.add("/download-selected-as-zip");
         url1.add("/report-data");
+        url1.add("/report.jsp");
         ROLE_URL_BLACKLIST.put("student", url1);
 
         HashSet<String> url2 = new HashSet<>();
         url1.add("/download-selected-as-zip");
         url1.add("/report-data");
+        url1.add("/report.jsp");
         ROLE_URL_BLACKLIST.put("coordinator", url2);
 
         HashSet<String> url3 = new HashSet<>();

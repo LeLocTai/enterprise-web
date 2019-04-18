@@ -11,6 +11,7 @@
         <url-pattern>/download-submission</url-pattern>
         <url-pattern>/download-selected-as-zip</url-pattern>
         <url-pattern>/report-data</url-pattern>
+        <url-pattern>/report.jsp</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>RoleFilter</filter-name>
@@ -21,6 +22,7 @@
         <url-pattern>/edit-comment</url-pattern>
         <url-pattern>/download-selected-as-zip</url-pattern>
         <url-pattern>/report-data</url-pattern>
+        <url-pattern>/report.jsp</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>SubmissionFilter</filter-name>
