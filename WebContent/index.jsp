@@ -1,3 +1,7 @@
+<%
+    response.sendRedirect("viewSubmission.jsp");
+%>
+
 <html>
 <head>
     <title>Greenwich university</title>
