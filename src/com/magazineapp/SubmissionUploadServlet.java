@@ -28,30 +28,33 @@ public class SubmissionUploadServlet extends HttpServlet
 {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        if (!canSubmit())
+        int submissionId = NumberUtils.toInt(request.getParameter("id"));
+        if (!canSubmit(submissionId))
         {
             response.sendError(HttpServletResponse.SC_FORBIDDEN);
             return;
         }
 
-        int  submissionId = NumberUtils.toInt(request.getParameter("id"));
-        Part filePart     = request.getPart("myfile");
-        User author       = (User) request.getSession().getAttribute("user");
+        Part filePart = request.getPart("myfile");
+        User author   = (User) request.getSession().getAttribute("user");
 
         try
         {
             Submission submission = SubmissionPersistService.Save(submissionId, filePart, author);
 
             NotificationService.ScheduleFor(submission, request);
-            response.sendRedirect("viewSubmission.jsp");            
+            response.sendRedirect("viewSubmission.jsp");
         } catch (IOException e)
         {
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         }
     }
 
-    private boolean canSubmit()
+    private boolean canSubmit(int id)
     {
+        if (id > 0) //is update
+            return true; //can update after closure date
+        
         Year currentYear = new YearRepo().getCurrentYear();
         if (currentYear == null) return true;//temp fix until implemented
 
