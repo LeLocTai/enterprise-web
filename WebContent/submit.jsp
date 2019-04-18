@@ -1,28 +1,30 @@
+<%@ page import="com.magazineapp.service.SubmissionSubmitService" %>
+<%@ page import="org.apache.commons.lang.math.NumberUtils" %>
 <%@ page language="java" %>
+
 <html>
 <head>
+    <title>Greenwich university</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <head>
-        <title>Greenwich university</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta charset="utf-8">
-        <meta name="keywords"/>
+    <meta charset="utf-8">
+    <meta name="keywords"/>
 
-        <script type="application/x-javascript">
-            addEventListener("load", function () {
-                setTimeout(hideURLbar, 0);
-            }, false);
+    <script type="application/x-javascript">
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
 
-            function hideURLbar() {
-                window.scrollTo(0, 1);
-            }
-        </script>
-        <link href="css/bootstrap.css" rel='stylesheet' type='text/css'/>
-        <link href="css/style.css" rel='stylesheet' type='text/css'/>
-        <link href="css/news.css" rel='stylesheet' type='text/css'/>
-        <link rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <link href="css/bootstrap.css" rel='stylesheet' type='text/css'/>
+    <link href="css/style.css" rel='stylesheet' type='text/css'/>
+    <link href="css/news.css" rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 
 <body>
 <div class="headerIndex inner_banner">
@@ -87,12 +89,23 @@
 </div>
 <!--//short-->
 <!-- //inner_content -->
+
 <div class="contentNew">
-    <h2>Submit magazine for event </h2>
     <div id="wrapper">
         <div class="agile-last-grids">
             <div class="col-md-6 agile-last-left ">
                 <div class="agile-last-grid">
+                    <%
+                        int id = NumberUtils.toInt(request.getParameter("id"));
+                        if (!SubmissionSubmitService.canSubmit(id))
+                        {
+                    %>
+                    <p>Submission is closed. You can still re-upload your existing submission</p>
+                    <%
+                    } else
+                    {
+                    %>
+                    <h2>Submit magazine for event </h2>
                     <div>
                         <h3>Submit your file:</h3>
                         <hr>
@@ -104,6 +117,10 @@
                             <input type="submit"/>
                         </form>
                     </div>
+                    <hr>
+                    <%
+                        }
+                    %>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -112,41 +129,6 @@
     </div>
 </div>
 
-<hr>
-
-<div class="content">
-    <!--/top_spl_poses-->
-    <div class="section_1">
-        <h2>Some example </h2>
-        <ul class="clearfix">
-            <li>
-                <a href="images/b1.jpg">
-                    <img src="images/b2.jpg" alt="Lights">
-                    <div class="caption">
-                    </div>
-                </a>
-            </li>
-
-            <li>
-                <a href="images/b1.jpg">
-                    <img src="images/b2.jpg" alt="Lights">
-                    <div class="caption">
-                    </div>
-                </a>
-            </li>
-
-            <li>
-                <a href="images/b1.jpg">
-                    <img src="images/b2.jpg" alt="Lights">
-                    <div class="caption">
-                    </div>
-                </a>
-            </li>
-
-        </ul>
-    </div>
-    <!--//top_spl_poses-->
-</div>
 <!--footer-->
 <footer class="contact-footer">
     <div class="copy">
