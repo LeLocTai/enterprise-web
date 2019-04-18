@@ -1,9 +1,5 @@
 package com.magazineapp;
 
-import java.io.File;
-import java.nio.file.*;
-import java.util.Date;
-import java.time.Instant;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -16,10 +12,8 @@ import javax.servlet.http.Part;
 
 import com.magazineapp.model.Submission;
 import com.magazineapp.model.User;
-import com.magazineapp.model.Year;
-import com.magazineapp.repository.YearRepo;
 import com.magazineapp.service.NotificationService;
-import com.magazineapp.service.SubmissionPersistService;
+import com.magazineapp.service.SubmissionSubmitService;
 import org.apache.commons.lang.math.NumberUtils;
 
 @WebServlet("/upload-submission")
@@ -29,7 +23,7 @@ public class SubmissionUploadServlet extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         int submissionId = NumberUtils.toInt(request.getParameter("id"));
-        if (!canSubmit(submissionId))
+        if (!SubmissionSubmitService.canSubmit(submissionId))
         {
             response.sendError(HttpServletResponse.SC_FORBIDDEN);
             return;
@@ -40,7 +34,7 @@ public class SubmissionUploadServlet extends HttpServlet
 
         try
         {
-            Submission submission = SubmissionPersistService.Save(submissionId, filePart, author);
+            Submission submission = SubmissionSubmitService.Save(submissionId, filePart, author);
 
             NotificationService.ScheduleFor(submission, request);
             response.sendRedirect("viewSubmission.jsp");
@@ -50,16 +44,4 @@ public class SubmissionUploadServlet extends HttpServlet
         }
     }
 
-    private boolean canSubmit(int id)
-    {
-        if (id > 0) //is update
-            return true; //can update after closure date
-        
-        Year currentYear = new YearRepo().getCurrentYear();
-        if (currentYear == null) return true;//temp fix until implemented
-
-        Date now = new Date();
-
-        return !now.after(currentYear.get_entry_ClosureDate());
-    }
 }

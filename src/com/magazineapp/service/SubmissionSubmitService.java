@@ -2,11 +2,11 @@ package com.magazineapp.service;
 
 import com.magazineapp.model.Submission;
 import com.magazineapp.model.User;
+import com.magazineapp.model.Year;
 import com.magazineapp.repository.SubmissionRepo;
 import com.magazineapp.repository.YearRepo;
 
 import javax.servlet.http.Part;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -15,7 +15,7 @@ import java.nio.file.StandardCopyOption;
 import java.time.Instant;
 import java.util.Date;
 
-public class SubmissionPersistService
+public class SubmissionSubmitService
 {
     private Part filePart;
     private User author;
@@ -25,9 +25,22 @@ public class SubmissionPersistService
     private boolean        isUpdate;
     private int            submissionId;
 
+    public static boolean canSubmit(int id)
+    {
+        if (id > 0) //is update
+            return true; //can update after closure date
+
+        Year currentYear = new YearRepo().getCurrentYear();
+        if (currentYear == null) return true;//temp fix until implemented
+
+        Date now = new Date();
+
+        return !now.after(currentYear.get_entry_ClosureDate());
+    }
+
     public static Submission Save(int submissionId, Part filePart, User author) throws IOException
     {
-        SubmissionPersistService instance = new SubmissionPersistService();
+        SubmissionSubmitService instance = new SubmissionSubmitService();
 
         instance.submissionId = submissionId;
         instance.filePart = filePart;
