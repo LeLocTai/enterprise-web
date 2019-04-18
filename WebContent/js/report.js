@@ -38,6 +38,7 @@ function getYearDisplayName(year) {
 }
 
 function createDOMNodes() {
+    chartsEl.empty()
     for (let year of reportData.years) {
         let yearEl = $(`<div class="year-data" id="year-data-${year.id}">`)
         yearEl.append(`<h2>Year: ${getYearDisplayName(year)}</h2>`)
