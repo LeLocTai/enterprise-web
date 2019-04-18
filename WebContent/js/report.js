@@ -3,19 +3,6 @@ let reportData = {};
 const chartsEl = $('#charts')
 const formEl = $('#input-form')
 
-const chartCommonOption = {
-    legend: {
-        display: false,
-    },
-    scales: {
-        xAxes: [{
-            ticks: {
-                min: 0,
-            }
-        }]
-    },
-}
-
 formEl.submit((e) => {
     e.preventDefault();
 
@@ -72,7 +59,8 @@ function createCharts() {
             createBarChart(
                 `students-chart-${faculty.id}`,
                 ["Total Students", "Contributor"],
-                [faculty.nstudent, faculty.ncontributor]
+                [faculty.nstudent, faculty.ncontributor],
+                faculty.nstudent
             )
 
             createBarChart(
@@ -86,13 +74,38 @@ function createCharts() {
                     faculty.nsubmission,
                     faculty.nsubmissionselected,
                     faculty.nsubmissionwocomment,
-                ]
+                ],
+                faculty.nsubmission
             )
         }
     }
 }
 
-function createBarChart(element, labels, data) {
+const chartCommonOption = {
+    legend: {
+        display: false,
+    },
+    scales: {
+        xAxes: [{
+            ticks: {
+                min: 0,
+            },
+        }],
+    },
+}
+
+function createBarChart(element, labels, data, maxValue) {
+    let option = {
+        scales: {
+            xAxes: [{
+                ticks: {
+                    max: maxValue,
+                    callback: (value) => getPercentString(value, maxValue)
+                }
+            }]
+        }
+    };
+
     new Chart(element, {
         type: 'horizontalBar',
         data: {
@@ -101,6 +114,10 @@ function createBarChart(element, labels, data) {
                 data: data
             }]
         },
-        options: chartCommonOption
+        options: $.extend(true, option, chartCommonOption)
     })
+}
+
+function getPercentString(val, max) {
+    return (val / max * 100).toFixed(0) + '%'
 }

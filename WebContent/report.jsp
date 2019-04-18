@@ -12,14 +12,10 @@
 
 <head>
     <title>Report</title>
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <meta name="keywords"/>
-    
-    <script src="js/jquery-2.2.3.min.js"></script>
-    <script src="js/Chart.bundle.min.js"></script>
-    <link rel="stylesheet" href="css/Chart.min.css">
 
     <script type="application/x-javascript">
         addEventListener("load", function () {
@@ -31,10 +27,11 @@
         }
     </script>
     <link href="css/bootstrap.css" rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" href="css/Chart.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="css/style.css" rel='stylesheet' type='text/css'/>
     <link href="css/news.css" rel='stylesheet' type='text/css'/>
     <link rel="stylesheet" href="css/report.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -106,9 +103,9 @@
         </label>
         <input type="submit">
     </form>
-
+    <p>Hover or tap the bars to see specific number</p>
     <div id="charts"></div>
- 
+
 </div>
 
 
@@ -128,7 +125,8 @@
 </footer>
 <!--/footer -->
 <!-- js -->
-<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+<script src="js/jquery-2.2.3.min.js"></script>
+<script src="js/Chart.bundle.min.js"></script>
 <script src="js/report.js"></script>
 
 <!--search-bar-->
