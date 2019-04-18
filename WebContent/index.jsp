@@ -249,7 +249,7 @@
                 <span>university</span>
             </a>
         </h2>
-        <p>© 2019 Fettle. All rights reserved | Design by
+        <p>ï¿½ 2019 Fettle. All rights reserved | Design by
             <a href="">Sandra0710</a>
         </p>
         <div class="clearfix"></div>
@@ -298,6 +298,7 @@
     <span id="toTopHover" style="opacity: 1;"> </span>
 </a>
 <script type="text/javascript" src="js/bootstrap.js"></script>
+
 
 
 </body>
