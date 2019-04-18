@@ -10,7 +10,7 @@ formEl.submit((e) => {
         .done((res) => {
             reportData = JSON.parse(res);
             console.log(reportData);
-            createDOMNodes()
+            createDOMElements()
             createCharts()
         })
 });
@@ -24,35 +24,49 @@ function getYearDisplayName(year) {
     return dn;
 }
 
-function createDOMNodes() {
+function createDOMElements() {
     chartsEl.empty()
+
     for (let year of reportData.years) {
+        //Header
         let yearEl = $(`<div class="year-data" id="year-data-${year.id}">`)
         yearEl.append(`<h2>Year: ${getYearDisplayName(year)}</h2>`)
 
-        let facultiesDataEl = $('<div class="faculties-data">')
+        //Faculties contribs
+        let facultiesContribEl = $(`<div class="faculties-contrib">`)
+        facultiesContribEl.append(createChartEl('faculties', year.id))
+        yearEl.append(facultiesContribEl)
 
+        //Faculties details
+        let facultiesDataEl = $('<div class="faculties-data">')
         for (let faculty of year.faculties) {
             let facultyEl = $(`<div class="faculty-data" id="faculty-data-${faculty.id}">`)
             facultyEl.append(`<h3 class="faculty-name">${faculty.name}</h3>`)
 
-            facultyEl.append(`<div class="chart-container-students">
-                <canvas class="students-chart" id="students-chart-${faculty.id}"></canvas>
-            </div>`)
-            facultyEl.append(`<div class="chart-container-submissions">
-                <canvas class="submissions-chart" id="submissions-chart-${faculty.id}"></canvas>
-            </div>`)
+            facultyEl.append(createChartEl('students', faculty.id))
+            facultyEl.append(createChartEl('submissions', faculty.id))
 
             facultiesDataEl.append(facultyEl)
         }
-
         yearEl.append(facultiesDataEl)
+        
+        
         chartsEl.append(yearEl)
     }
 }
 
+function createChartEl(typeName, id) {
+    let container = $(`<div class="chart-container chart-container-${typeName}">`)
+    let canvas = $(`<canvas class="${typeName}-chart" id="${typeName}-chart-${id}">`)
+
+    container.append(canvas);
+    return container
+}
+
 function createCharts() {
     for (let year of reportData.years) {
+        createFacultiesContribChart(year.id, year.faculties)
+
         for (let faculty of year.faculties) {
             console.log(faculty)
 
@@ -81,20 +95,41 @@ function createCharts() {
     }
 }
 
-const chartCommonOption = {
-    legend: {
-        display: false,
-    },
-    scales: {
-        xAxes: [{
-            ticks: {
-                min: 0,
-            },
-        }],
-    },
+function createFacultiesContribChart(yearId, faculties) {
+    let labels = []
+    let data = []
+
+    for (let f of faculties) {
+        labels.push(f.name)
+        data.push(f.nsubmission)
+    }
+
+    new Chart(`faculties-chart-${yearId}`, {
+        type: 'pie',
+        data: {
+            labels: labels,
+            datasets: [{
+                data: data
+            }]
+        },
+        options: {}
+    });
 }
 
 function createBarChart(element, labels, data, maxValue) {
+    const chartCommonOption = {
+        legend: {
+            display: false,
+        },
+        scales: {
+            xAxes: [{
+                ticks: {
+                    min: 0,
+                },
+            }],
+        },
+    }
+
     let option = {
         scales: {
             xAxes: [{
