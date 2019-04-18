@@ -64,6 +64,9 @@
                             <li>
                                 <a href="logout.jsp">Logout</a>
                             </li>
+                            <li>
+                                <a href="report.jsp">Report</a>
+                            </li>
                         </ul>
                     </nav>
                 </div>

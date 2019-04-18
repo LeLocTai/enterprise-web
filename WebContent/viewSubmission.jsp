@@ -75,7 +75,7 @@
                     <nav>
                         <ul class="top_nav">
                             <li>
-                                <a class="" href="index.jsp">Home</a>
+                                <a  href="index.jsp">Home</a>
                             </li>
                             <li>
                                 <a href="submit.jsp">Submit</a>
@@ -88,6 +88,9 @@
                             </li>
                             <li>
                                 <a href="logout.jsp">Logout</a>
+                            </li>
+                            <li>
+                                <a  href="report.jsp">Report</a>
                             </li>
                         </ul>
                     </nav>
@@ -154,7 +157,7 @@
                                 <form action="select-submission" method="post" class ="select">
                                     <input type="hidden" name="id" value="${submission._id}">
                                     <input type="hidden" name="value" value="${!submission._is_Selected}">
-                                    <input id="button" type="submit" value="${submission._is_Selected?"Un-Select":"Select"}">
+                                    <input id="button" type="submit" value="${submission._is_Selected?"Un-Publish":"Publish"}">
                                 </form>
                             </c:if>
                         </display:column>
@@ -210,9 +213,9 @@
             selected: data[1].value
         }).done(function(selected){
             if(selected == "true"){
-            $("#button").attr("Select","Un-Select");
+            $("#button").attr("Publish","Un-Publish");
             }else{
-            $("#button").attr("Un-Select","Select");
+            $("#button").attr("Un-Publish","Publish");
         }
         window.location.reload();
     });
