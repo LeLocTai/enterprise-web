@@ -1,7 +1,7 @@
 .faculty-data {
     display: grid;
     grid-template-rows: auto auto;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr 1fr;
     grid-template-areas: "name name" "student submission";
     width: auto;
 }
