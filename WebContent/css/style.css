@@ -533,10 +533,23 @@ ul.dropdown-menu li a {
 	min-height: 650px;
 }
 
+.inner_banner_report {
+	background: url(../images/banner1.jpg) no-repeat 0px 0px;
+	background-size: cover;
+	-webkit-background-size: cover;
+	-o-background-size: cover;
+	-ms-background-size: cover;
+	min-height: 250px;
+}
+
 .breadcrumb {
 	padding: 1em 1em;
 	background: #f5f5f5;
 	text-align: center;
+}
+.frame{   
+    border:1px solid black;
+    margin: 50px;
 }
 
 .breadcrumb ul li span {

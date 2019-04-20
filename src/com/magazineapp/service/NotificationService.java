@@ -18,7 +18,7 @@ public class NotificationService
     private static final String SMTP_EMAIL = "ewd.system@yahoo.com";
     private static final String SMTP_PASS  = "123@123a";
 
-    private static final String EMAIl_TEMPLATE = "<p>New magazine submission received, please visit <a href='%1$s'>%1$s</a> to view</p>";
+    private static final String EMAIl_TEMPLATE = "<p>New magazine submission received, please visit <a href='%1$s'>%1$s</a> to view</p>. Remember to make a comment within 14 days";
 
     private Submission submission;
     private String     coordinatorViewPath;
