@@ -27,10 +27,11 @@
 
     if (user != null)
     {
-        String dest = (String) session.getAttribute("Redirect");
-        if (StringUtils.isBlank(dest))
-            dest = request.getContextPath() + "/";
-        response.sendRedirect(dest);
+//        String dest = (String) session.getAttribute("Redirect");
+//        if (StringUtils.isBlank(dest))
+//            dest = request.getContextPath() + "/";
+//        response.sendRedirect(dest);
+        response.sendRedirect(request.getContextPath() + "/");
     }
 %>
 <html>
