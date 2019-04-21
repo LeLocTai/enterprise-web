@@ -44,6 +44,9 @@ public class SubmissionDownloadServlet extends HttpServlet
 
     private boolean isAuthorized(Submission submission, User authUser)
     {
+        if(submission.get_is_Selected())
+            return true;
+        
         if (authUser == null)
             return false;
 
