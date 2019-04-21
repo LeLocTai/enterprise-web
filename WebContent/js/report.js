@@ -17,11 +17,7 @@ formEl.submit((e) => {
 formEl.submit()
 
 function getYearDisplayName(year) {
-    let dn = year.startdate.substr(0, year.startdate.indexOf('-'));
-    dn += " - ";
-    dn += year.enddate.substr(0, year.enddate.indexOf('-'));
-
-    return dn;
+    return year.startdate.substr(0, year.startdate.indexOf('-'));
 }
 
 function createDOMElements() {
