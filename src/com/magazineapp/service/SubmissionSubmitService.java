@@ -5,6 +5,7 @@ import com.magazineapp.model.User;
 import com.magazineapp.model.Year;
 import com.magazineapp.repository.SubmissionRepo;
 import com.magazineapp.repository.YearRepo;
+import org.apache.commons.lang.RandomStringUtils;
 
 import javax.servlet.http.Part;
 import java.io.IOException;
@@ -13,7 +14,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Locale;
 
 public class SubmissionSubmitService
 {
@@ -97,12 +101,18 @@ public class SubmissionSubmitService
 
     private String getUniqueName(String baseName)
     {
+        final DateTimeFormatter formatter = DateTimeFormatter
+                .ofPattern("uuuuMMdd.HH.mm.ss.A")
+                .withLocale(Locale.getDefault())
+                .withZone(ZoneId.systemDefault());
+
         return String.join(
-                ".",
-                String.valueOf(author.get_id()),
-                Long.toString(Instant.now().toEpochMilli(), Character.MAX_RADIX),
-                baseName
-        );
+                "_",
+                "f" + author.get_faculty().get_id() + author.get_faculty().get_name(),
+                "u" + author.get_id(),
+                formatter.format(Instant.now()),
+                RandomStringUtils.randomNumeric(6)
+        ) + baseName.substring(baseName.lastIndexOf('.'));//extension
     }
 
     private int saveSubmissionToDB(String savedFilePath)
