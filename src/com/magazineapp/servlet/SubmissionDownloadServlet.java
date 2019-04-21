@@ -3,6 +3,7 @@ package com.magazineapp.servlet;
 import com.magazineapp.model.Submission;
 import com.magazineapp.model.User;
 import com.magazineapp.repository.SubmissionRepo;
+import com.magazineapp.service.FileSystemService;
 import com.magazineapp.service.HttpResponseService;
 import org.apache.commons.lang.math.NumberUtils;
 
@@ -37,7 +38,7 @@ public class SubmissionDownloadServlet extends HttpServlet
             return;
         }
 
-        File submissionFile = new File(submission.get_path());
+        File submissionFile = FileSystemService.getLocalFile(submission.get_path());
 
         HttpResponseService.ForceDownload(response, submissionFile);
     }
