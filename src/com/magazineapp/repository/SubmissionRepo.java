@@ -121,9 +121,9 @@ public class SubmissionRepo implements Repository<Submission> {
     }
 
     public ArrayList<Submission> getFromFaculty(Faculty faculty) {
-        String sql = "SELECT * FROM Submission\n"
-                     + "JOIN User u ON Submission.Author_Id = u.Id\n"
-                     + "JOIN Faculty f ON u.Faculty_Id = f.Id\n"
+        String sql = "SELECT * FROM submission\n"
+                     + "JOIN user u ON submission.Author_Id = u.Id\n"
+                     + "JOIN faculty f ON u.Faculty_Id = f.Id\n"
                      + "WHERE f.Id = ?";
 
         return getSubmissionsFromIdBasedQuery(sql, faculty.get_id());

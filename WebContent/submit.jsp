@@ -96,7 +96,7 @@
 <div class="contentNew">
     <div id="wrapper">
         <div class="agile-last-grids">
-            <div class=" agile-last-left ">
+            <div class="col-md-6 agile-last-left ">
                 <div class="agile-last-grid">
                     <%
                         int id = NumberUtils.toInt(request.getParameter("id"));
@@ -116,7 +116,7 @@
                     <div>
                         <form id="uploadImage" enctype="multipart/form-data" method="post" action="upload-submission">
                             <input type="hidden" name="id" value="<%=request.getParameter("id")%>"/>
-                            <input id="fileupload" name="myfile" type="file"/>
+                            <input id="fileupload" name="myfile" type="file"/><br>
                             <input type="submit"/>
                         </form>
                     </div>

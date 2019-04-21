@@ -31,7 +31,7 @@ input[type="submit"] {
 
 .contentNew #wrapper{
 	text-align: center;
-	margin: 50px;
+	margin: 0px auto;
 
 }
 
@@ -52,7 +52,6 @@ input[type="submit"] {
   border-radius: 5px;
   cursor: pointer;
 }
-
 
 #custom-button:hover {
   background-color: #00b28f;
