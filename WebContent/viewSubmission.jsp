@@ -46,7 +46,6 @@
     <link href="css/bootstrap.css" rel='stylesheet' type='text/css'/>
     <link href="css/style.css" rel='stylesheet' type='text/css'/>
     <link href="css/news.css" rel='stylesheet' type='text/css'/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -75,7 +74,7 @@
                     <nav>
                         <ul class="top_nav">
                             <li>
-                                <a class="" href="index.jsp">Home</a>
+                                <a  href="index.jsp">Home</a>
                             </li>
                             <li>
                                 <a href="submit.jsp">Submit</a>
@@ -84,7 +83,13 @@
                                 <a class="active" href="viewSubmission.jsp">View Submission</a>
                             </li>
                             <li>
-                                <a href="contact.jsp">Contact</a>
+                                <a href="login.jsp">Login</a>
+                            </li>
+                            <li>
+                                <a href="logout.jsp">Logout</a>
+                            </li>
+                            <li>
+                                <a  href="report.jsp">Report</a>
                             </li>
                         </ul>
                     </nav>
@@ -118,37 +123,40 @@
                 <div class="row">
                 </div><!-- /.row -->
                 <div class="bs-docs-example">
+                    <c:if test="${user != null && user.manager}">
+                        <a href="download-selected-as-zip">Download all selected submissions</a>
+                    </c:if>
                     <display:table name="submissions" id="submission" class="table"
                                    decorator="com.magazineapp.service.SubmissionTableDecorator">
                         <display:column title="Author Email" property="_author._email"/>
                         <display:column title="Date" property="_date"/>
                         <display:column title="Year" property="shortYear"/>
-                        <display:column title="Comment">
-                            <c:choose>
-                                <c:when test="${user.coordinator && !submission.overCommentingDeadline}">
-                                    <form action="edit-comment" method="post" class="comment-form">
-                                        <input type="hidden" name="id" value="${submission._id}">
-                                        <textarea name="comment"><c:out value="${submission._comment}"/></textarea>
-                                        <input type="submit">
-                                    </form>
-                                </c:when>
-                                <c:otherwise>
-                                    <c:out value="${submission._comment}"/>
-                                </c:otherwise>
-                            </c:choose>
-                        </display:column>
+                        <c:if test="${user!=null}">
+                            <display:column title="Comment">
+                                <c:choose>
+                                    <c:when test="${user.coordinator && !submission.overCommentingDeadline}">
+                                        <form action="edit-comment" method="post" class="comment-form">
+                                            <input type="hidden" name="id" value="${submission._id}">
+                                            <textarea name="comment" maxlength="4194303"><c:out value="${submission._comment}"/></textarea>
+                                            <input type="submit">
+                                        </form>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:out value="${submission._comment}"/>
+                                    </c:otherwise>
+                                </c:choose>
+                            </display:column>
+                        </c:if>
                         <display:column title="Action">
-                            <c:if test="${user.student || user.coordinator || user.manager}">
-                                <a href="download-submission?id=${submission._id}">Download</a>
-                            </c:if>
-                            <c:if test="${user.student || user.coordinator}">
+                            <a href="download-submission?id=${submission._id}">Download</a>
+                            <c:if test="${user != null && (user.student || user.coordinator)}">
                                 &nbsp;|&nbsp;<a href="submit.jsp?id=${submission._id}">Resubmit</a>
                             </c:if>
-                            <c:if test="${user.coordinator}">
-                                <form action="select-submission" method="post">
+                            <c:if test="${user != null && (user.coordinator)}">
+                                <form action="select-submission" method="post" class ="select">
                                     <input type="hidden" name="id" value="${submission._id}">
                                     <input type="hidden" name="value" value="${!submission._is_Selected}">
-                                    <input type="submit" value="${submission._is_Selected?"Un-Select":"Select"}">
+                                    <input id="button" type="submit" value="${submission._is_Selected?"Un-Publish":"Publish"}">
                                 </form>
                             </c:if>
                         </display:column>
@@ -161,40 +169,6 @@
 
 <!--footer-->
 <footer class="contact-footer">
-    <div class="bottom-social">
-        <div class="container">
-            <div class="col-md-8 botttom-nav-w3ls-agile">
-                <ul data-aos="zoom-in">
-                    <li>
-                        <h4>Email: </h4>
-                    </li>
-                    <li>
-                        <h4>Tell: 0123435454</h4>
-                    </li>
-
-
-                </ul>
-                <div class="clearfix"></div>
-            </div>
-            <div class="col-md-4 social-icons" data-aos="zoom-in">
-                <h6>Connect with us</h6>
-                <a class="btn btn-block btn social btn-twitter" href="#">
-                    <span class="fa fa-twitter"></span>
-                </a>
-                <a class="twitter" href="#">
-                    <span class="fa fa-twitter"></span>
-                </a>
-                <a class="pinterest" href="#">
-                    <span class="fa fa-pinterest-p"></span>
-                </a>
-                <a class="linkedin" href="#">
-                    <span class="fa fa-linkedin"></span>
-                </a>
-            </div>
-            <div class="clearfix"></div>
-
-        </div>
-    </div>
     <div class="copy">
         <h2 class="footer-logo">
             <a href="index.jsp">Greenwich
@@ -214,34 +188,40 @@
 <!--search-bar-->
 <script src="js/responsiveslides.min.js"></script>
 <script type="text/javascript">
-    $(".comment-form").submit((event)=>
-    {
+    $(".comment-form").submit((event) => {
         event.preventDefault()
         var form = $(event.target);
         var data = form.serializeArray()
-        
-        $.post( 'edit-comment', {
+
+        $.post('edit-comment', {
             id: data[0].value,
             comment: data[1].value
-        })
-        .done(()=>{});
-    })   
+        }).done(() => {
+            });
+    })
 </script>
-<script type="text/javascript">/*
-    select-submission?id=${submission._id}&value=false
-    $(".btn").submit((event)=>
+<script type="text/javascript">
+    $(".select").submit((event)=>
     {
-        event.preventDefault()
+        //event.preventDefault()
         var form = $(event.target);
         var data = form.serializeArray()
         
-        $.post( 'edit-comment', {
+        $.post( 'select-submission', {
             id: data[0].value,
-            comment: data[1].value
-        })
-        .done(()=>{});
-    })  */
+            selected: data[1].value
+        }).done(function(selected){
+            if(selected == "true"){
+            $("#button").attr("Publish","Un-Publish");
+            }else{
+            $("#button").attr("Un-Publish","Publish");
+        }
+        window.location.reload();
+    });
+        
+    })  
 </script>
+
 <script>/*
     $(document).ready(function () {
             $("").click(function(){

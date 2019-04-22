@@ -1,3 +1,7 @@
+<%
+    response.sendRedirect("viewSubmission.jsp");
+%>
+
 <html>
 <head>
     <title>Greenwich university</title>
@@ -55,7 +59,13 @@
                                 <a href="viewSubmission.jsp">View Submission</a>
                             </li>
                             <li>
-                                <a href="contact.jsp">Contact</a>
+                                <a href="login.jsp">Login</a>
+                            </li>
+                            <li>
+                                <a href="logout.jsp">Logout</a>
+                            </li>
+                            <li>
+                                <a href="report.jsp">Report</a>
                             </li>
                         </ul>
                     </nav>
@@ -240,40 +250,6 @@
 
 <!--footer-->
 <footer class="contact-footer">
-    <div class="bottom-social">
-        <div class="container">
-            <div class="col-md-8 botttom-nav">
-                <ul data-aos="zoom-in">
-                    <li>
-                        <h4>Email: </h4>
-                    </li>
-                    <li>
-                        <h4>Tell: 0123435454</h4>
-                    </li>
-
-
-                </ul>
-                <div class="clearfix"></div>
-            </div>
-            <div class="col-md-4 social-icons" data-aos="zoom-in">
-                <h6>Connect with us</h6>
-                <a class="facebook" href="#">
-                    <span class="fa fa-facebook"></span>
-                </a>
-                <a class="twitter" href="#">
-                    <span class="fa fa-twitter"></span>
-                </a>
-                <a class="pinterest" href="#">
-                    <span class="fa fa-pinterest-p"></span>
-                </a>
-                <a class="linkedin" href="#">
-                    <span class="fa fa-linkedin"></span>
-                </a>
-            </div>
-            <div class="clearfix"></div>
-
-        </div>
-    </div>
     <div class="copy">
         <h2 class="footer-logo">
             <a href="index.jsp">Greenwich
@@ -325,21 +301,11 @@
 <!-- start-smoth-scrolling -->
 
 
-</script>
-<
-a
-href = "#home"
-class
-= "scroll"
-id = "toTop"
-style = "display: block;" >
-    < span
-id = "toTopHover"
-style = "opacity: 1;" > < /span>
-    < /a>
-    < script
-type = "text/javascript"
-src = "js/bootstrap.js" ></script>
+<a href="#home" class="scroll" id="toTop" style="display: block;">
+    <span id="toTopHover" style="opacity: 1;"> </span>
+</a>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+
 
 
 </body>

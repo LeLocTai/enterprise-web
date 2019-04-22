@@ -2,20 +2,24 @@ package com.magazineapp.service;
 
 import com.magazineapp.model.Submission;
 import com.magazineapp.model.User;
+import com.magazineapp.model.Year;
 import com.magazineapp.repository.SubmissionRepo;
 import com.magazineapp.repository.YearRepo;
+import org.apache.commons.lang.RandomStringUtils;
 
 import javax.servlet.http.Part;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Locale;
 
-public class SubmissionPersistService
+public class SubmissionSubmitService
 {
     private Part filePart;
     private User author;
@@ -25,9 +29,22 @@ public class SubmissionPersistService
     private boolean        isUpdate;
     private int            submissionId;
 
+    public static boolean canSubmit(int id)
+    {
+        if (id > 0) //is update
+            return true; //can update after closure date
+
+        Year currentYear = new YearRepo().getCurrentYear();
+        if (currentYear == null) return true;//temp fix until implemented
+
+        Date now = new Date();
+
+        return !now.after(currentYear.get_entry_ClosureDate());
+    }
+
     public static Submission Save(int submissionId, Part filePart, User author) throws IOException
     {
-        SubmissionPersistService instance = new SubmissionPersistService();
+        SubmissionSubmitService instance = new SubmissionSubmitService();
 
         instance.submissionId = submissionId;
         instance.filePart = filePart;
@@ -84,12 +101,18 @@ public class SubmissionPersistService
 
     private String getUniqueName(String baseName)
     {
+        final DateTimeFormatter formatter = DateTimeFormatter
+                .ofPattern("uuuuMMdd.HH.mm.ss.A")
+                .withLocale(Locale.getDefault())
+                .withZone(ZoneId.systemDefault());
+
         return String.join(
-                ".",
-                String.valueOf(author.get_id()),
-                Long.toString(Instant.now().toEpochMilli(), Character.MAX_RADIX),
-                baseName
-        );
+                "_",
+                "f" + author.get_faculty().get_id() + author.get_faculty().get_name(),
+                "u" + author.get_id(),
+                formatter.format(Instant.now()),
+                RandomStringUtils.randomNumeric(6)
+        ) + baseName.substring(baseName.lastIndexOf('.'));//extension
     }
 
     private int saveSubmissionToDB(String savedFilePath)

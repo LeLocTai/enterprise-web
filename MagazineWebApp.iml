@@ -36,10 +36,14 @@
         </CLASSES>
         <JAVADOC>
           <root url="https://commons.apache.org/proper/commons-lang/javadocs/api-2.3/" />
+          <root url="file://$USER_HOME$/glassfish5/docs" />
+          <root url="https://javaee.github.io/javaee-spec/javadocs/" />
+          <root url="http://stleary.github.io/JSON-java/" />
         </JAVADOC>
         <SOURCES />
         <jarDirectory url="file://$MODULE_DIR$/WebContent/WEB-INF/lib" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="@types/chart.js" level="application" />
   </component>
 </module>
