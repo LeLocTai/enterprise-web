@@ -14,10 +14,15 @@ public class FileSystemService
     private static final String UPLOAD_FOLDER_NAME = "upload-root";
     private static final String ZIP_FILE_NAME      = "selected-submission.zip";
 
+    public static File getLocalFile(Path path)
+    {
+        Path fileName = path.getFileName();
+        return getUploadFolderPath().resolve(fileName).toFile();
+    }
+
     public static File getLocalFile(String pathString)
     {
-        Path fileName = Paths.get(pathString).getFileName();
-        return getUploadFolderPath().resolve(fileName).toFile();
+        return getLocalFile(Paths.get(pathString));
     }
 
     public static Path getUploadFolderPath()
