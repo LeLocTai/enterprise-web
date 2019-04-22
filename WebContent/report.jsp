@@ -1,12 +1,19 @@
-<%@ page import="com.magazineapp.service.SubmissionSubmitService" %>
-<%@ page import="org.apache.commons.lang.math.NumberUtils" %>
-<%@ page language="java" %>
+<%@ page import="com.magazineapp.model.Year" %>
+<%@ page import="com.magazineapp.repository.YearRepo" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<%
+    Year currentYear = new YearRepo().getCurrentYear();
+    pageContext.setAttribute("currentYear", currentYear);
+%>
+
+<!DOCTYPE html>
 <html>
+
 <head>
-    <title>Greenwich university</title>
+    <title>Report</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta name="keywords"/>
 
@@ -20,14 +27,15 @@
         }
     </script>
     <link href="css/bootstrap.css" rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" href="css/Chart.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="css/style.css" rel='stylesheet' type='text/css'/>
     <link href="css/news.css" rel='stylesheet' type='text/css'/>
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/report.css">
 </head>
 
 <body>
-<div class="headerIndex inner_banner">
+<div class="headerIndex inner_banner_report">
     <header class="header" id="home">
         <!--/top-bar-->
         <div class="top-bar">
@@ -42,7 +50,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <h1>
-                        <a class="navbar-brand" href="index.jsp">GreenWich
+                        <a class="navbar-brand" href="index.jsp">Greenwich
                             <span>University</span>
                         </a>
                     </h1>
@@ -55,10 +63,10 @@
                                 <a  href="index.jsp">Home</a>
                             </li>
                             <li>
-                                <a class="active" href="submit.jsp">Submit</a>
+                                <a href="submit.jsp">Submit</a>
                             </li>
                             <li>
-                                <a  href="viewSubmission.jsp">View Submission</a>
+                                <a href="viewSubmission.jsp">View Submission</a>
                             </li>
                             <li>
                                 <a href="login.jsp">Login</a>
@@ -67,7 +75,7 @@
                                 <a href="logout.jsp">Logout</a>
                             </li>
                             <li>
-                                <a  href="report.jsp">Report</a>
+                                <a class="active" href="report.jsp">Report</a>
                             </li>
                         </ul>
                     </nav>
@@ -78,7 +86,6 @@
     </header>
 </div>
 <!--//inner_banner-->
-<!--/short-->
 <div class="breadcrumb">
     <div class="inner_breadcrumb">
         <ul class="short">
@@ -86,61 +93,37 @@
                 <a href="index.jsp">Home</a>
                 <span>|</span>
             </li>
-            <li>Submit</li>
+            <li>Report</li>
         </ul>
     </div>
 </div>
-<!--//short-->
-<!-- //inner_content -->
+<div class="frame">
+    <form action="#" id="input-form">
+        <label>
+            From:
+            <input type="date" name="from" id="from" value="${currentYear._startDate}">
+        </label>
+        <label>
+            To:
+            <input type="date" name="to" id="to" value="${currentYear._endDate}">
+        </label>
+        <input type="submit">
+    </form>
+    <p>Hover or tap the bars to see specific number</p>
+    <div id="charts"></div>
 
-<div class="contentNew">
-    <div id="wrapper">
-        <div class="agile-last-grids">
-            <div class=" agile-last-left ">
-                <div class="agile-last-grid">
-                    <%
-                        int id = NumberUtils.toInt(request.getParameter("id"));
-                        if (!SubmissionSubmitService.canSubmit(id))
-                        {
-                    %>
-                    <p>Submission is closed. You can still re-upload your existing submission</p>
-                    <%
-                    } else
-                    {
-                    %>
-                    <h2>Submit magazine for event </h2>
-                    <div>
-                        <h3>Submit your file:</h3>
-                        <hr>
-                    </div>
-                    <div>
-                        <form id="uploadImage" enctype="multipart/form-data" method="post" action="upload-submission">
-                            <input type="hidden" name="id" value="<%=request.getParameter("id")%>"/>
-                            <input id="fileupload" name="myfile" type="file"/>
-                            <input type="submit"/>
-                        </form>
-                    </div>
-                    <hr>
-                    <%
-                        }
-                    %>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-
-    </div>
 </div>
+
 
 <!--footer-->
 <footer class="contact-footer">
     <div class="copy">
         <h2 class="footer-logo">
-            <a href="index.html">Greenwich
+            <a href="index.jsp">Greenwich
                 <span>university</span>
             </a>
         </h2>
-        <p>� 2019 Fettle. All rights reserved | Design by
+        <p>© 2019 Fettle. All rights reserved | Design by
             <a href="">Sandra0710</a>
         </p>
         <div class="clearfix"></div>
@@ -148,10 +131,13 @@
 </footer>
 <!--/footer -->
 <!-- js -->
-<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+<script src="js/jquery-2.2.3.min.js"></script>
+<script src="js/Chart.bundle.min.js"></script>
+<script src="js/report.js"></script>
 
 <!--search-bar-->
 <script src="js/responsiveslides.min.js"></script>
+
 <script>
     $(function () {
         $("#slider4").responsiveSlides({
@@ -181,55 +167,11 @@
         });
     });
 </script>
-<!-- start-smoth-scrolling -->
-
 
 <a href="#home" class="scroll" id="toTop" style="display: block;">
     <span id="toTopHover" style="opacity: 1;"> </span>
 </a>
 <script type="text/javascript" src="js/bootstrap.js"></script>
-
-<script type="text/javascript">
-    const realFileBtn = document.getElementById("real-file");
-    const customBtn = document.getElementById("custom-button");
-    const customTxt = document.getElementById("custom-text");
-
-    customBtn.addEventListener("click", function () {
-        realFileBtn.click();
-    });
-
-    realFileBtn.addEventListener("change", function () {
-        if (realFileBtn.value) {
-            customTxt.innerHTML = realFileBtn.value.match(
-                /[\/\\]([\w\d\s\.\-\(\)]+)$/
-            )[1];
-        } else {
-            customTxt.innerHTML = "No file chosen, yet.";
-        }
-    });
-</script>
-<script type="text/javascript">
-    function preview_image(event) {
-        var reader = new FileReader();
-        reader.onload = function () {
-            var output = document.getElementById("output_image");
-            output.src = reader.result;
-        }
-        reader.readAsDataURL(event.target.files[0]);
-    }
-</script>
-
-<script>
-    $('#submit').click(function (event) {
-        var val = $('input[type=file]').val().toLowerCase();
-        var regex = new RegExp("(.*?)\.(pdf|docx|doc)$");
-        if (!(regex.test(val))) {
-            $('.uploadExtensionError').show();
-            event.preventDefault();
-        }
-    });
-</script>
-
 
 </body>
 

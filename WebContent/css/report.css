@@ -1,0 +1,29 @@
+.faculty-data {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 50% 50%;
+    grid-template-areas: "name name" "student submission";
+    width: auto;
+}
+
+@media (max-width: 768px) {
+    .faculty-data {
+        grid-template-areas: "name name" "student student" "submission submission";
+    }
+}
+
+.faculty-name {
+    grid-area: name;
+}
+
+.chart-container-students {
+    grid-area: student;
+}
+
+.chart-container-submissions {
+    grid-area: submission;
+}
+
+.chart-container {
+    position: relative;
+}

@@ -1,8 +1,10 @@
-package com.magazineapp;
+package com.magazineapp.servlet;
 
 import com.magazineapp.model.Submission;
 import com.magazineapp.model.User;
 import com.magazineapp.repository.SubmissionRepo;
+import com.magazineapp.service.FileSystemService;
+import com.magazineapp.service.HttpResponseService;
 import org.apache.commons.lang.math.NumberUtils;
 
 import javax.servlet.ServletException;
@@ -36,22 +38,16 @@ public class SubmissionDownloadServlet extends HttpServlet
             return;
         }
 
-        File file = new File(submission.get_path());
+        File submissionFile = FileSystemService.getLocalFile(submission.get_path());
 
-        response.setContentType("application/force-download");
-        response.setContentLength((int) file.length());
-        response.setHeader("Content-Transfer-Encoding", "binary");
-        response.setHeader("Content-Disposition", "attachment; filename=\"" + file.getName() + "\"");
-
-        copyBuffered(
-                new FileInputStream(file),
-                response.getOutputStream(),
-                new byte[1024 * 4]
-        );
+        HttpResponseService.ForceDownload(response, submissionFile);
     }
 
     private boolean isAuthorized(Submission submission, User authUser)
     {
+        if(submission.get_is_Selected())
+            return true;
+        
         if (authUser == null)
             return false;
 
@@ -63,17 +59,5 @@ public class SubmissionDownloadServlet extends HttpServlet
             return true;
 
         return false;
-    }
-
-    private void copyBuffered(InputStream from, OutputStream to, byte[] buffer) throws IOException
-    {
-        int nextLength;
-        while ((nextLength = from.read(buffer)) > 0)
-        {
-            to.write(buffer, 0, nextLength);
-        }
-
-        from.close();
-        to.flush();
     }
 }
