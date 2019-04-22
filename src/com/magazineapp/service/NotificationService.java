@@ -10,6 +10,7 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
+import java.net.URL;
 import java.util.Properties;
 
 public class NotificationService
@@ -31,10 +32,7 @@ public class NotificationService
         service.submission = submission;
 
         service.coordinator = new UserRepo().getCoordinatorOf(submission.get_author().get_faculty());
-        service.coordinatorViewPath = String.format("http://%s:%d%s/Admin/viewAllSubmission.jsp",
-                                                    context.getServerName(),
-                                                    context.getServerPort(),
-                                                    context.getContextPath());
+        service.coordinatorViewPath = "http://school-magazine.leloctai.com/viewSubmission.jsp";
         
         service.scheduleEmail();
     }
