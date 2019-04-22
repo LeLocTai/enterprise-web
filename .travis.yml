@@ -1,0 +1,27 @@
+branches:
+  only:
+    - master
+
+language: java
+
+jdk:
+  - oraclejdk8
+
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: $AWSAccessKeyId
+  secret_access_key: $AWSSecretKey
+  region: ap-southeast-1
+  app: school-magazine-app
+  env: SchoolMagazineApp-env
+  bucket_name: elasticbeanstalk-ap-southeast-1-226898416148
+
+notifications:
+  email:
+    on_success: never
+    on_failure: always
+
+env:
+  global:
+    - secure: sjK+J/QGzbsBOaAUKhUIXh4SvRQXqH4pL2kl/UGMeotA3heUGwsbUz68oIk3svYmwm2JOhQvLBTjx0L37+89IWU621B2gXoIFRmEvO8SAHekHz/xsNx5eyGBhdJNDNUH0A8XknvYZQZfY5Esj9a7G3cxejTZ28tmNVx+B5iiWqVt6VMCg6Cg7JdcPtIUQ/aRs/70R3X8ACBq5nSjzZh94zxOyNk89C+IXkprVzG0IsEnRFymfwE/BdOdB57pNltoIkouSEFzVvrL6Zi1XkOgpcJjrts1Ox12aaekuTmB3qjaJGGZrKSitji1ucVnFxIFddqMm9s4Drfoj4RxHlIfjQ+LtogCZWrklkAqY9AWQ5IkPeiNKPlb88wPXBny5z2058IoPzBF3bOgtKJYxD4jO5Nzri2r9BUZlr/bfdPpnj3hkWKgSo/G1RSAB2adzrCUmr+xSKW/QaCv6Z13n6D3zigwMIo5QbgaFMH2+t2fZLxeStgWRLfLjqHv9Gv5+MdZSgUBg76Aayq/IkBYcWzUVx21Sz8iHzsQICUE2KLKmwQCs28Cbdl/CYak6CvnRZMl4HYgbNBsih1Y3eP2NZUrd1+3bi2C0qX8e/BlK68GaXW0auh4QtuiiA3q29fzw0VOrvj89rhmjk7iFEtqe+YsACR64JZTR71iGwvjOdnwxYg=
+    - secure: UT4JaZ8YwHpOOrv9UltGHXf6IuG09XKzrKYAMANMjsJSyzox6AQdFbstKJvKqrpx+ufbvA6T8w42m4UrCjJ2r5MnuVxg3PP4MnqB3kT84DsWRxbsqcm6yPRZTEVQqM0PzDs0CNGU1dEh4+M3dfUjrYsezkr4/XLmqgy4+KHtSuAhgO+U5luCypSYpZvyFjCb4FZXaIlIrQrQcv++F16XaCqHsdD0wZD8VD/2K7WBuZs4Vm2oLV7VZq6tVAxSECX3ryzdkUw2sISNlqbzhyxQ8belHcwUZzqF5CHQFWt8oji9qSeZTdm8ubdNgPnf6+EvlcX8Ay0RbebqEXqEpD7cRmf310EFpiJ+Lft7iISk/ry+arG8N7hPiyOw+NdYAly/vXe5YcR8yYanNCeB5Zgm/Y9UmpJWwyNXxnj8RqcLNp5nk7HrsCa5A7vPiezYFlHcT53zGIR3kX4Ffoi7UPX0dkPZ2c4RwEI1/s+RN02URY2BqzpkvrEH4dsuE0DzJ1LLSt2wsOJeRMG+kqkxzhCX33SQb35zlF9FfHLOl5av+flTXrNXt9XSFRZhfGyJvRuEUKIjWXE5+L+fbZA9jvDq0oiWqJ9IJSaPXn+5PaURalw4js6pJl3fG1r/AgHtZMVEtl2oO+hS7/TFFjmsIxw2X+TMmripvv7FADh8JuBjdc0=

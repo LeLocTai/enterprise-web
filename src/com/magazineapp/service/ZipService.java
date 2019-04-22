@@ -9,7 +9,7 @@ import java.util.zip.ZipOutputStream;
 
 public class ZipService
 {
-    public static File createFromPaths(List<Path> inPathStrings) throws IOException
+    public static File createFromPaths(List<Path> inPaths) throws IOException
     {
         File outFile = FileSystemService.getZipFilePath().toFile();
 
@@ -19,9 +19,9 @@ public class ZipService
         //close is propagated
         try (ZipOutputStream zipOutStream = new ZipOutputStream(bufferedOutStream, StandardCharsets.UTF_8))
         {
-            for (Path curPath : inPathStrings)
+            for (Path curPath : inPaths)
             {
-                File curFile = curPath.toFile();
+                File curFile = FileSystemService.getLocalFile(curPath);
                 try (FileInputStream curFileInStream = new FileInputStream(curFile))
                 {
                     ZipEntry zipEntry = new ZipEntry(curFile.getName());
