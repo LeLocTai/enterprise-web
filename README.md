@@ -1,8 +1,8 @@
-#Group 4 Morning project
+# Group 4 Morning project
 
 Might still be available online at https://school-magazine.leloctai.com
 
-##Tested environment
+## Tested environment
  - Runtime: Java 1.8
  - Web Server: Glassfish 5.0.0
  - Database: MariaDB 10.3
