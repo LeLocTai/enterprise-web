@@ -17,3 +17,5 @@ DB_URL="localhost"
 DB_USER="YOUR_DB_USER"
 DB_PASS="YOUR_DB_PASSWORD"
 ``` 
+## Warning
+File hosted there are not to be trusted, since the server is open to all.
